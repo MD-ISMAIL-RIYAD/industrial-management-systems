@@ -13,8 +13,8 @@ class ProductionDetailController extends Controller
 {
     public function index()
     {
-        $productionDetails = ProductionDetail::orderBy('id','desc')->paginate(10);
-        return view('pages.productionDetails.index', compact('productionDetails'));
+        $production_details = ProductionDetail::orderBy('id','desc')->paginate(10);
+        return view('pages.production_details.index', compact('production_details'));
     }
 
     public function create()
@@ -23,7 +23,7 @@ class ProductionDetailController extends Controller
         $products = \App\Models\Product::all();
         $uoms = \App\Models\Uom::all();
 
-        return view('pages.productionDetails.create', [
+        return view('pages.production_details.create', [
             'mode' => 'create',
             'productionDetail' => new ProductionDetail(),
             'productions' => $productions,
@@ -40,12 +40,12 @@ class ProductionDetailController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         ProductionDetail::create($data);
-        return redirect()->route('productionDetails.index')->with('success', 'Successfully created!');
+        return redirect()->route('production_details.index')->with('success', 'Successfully created!');
     }
 
     public function show(ProductionDetail $productionDetail)
     {
-        return view('pages.productionDetails.view', compact('productionDetail'));
+        return view('pages.production_details.view', compact('productionDetail'));
     }
 
     public function edit(ProductionDetail $productionDetail)
@@ -54,7 +54,7 @@ class ProductionDetailController extends Controller
         $products = \App\Models\Product::all();
         $uoms = \App\Models\Uom::all();
 
-        return view('pages.productionDetails.edit', [
+        return view('pages.production_details.edit', [
             'mode' => 'edit',
             'productionDetail' => $productionDetail,
             'productions' => $productions,
@@ -71,12 +71,12 @@ class ProductionDetailController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         $productionDetail->update($data);
-        return redirect()->route('productionDetails.index')->with('success', 'Successfully updated!');
+        return redirect()->route('production_details.index')->with('success', 'Successfully updated!');
     }
 
     public function destroy(ProductionDetail $productionDetail)
     {
         $productionDetail->delete();
-        return redirect()->route('productionDetails.index')->with('success', 'Successfully deleted!');
+        return redirect()->route('production_details.index')->with('success', 'Successfully deleted!');
     }
 }

@@ -17,5 +17,8 @@
 <div class="mb-2">
     <strong>Name:</strong> {{ $manufacturer->name }}
 </div>
+<div class="mb-2">
+    <strong>Contact:</strong> {{ $manufacturer->contact }}
+</div>
 
 @endsection

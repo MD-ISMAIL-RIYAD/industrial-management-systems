@@ -26,11 +26,6 @@ USE test;
 --
 DROP TABLE IF EXISTS `v_product_list1`;
 DROP VIEW IF EXISTS `v_product_list1`;
-CREATE TABLE `v_product_list1` (
-  `id` int(10),
-  `product_name` varchar(50),
-  `mfg_name` varchar(50)
-);
 
 --
 -- Definition of table `core_academy_admissions`
@@ -958,51 +953,6 @@ CREATE TABLE `core_courier_vehicles` (
 
 
 --
--- Definition of table `core_customers`
---
-
-DROP TABLE IF EXISTS `core_customers`;
-CREATE TABLE `core_customers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `mobile` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT current_timestamp(),
-  `address` text DEFAULT NULL,
-  `photo` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_customers`
---
-
-/*!40000 ALTER TABLE `core_customers` DISABLE KEYS */;
-INSERT INTO `core_customers` (`id`,`name`,`mobile`,`email`,`created_at`,`updated_at`,`address`,`photo`) VALUES 
- (1,'Tanmoy','','','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (3,'Niyamot','3434343','niyamot@yahoo.com','2023-12-05 16:27:19','2023-12-05 16:27:19','Mirpur','3.png'),
- (6,'Jahidul Islam','34324324','mehedihasandb0@gmail.com','2023-12-05 16:28:16','2023-12-05 16:28:16','333','beetroot-hummus-23bae4e-jpg.jpg'),
- (7,'Jahidul2','34324324','mehedihasandb0@gmail.com','2023-12-05 16:43:59','2023-12-05 16:43:59','343','7.jpg'),
- (8,'Mehedi3','34324324','mehedihasandb0@gmail.com','2023-12-05 16:31:09','2023-12-05 16:31:09','','34324324.jpg'),
- (9,'Sabbir Ahmed','34343434','sabbir3@gmail.com','2023-12-30 15:30:13','2023-12-30 15:30:13','NA',NULL),
- (10,'Abdur Rahman','35443434','abrahman@gmail.com','2023-12-30 15:32:00','2023-12-30 15:32:00','Rampua',NULL),
- (12,'Mahedi Hassanere','9433442sfds','mah3edi@gmail.com','2023-12-30 15:59:14','2023-12-30 15:59:14','NA',NULL),
- (15,'Siam','44444444','siam@yahoo.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (21,'Laiju','123456778','laiju@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (25,'abc','0000','abc@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (28,'Md Salman Aisur Rahman','019886131','salman@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (29,'Atiquer Rahman','098563146','Atiqur@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (30,'razib','1222222','razijb@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (31,'','','','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (32,'Al AMin','96354965','Alamin@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (33,'Rahul ','8797446','Rahul@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (34,'Laiju','98754324','laiju@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (35,'Engr. Naiiyem Hossain','12555555','naiyem@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','','');
-/*!40000 ALTER TABLE `core_customers` ENABLE KEYS */;
-
-
---
 -- Definition of table `core_deliveries`
 --
 
@@ -1294,39 +1244,6 @@ INSERT INTO `core_hms_departments` (`id`,`name`) VALUES
  (1,'Medicine'),
  (2,'ENT');
 /*!40000 ALTER TABLE `core_hms_departments` ENABLE KEYS */;
-
-
---
--- Definition of table `core_hms_invoice_detials`
---
-
-DROP TABLE IF EXISTS `core_hms_invoice_detials`;
-CREATE TABLE `core_hms_invoice_detials` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `invoice_id` int(10) unsigned NOT NULL,
-  `service_id` int(10) unsigned NOT NULL,
-  `unit` float NOT NULL,
-  `price` float NOT NULL,
-  `discount` float DEFAULT NULL,
-  `vat` float DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `core_hms_invoice_detials`
---
-
-/*!40000 ALTER TABLE `core_hms_invoice_detials` DISABLE KEYS */;
-INSERT INTO `core_hms_invoice_detials` (`id`,`invoice_id`,`service_id`,`unit`,`price`,`discount`,`vat`) VALUES 
- (1,3,1,1,1000,0,0),
- (2,3,2,1,2000,0,0),
- (3,4,1,1,1000,0,0),
- (4,4,2,1,2000,0,0),
- (5,5,2,1,3000,0,0),
- (6,5,3,1,6000,0,0),
- (7,6,2,1,3000,0,0),
- (8,6,3,1,6000,0,0);
-/*!40000 ALTER TABLE `core_hms_invoice_detials` ENABLE KEYS */;
 
 
 --
@@ -2059,123 +1976,6 @@ CREATE TABLE `core_hr_shifts` (
 
 
 --
--- Definition of table `core_invoice_details`
---
-
-DROP TABLE IF EXISTS `core_invoice_details`;
-CREATE TABLE `core_invoice_details` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `invoice_id` int(10) unsigned NOT NULL,
-  `product_id` int(10) unsigned NOT NULL,
-  `price` float NOT NULL,
-  `qty` float NOT NULL,
-  `discount` float NOT NULL,
-  `vat` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `core_invoice_details`
---
-
-/*!40000 ALTER TABLE `core_invoice_details` DISABLE KEYS */;
-INSERT INTO `core_invoice_details` (`id`,`invoice_id`,`product_id`,`price`,`qty`,`discount`,`vat`) VALUES 
- (1,5,1,299,3,0,0),
- (2,5,2,399,2,0,0),
- (3,6,50,100,1,0,0),
- (4,6,17,200,1,0,0),
- (5,7,50,467,1,0,0),
- (6,8,17,100,1,0,0),
- (7,9,56,100,4,0,0),
- (8,9,47,200,4,0,0),
- (9,11,47,3444,1,0,0),
- (10,11,52,3444,1,0,0),
- (11,13,52,544,1,0,0),
- (12,13,47,655,1,0,0),
- (13,15,47,655,1,0,0),
- (14,17,46,100,1,0,0),
- (15,17,52,20000,1,0,0),
- (16,19,47,100,1,0,0),
- (17,19,50,100,1,0,0),
- (18,21,17,5500,1,0,0),
- (19,21,47,100,1,0,0),
- (20,22,1,299,3,0,0),
- (21,22,2,399,2,0,0),
- (22,24,17,5500,1,0,0),
- (23,26,46,100,1,0,0),
- (24,26,50,100,1,0,0),
- (25,0,17,5500,1,0,0),
- (26,0,47,100,1,0,0),
- (27,27,17,5500,1,0,0),
- (28,27,47,100,1,0,0),
- (29,33,50,100,1,0,0),
- (30,34,46,100,1,0,0),
- (31,35,47,100,1,0,0),
- (32,35,50,100,1,0,0);
-/*!40000 ALTER TABLE `core_invoice_details` ENABLE KEYS */;
-
-
---
--- Definition of table `core_invoices`
---
-
-DROP TABLE IF EXISTS `core_invoices`;
-CREATE TABLE `core_invoices` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `customer_id` int(10) unsigned NOT NULL,
-  `created_at` datetime NOT NULL,
-  `remark` varchar(45) DEFAULT NULL,
-  `payment_term` varchar(45) DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `invoice_total` float NOT NULL,
-  `paid_total` float NOT NULL,
-  `previous_due` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `core_invoices`
---
-
-/*!40000 ALTER TABLE `core_invoices` DISABLE KEYS */;
-INSERT INTO `core_invoices` (`id`,`customer_id`,`created_at`,`remark`,`payment_term`,`updated_at`,`invoice_total`,`paid_total`,`previous_due`) VALUES 
- (1,1,'2025-04-01 00:00:00','Na','','2025-04-01 00:00:00',199,199,0),
- (2,1,'2025-04-01 00:00:00','Na','','2025-04-01 00:00:00',199,199,0),
- (3,1,'2025-04-01 00:00:00','Na','CASH','2025-04-01 00:00:00',199,199,0),
- (4,1,'2025-04-01 00:00:00','Na','CASH','2025-04-01 00:00:00',199,199,0),
- (5,1,'2025-04-01 00:00:00','Na','CASH','2025-04-01 00:00:00',199,199,0),
- (6,1,'0000-00-00 00:00:00','Na','','0000-00-00 00:00:00',0,0,0),
- (7,9,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',0,0,0),
- (8,1,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',100,100,0),
- (9,1,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',1200,1200,0),
- (10,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (11,9,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',6888,6888,0),
- (12,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (13,8,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',1199,1199,0),
- (15,8,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',655,655,0),
- (17,1,'2025-05-06 00:00:00','Na','CASH','2025-05-06 00:00:00',20100,20100,0),
- (18,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (19,8,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',200,200,0),
- (20,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (21,15,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',5800,5800,0),
- (22,1,'2025-04-01 00:00:00','Na','CASH','2025-04-01 00:00:00',199,199,0),
- (23,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (24,15,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',11300,11300,0),
- (25,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (26,0,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',200,200,0),
- (27,1,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',11200,11200,0),
- (28,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (29,1,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',11200,11200,0),
- (30,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (31,15,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',400,400,0),
- (32,15,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',400,400,0),
- (33,6,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',500,500,0),
- (34,10,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',100,100,0),
- (35,9,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',200,200,0);
-/*!40000 ALTER TABLE `core_invoices` ENABLE KEYS */;
-
-
---
 -- Definition of table `core_job_batches`
 --
 
@@ -2200,31 +2000,6 @@ CREATE TABLE `core_job_batches` (
 
 /*!40000 ALTER TABLE `core_job_batches` DISABLE KEYS */;
 /*!40000 ALTER TABLE `core_job_batches` ENABLE KEYS */;
-
-
---
--- Definition of table `core_jobs`
---
-
-DROP TABLE IF EXISTS `core_jobs`;
-CREATE TABLE `core_jobs` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `queue` varchar(255) NOT NULL,
-  `payload` longtext NOT NULL,
-  `attempts` tinyint(3) unsigned NOT NULL,
-  `reserved_at` int(10) unsigned DEFAULT NULL,
-  `available_at` int(10) unsigned NOT NULL,
-  `created_at` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `core_jobs_queue_index` (`queue`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `core_jobs`
---
-
-/*!40000 ALTER TABLE `core_jobs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `core_jobs` ENABLE KEYS */;
 
 
 --
@@ -2303,6 +2078,215 @@ INSERT INTO `core_mfg_boms` (`id`,`code`,`name`,`product_id`,`qty`,`labour_cost`
 
 
 --
+-- Definition of table `core_mfg_customers`
+--
+
+DROP TABLE IF EXISTS `core_mfg_customers`;
+CREATE TABLE `core_mfg_customers` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `mobile` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp(),
+  `address` text DEFAULT NULL,
+  `photo` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_customers`
+--
+
+/*!40000 ALTER TABLE `core_mfg_customers` DISABLE KEYS */;
+INSERT INTO `core_mfg_customers` (`id`,`name`,`mobile`,`email`,`created_at`,`updated_at`,`address`,`photo`) VALUES 
+ (1,'Tanmoy','','','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
+ (3,'Niyamot','3434343','niyamot@yahoo.com','2023-12-05 16:27:19','2023-12-05 16:27:19','Mirpur','3.png'),
+ (6,'Jahidul Islam','34324324','mehedihasandb0@gmail.com','2023-12-05 16:28:16','2023-12-05 16:28:16','333','beetroot-hummus-23bae4e-jpg.jpg'),
+ (7,'Jahidul2','34324324','mehedihasandb0@gmail.com','2023-12-05 16:43:59','2023-12-05 16:43:59','343','7.jpg'),
+ (8,'Mehedi3','34324324','mehedihasandb0@gmail.com','2023-12-05 16:31:09','2023-12-05 16:31:09','','34324324.jpg'),
+ (9,'Sabbir Ahmed','34343434','sabbir3@gmail.com','2023-12-30 15:30:13','2023-12-30 15:30:13','NA',NULL),
+ (10,'Abdur Rahman','35443434','abrahman@gmail.com','2023-12-30 15:32:00','2023-12-30 15:32:00','Rampua',NULL),
+ (12,'Mahedi Hassanere','9433442sfds','mah3edi@gmail.com','2023-12-30 15:59:14','2023-12-30 15:59:14','NA',NULL),
+ (15,'Siam','44444444','siam@yahoo.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
+ (21,'Laiju','123456778','laiju@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
+ (25,'abc','0000','abc@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
+ (28,'Md Salman Aisur Rahman','019886131','salman@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
+ (29,'Atiquer Rahman','098563146','Atiqur@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
+ (30,'razib','1222222','razijb@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
+ (31,'','','','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
+ (32,'Al AMin','96354965','Alamin@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
+ (33,'Rahul ','8797446','Rahul@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
+ (34,'Laiju','98754324','laiju@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
+ (35,'Engr. Naiiyem Hossain','12555555','naiyem@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','','');
+/*!40000 ALTER TABLE `core_mfg_customers` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_employees`
+--
+
+DROP TABLE IF EXISTS `core_mfg_employees`;
+CREATE TABLE `core_mfg_employees` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL DEFAULT '',
+  `email` varchar(45) NOT NULL DEFAULT '',
+  `role` varchar(45) NOT NULL DEFAULT '',
+  `department_id` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_employees`
+--
+
+/*!40000 ALTER TABLE `core_mfg_employees` DISABLE KEYS */;
+/*!40000 ALTER TABLE `core_mfg_employees` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_inventory_movement`
+--
+
+DROP TABLE IF EXISTS `core_mfg_inventory_movement`;
+CREATE TABLE `core_mfg_inventory_movement` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL,
+  `movement_type` enum('IN','OUT') NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `movement_date` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `product_id` (`product_id`),
+  CONSTRAINT `core_mfg_inventory_movement_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_inventory_movement`
+--
+
+/*!40000 ALTER TABLE `core_mfg_inventory_movement` DISABLE KEYS */;
+/*!40000 ALTER TABLE `core_mfg_inventory_movement` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_invoice_detials`
+--
+
+DROP TABLE IF EXISTS `core_mfg_invoice_detials`;
+CREATE TABLE `core_mfg_invoice_detials` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `invoice_id` int(10) unsigned NOT NULL,
+  `service_id` int(10) unsigned NOT NULL,
+  `unit` float NOT NULL,
+  `price` float NOT NULL,
+  `discount` float DEFAULT NULL,
+  `vat` float DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `core_mfg_invoice_detials`
+--
+
+/*!40000 ALTER TABLE `core_mfg_invoice_detials` DISABLE KEYS */;
+INSERT INTO `core_mfg_invoice_detials` (`id`,`invoice_id`,`service_id`,`unit`,`price`,`discount`,`vat`) VALUES 
+ (1,3,1,1,1000,0,0),
+ (2,3,2,1,2000,0,0),
+ (3,4,1,1,1000,0,0),
+ (4,4,2,1,2000,0,0),
+ (5,5,2,1,3000,0,0),
+ (6,5,3,1,6000,0,0),
+ (7,6,2,1,3000,0,0),
+ (8,6,3,1,6000,0,0);
+/*!40000 ALTER TABLE `core_mfg_invoice_detials` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_invoices`
+--
+
+DROP TABLE IF EXISTS `core_mfg_invoices`;
+CREATE TABLE `core_mfg_invoices` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `customer_id` int(10) unsigned NOT NULL,
+  `created_at` datetime NOT NULL,
+  `remark` varchar(45) DEFAULT NULL,
+  `payment_term` varchar(45) DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `invoice_total` float NOT NULL,
+  `paid_total` float NOT NULL,
+  `previous_due` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `core_mfg_invoices`
+--
+
+/*!40000 ALTER TABLE `core_mfg_invoices` DISABLE KEYS */;
+INSERT INTO `core_mfg_invoices` (`id`,`customer_id`,`created_at`,`remark`,`payment_term`,`updated_at`,`invoice_total`,`paid_total`,`previous_due`) VALUES 
+ (1,1,'2025-04-01 00:00:00','Na','','2025-04-01 00:00:00',199,199,0),
+ (2,1,'2025-04-01 00:00:00','Na','','2025-04-01 00:00:00',199,199,0),
+ (3,1,'2025-04-01 00:00:00','Na','CASH','2025-04-01 00:00:00',199,199,0),
+ (4,1,'2025-04-01 00:00:00','Na','CASH','2025-04-01 00:00:00',199,199,0),
+ (5,1,'2025-04-01 00:00:00','Na','CASH','2025-04-01 00:00:00',199,199,0),
+ (6,1,'0000-00-00 00:00:00','Na','','0000-00-00 00:00:00',0,0,0),
+ (7,9,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',0,0,0),
+ (8,1,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',100,100,0),
+ (9,1,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',1200,1200,0),
+ (10,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
+ (11,9,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',6888,6888,0),
+ (12,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
+ (13,8,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',1199,1199,0),
+ (15,8,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',655,655,0),
+ (17,1,'2025-05-06 00:00:00','Na','CASH','2025-05-06 00:00:00',20100,20100,0),
+ (18,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
+ (19,8,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',200,200,0),
+ (20,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
+ (21,15,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',5800,5800,0),
+ (22,1,'2025-04-01 00:00:00','Na','CASH','2025-04-01 00:00:00',199,199,0),
+ (23,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
+ (24,15,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',11300,11300,0),
+ (25,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
+ (26,0,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',200,200,0),
+ (27,1,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',11200,11200,0),
+ (28,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
+ (29,1,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',11200,11200,0),
+ (30,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
+ (31,15,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',400,400,0),
+ (32,15,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',400,400,0),
+ (33,6,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',500,500,0),
+ (34,10,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',100,100,0),
+ (35,9,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',200,200,0);
+/*!40000 ALTER TABLE `core_mfg_invoices` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_jobs`
+--
+
+DROP TABLE IF EXISTS `core_mfg_jobs`;
+CREATE TABLE `core_mfg_jobs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `queue` varchar(255) NOT NULL,
+  `payload` longtext NOT NULL,
+  `attempts` tinyint(3) unsigned NOT NULL,
+  `reserved_at` int(10) unsigned DEFAULT NULL,
+  `available_at` int(10) unsigned NOT NULL,
+  `created_at` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `core_jobs_queue_index` (`queue`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `core_mfg_jobs`
+--
+
+/*!40000 ALTER TABLE `core_mfg_jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `core_mfg_jobs` ENABLE KEYS */;
+
+
+--
 -- Definition of table `core_mfg_manufacturers`
 --
 
@@ -2310,166 +2294,42 @@ DROP TABLE IF EXISTS `core_mfg_manufacturers`;
 CREATE TABLE `core_mfg_manufacturers` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
+  `contact` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `core_mfg_manufacturers`
 --
 
 /*!40000 ALTER TABLE `core_mfg_manufacturers` DISABLE KEYS */;
-INSERT INTO `core_mfg_manufacturers` (`id`,`name`) VALUES 
- (1,'APCL'),
- (2,'ISL'),
- (3,'IDB'),
- (4,'Abdullah');
+INSERT INTO `core_mfg_manufacturers` (`id`,`name`,`contact`) VALUES 
+ (2,'ISL','2345454'),
+ (3,'IDB','9390033'),
+ (5,'APCL','23432432');
 /*!40000 ALTER TABLE `core_mfg_manufacturers` ENABLE KEYS */;
 
 
 --
--- Definition of table `core_mfg_product_categories`
+-- Definition of trigger `ad_manufacturer`
 --
 
-DROP TABLE IF EXISTS `core_mfg_product_categories`;
-CREATE TABLE `core_mfg_product_categories` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `section_id` int(10) unsigned NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+DROP TRIGGER /*!50030 IF EXISTS */ `ad_manufacturer`;
+
+DELIMITER $$
+
+CREATE DEFINER = `root`@`localhost` TRIGGER `ad_manufacturer` AFTER DELETE ON `core_mfg_manufacturers` FOR EACH ROW begin
+  delete from product where manufacturer_id=old.id;
+end $$
+
+DELIMITER ;
 
 --
--- Dumping data for table `core_mfg_product_categories`
+-- Definition of table `core_mfg_money_receipt_details`
 --
 
-/*!40000 ALTER TABLE `core_mfg_product_categories` DISABLE KEYS */;
-INSERT INTO `core_mfg_product_categories` (`id`,`name`,`section_id`,`created_at`,`updated_at`) VALUES 
- (2,'Vegetables',3,'2022-01-11 12:46:24',NULL),
- (3,'Fish',3,'2022-01-11 12:46:24',NULL),
- (4,'Drugs',3,'2022-01-11 12:46:24',NULL),
- (5,'Cameras',1,'2022-01-11 12:46:24',NULL),
- (6,'Computers, Tablets & Laptops',1,'2022-01-11 12:46:24',NULL),
- (7,'Mobile Phone',1,'2022-01-11 12:46:24',NULL),
- (8,'Sound & Vision',1,'2022-01-11 12:46:24',NULL),
- (9,'Women\'s',2,'2022-01-11 12:46:24',NULL),
- (10,'Men\'s',2,'2022-01-11 12:46:24',NULL),
- (11,'Kids',2,'2022-01-11 12:46:24',NULL),
- (12,'Cosmatics',4,'2022-01-11 12:46:24',NULL),
- (13,'T-Shirt',2,'0000-00-00 00:00:00','0000-00-00 00:00:00');
-/*!40000 ALTER TABLE `core_mfg_product_categories` ENABLE KEYS */;
-
-
---
--- Definition of table `core_mfg_production_details`
---
-
-DROP TABLE IF EXISTS `core_mfg_production_details`;
-CREATE TABLE `core_mfg_production_details` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `production_id` int(10) unsigned NOT NULL,
-  `product_id` int(10) unsigned NOT NULL,
-  `qty` float NOT NULL,
-  `uom_id` int(10) unsigned NOT NULL,
-  `cost` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_mfg_production_details`
---
-
-/*!40000 ALTER TABLE `core_mfg_production_details` DISABLE KEYS */;
-/*!40000 ALTER TABLE `core_mfg_production_details` ENABLE KEYS */;
-
-
---
--- Definition of table `core_mfg_productions`
---
-
-DROP TABLE IF EXISTS `core_mfg_productions`;
-CREATE TABLE `core_mfg_productions` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `production_datetime` datetime NOT NULL,
-  `bom_id` int(10) unsigned NOT NULL,
-  `labor_cost` float NOT NULL,
-  `manager_id` int(10) unsigned NOT NULL,
-  `total_cost` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_mfg_productions`
---
-
-/*!40000 ALTER TABLE `core_mfg_productions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `core_mfg_productions` ENABLE KEYS */;
-
-
---
--- Definition of table `core_mfg_stock_adjustment_details`
---
-
-DROP TABLE IF EXISTS `core_mfg_stock_adjustment_details`;
-CREATE TABLE `core_mfg_stock_adjustment_details` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `adjustment_id` int(10) unsigned NOT NULL,
-  `product_id` int(10) unsigned NOT NULL,
-  `qty` float NOT NULL,
-  `price` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_mfg_stock_adjustment_details`
---
-
-/*!40000 ALTER TABLE `core_mfg_stock_adjustment_details` DISABLE KEYS */;
-INSERT INTO `core_mfg_stock_adjustment_details` (`id`,`adjustment_id`,`product_id`,`qty`,`price`) VALUES 
- (1,2,20,5,400),
- (2,3,20,50,400),
- (3,4,28,70,6650),
- (4,4,20,30,300);
-/*!40000 ALTER TABLE `core_mfg_stock_adjustment_details` ENABLE KEYS */;
-
-
---
--- Definition of table `core_migrations`
---
-
-DROP TABLE IF EXISTS `core_migrations`;
-CREATE TABLE `core_migrations` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) NOT NULL,
-  `batch` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `core_migrations`
---
-
-/*!40000 ALTER TABLE `core_migrations` DISABLE KEYS */;
-INSERT INTO `core_migrations` (`id`,`migration`,`batch`) VALUES 
- (6,'2014_10_12_000000_create_users_table',1),
- (7,'2014_10_12_100000_create_password_reset_tokens_table',1),
- (8,'2014_10_12_100000_create_password_resets_table',1),
- (9,'2019_08_19_000000_create_failed_jobs_table',1),
- (10,'2019_12_14_000001_create_personal_access_tokens_table',1),
- (17,'2024_07_02_044553_create_personal_access_tokens_table',3),
- (18,'0001_01_01_000000_create_users_table',4),
- (19,'0001_01_01_000001_create_cache_table',4),
- (20,'0001_01_01_000002_create_jobs_table',4);
-/*!40000 ALTER TABLE `core_migrations` ENABLE KEYS */;
-
-
---
--- Definition of table `core_money_receipt_details`
---
-
-DROP TABLE IF EXISTS `core_money_receipt_details`;
-CREATE TABLE `core_money_receipt_details` (
+DROP TABLE IF EXISTS `core_mfg_money_receipt_details`;
+CREATE TABLE `core_mfg_money_receipt_details` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `money_receipt_id` int(10) unsigned NOT NULL,
   `product_id` int(10) unsigned NOT NULL,
@@ -2481,11 +2341,11 @@ CREATE TABLE `core_money_receipt_details` (
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `core_money_receipt_details`
+-- Dumping data for table `core_mfg_money_receipt_details`
 --
 
-/*!40000 ALTER TABLE `core_money_receipt_details` DISABLE KEYS */;
-INSERT INTO `core_money_receipt_details` (`id`,`money_receipt_id`,`product_id`,`price`,`qty`,`vat`,`discount`) VALUES 
+/*!40000 ALTER TABLE `core_mfg_money_receipt_details` DISABLE KEYS */;
+INSERT INTO `core_mfg_money_receipt_details` (`id`,`money_receipt_id`,`product_id`,`price`,`qty`,`vat`,`discount`) VALUES 
  (1,1,36,100,1,0,0),
  (2,7,0,2500,2,0,0),
  (3,7,0,180,1,0,0),
@@ -2516,15 +2376,15 @@ INSERT INTO `core_money_receipt_details` (`id`,`money_receipt_id`,`product_id`,`
  (28,38,57,300000,1,0,0),
  (29,39,50,323,1,0,0),
  (30,40,50,333,1,0,0);
-/*!40000 ALTER TABLE `core_money_receipt_details` ENABLE KEYS */;
+/*!40000 ALTER TABLE `core_mfg_money_receipt_details` ENABLE KEYS */;
 
 
 --
--- Definition of table `core_money_receipts`
+-- Definition of table `core_mfg_money_receipts`
 --
 
-DROP TABLE IF EXISTS `core_money_receipts`;
-CREATE TABLE `core_money_receipts` (
+DROP TABLE IF EXISTS `core_mfg_money_receipts`;
+CREATE TABLE `core_mfg_money_receipts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -2537,11 +2397,11 @@ CREATE TABLE `core_money_receipts` (
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `core_money_receipts`
+-- Dumping data for table `core_mfg_money_receipts`
 --
 
-/*!40000 ALTER TABLE `core_money_receipts` DISABLE KEYS */;
-INSERT INTO `core_money_receipts` (`id`,`created_at`,`updated_at`,`customer_id`,`remark`,`receipt_total`,`discount`,`vat`) VALUES 
+/*!40000 ALTER TABLE `core_mfg_money_receipts` DISABLE KEYS */;
+INSERT INTO `core_mfg_money_receipts` (`id`,`created_at`,`updated_at`,`customer_id`,`remark`,`receipt_total`,`discount`,`vat`) VALUES 
  (28,'2024-01-03 13:07:18','2024-01-03 13:07:18',1,'',1426.95,NULL,NULL),
  (29,'2024-01-03 13:09:58','2024-01-03 13:09:58',1,'',1426.95,NULL,NULL),
  (30,'2025-04-12 18:42:59','2025-04-12 18:42:59',1,'Na',199,NULL,NULL),
@@ -2555,15 +2415,15 @@ INSERT INTO `core_money_receipts` (`id`,`created_at`,`updated_at`,`customer_id`,
  (38,'2025-04-13 13:43:22','2025-04-13 13:43:22',8,'Na',0,NULL,NULL),
  (39,'2025-04-13 18:26:18','2025-04-13 18:26:18',1,'Na',1000,NULL,NULL),
  (40,'2025-04-13 18:27:34','2025-04-13 18:27:34',1,'Na',333,NULL,NULL);
-/*!40000 ALTER TABLE `core_money_receipts` ENABLE KEYS */;
+/*!40000 ALTER TABLE `core_mfg_money_receipts` ENABLE KEYS */;
 
 
 --
--- Definition of table `core_order_details`
+-- Definition of table `core_mfg_order_details`
 --
 
-DROP TABLE IF EXISTS `core_order_details`;
-CREATE TABLE `core_order_details` (
+DROP TABLE IF EXISTS `core_mfg_order_details`;
+CREATE TABLE `core_mfg_order_details` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `order_id` int(10) unsigned NOT NULL,
   `product_id` int(10) unsigned NOT NULL,
@@ -2577,11 +2437,11 @@ CREATE TABLE `core_order_details` (
 ) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `core_order_details`
+-- Dumping data for table `core_mfg_order_details`
 --
 
-/*!40000 ALTER TABLE `core_order_details` DISABLE KEYS */;
-INSERT INTO `core_order_details` (`id`,`order_id`,`product_id`,`qty`,`price`,`vat`,`discount`,`created_at`,`updated_at`) VALUES 
+/*!40000 ALTER TABLE `core_mfg_order_details` DISABLE KEYS */;
+INSERT INTO `core_mfg_order_details` (`id`,`order_id`,`product_id`,`qty`,`price`,`vat`,`discount`,`created_at`,`updated_at`) VALUES 
  (1,1,17,1,16,0,0,'2021-12-14 12:45:23','2021-12-14 12:45:23'),
  (2,1,18,1,40,0,0,'2021-12-14 12:45:23','2021-12-14 12:45:23'),
  (3,2,18,4,40,0,0,'2021-12-14 12:45:23','2021-12-14 12:45:23'),
@@ -2653,15 +2513,15 @@ INSERT INTO `core_order_details` (`id`,`order_id`,`product_id`,`qty`,`price`,`va
  (76,45,56,13,500,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
  (77,46,0,2,4500,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
  (78,46,0,2,4500,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00');
-/*!40000 ALTER TABLE `core_order_details` ENABLE KEYS */;
+/*!40000 ALTER TABLE `core_mfg_order_details` ENABLE KEYS */;
 
 
 --
--- Definition of table `core_orders`
+-- Definition of table `core_mfg_orders`
 --
 
-DROP TABLE IF EXISTS `core_orders`;
-CREATE TABLE `core_orders` (
+DROP TABLE IF EXISTS `core_mfg_orders`;
+CREATE TABLE `core_mfg_orders` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `customer_id` int(10) unsigned NOT NULL,
   `order_date` datetime NOT NULL,
@@ -2680,11 +2540,11 @@ CREATE TABLE `core_orders` (
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `core_orders`
+-- Dumping data for table `core_mfg_orders`
 --
 
-/*!40000 ALTER TABLE `core_orders` DISABLE KEYS */;
-INSERT INTO `core_orders` (`id`,`customer_id`,`order_date`,`delivery_date`,`shipping_address`,`order_total`,`paid_amount`,`remark`,`status_id`,`discount`,`vat`,`created_at`,`updated_at`,`table_id`) VALUES 
+/*!40000 ALTER TABLE `core_mfg_orders` DISABLE KEYS */;
+INSERT INTO `core_mfg_orders` (`id`,`customer_id`,`order_date`,`delivery_date`,`shipping_address`,`order_total`,`paid_amount`,`remark`,`status_id`,`discount`,`vat`,`created_at`,`updated_at`,`table_id`) VALUES 
  (2,1,'2021-12-13 00:00:00','2021-12-13 00:00:00','na',0,0,'Na',1,0,0,'2021-12-14 12:40:41','2021-12-14 12:40:41',0),
  (3,1,'2021-12-13 00:00:00','2021-12-13 00:00:00','na',0,0,'Na',1,0,0,'2021-12-14 12:40:41','2021-12-14 12:40:41',0),
  (4,2,'2021-12-13 00:00:00','2021-12-13 00:00:00','na',0,0,'Na',1,0,0,'2021-12-14 12:40:41','2021-12-14 12:40:41',0),
@@ -2730,7 +2590,614 @@ INSERT INTO `core_orders` (`id`,`customer_id`,`order_date`,`delivery_date`,`ship
  (44,0,'2025-04-10 00:00:00','1970-01-01 00:00:00','',1575,0,'Test',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
  (45,1,'2025-04-12 00:00:00','2025-04-12 00:00:00','',6825,0,'',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
  (46,1,'2025-04-19 00:00:00','2025-04-19 00:00:00','Shipping address',17460,0,'ECommerce',1,540,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0);
-/*!40000 ALTER TABLE `core_orders` ENABLE KEYS */;
+/*!40000 ALTER TABLE `core_mfg_orders` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_positions`
+--
+
+DROP TABLE IF EXISTS `core_mfg_positions`;
+CREATE TABLE `core_mfg_positions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `grade` int(10) unsigned NOT NULL,
+  `department_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_positions`
+--
+
+/*!40000 ALTER TABLE `core_mfg_positions` DISABLE KEYS */;
+INSERT INTO `core_mfg_positions` (`id`,`name`,`grade`,`department_id`) VALUES 
+ (1,'Programmer',6,2),
+ (2,'System Analyst',3,1);
+/*!40000 ALTER TABLE `core_mfg_positions` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_product_categories`
+--
+
+DROP TABLE IF EXISTS `core_mfg_product_categories`;
+CREATE TABLE `core_mfg_product_categories` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `product_section_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_product_categories`
+--
+
+/*!40000 ALTER TABLE `core_mfg_product_categories` DISABLE KEYS */;
+INSERT INTO `core_mfg_product_categories` (`id`,`name`,`product_section_id`,`created_at`,`updated_at`) VALUES 
+ (2,'Vegetables',3,'2022-01-11 12:46:24',NULL),
+ (3,'Fish',3,'2022-01-11 12:46:24',NULL),
+ (4,'Drugs',3,'2022-01-11 12:46:24',NULL),
+ (6,'Computers, Tablets & Laptops',1,'2022-01-11 12:46:24',NULL),
+ (7,'Mobile Phone',1,'2022-01-11 12:46:24',NULL),
+ (8,'Sound & Vision',1,'2022-01-11 12:46:24',NULL),
+ (9,'Women\'s',2,'2022-01-11 12:46:24',NULL),
+ (10,'Men\'s',2,'2022-01-11 12:46:24',NULL),
+ (11,'Kids',2,'2022-01-11 12:46:24',NULL),
+ (12,'Cosmatics',4,'2022-01-11 12:46:24',NULL),
+ (13,'T-Shirt',4,'2025-06-26 12:16:37','2025-06-26 06:16:37');
+/*!40000 ALTER TABLE `core_mfg_product_categories` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_product_sections`
+--
+
+DROP TABLE IF EXISTS `core_mfg_product_sections`;
+CREATE TABLE `core_mfg_product_sections` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_product_sections`
+--
+
+/*!40000 ALTER TABLE `core_mfg_product_sections` DISABLE KEYS */;
+INSERT INTO `core_mfg_product_sections` (`id`,`name`) VALUES 
+ (1,'Electronices'),
+ (2,'Clothings'),
+ (3,'Food and Beverages'),
+ (4,'Health & Beauty'),
+ (5,'Sports & Leisure'),
+ (6,'Books & Entertainments');
+/*!40000 ALTER TABLE `core_mfg_product_sections` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_product_types`
+--
+
+DROP TABLE IF EXISTS `core_mfg_product_types`;
+CREATE TABLE `core_mfg_product_types` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `core_mfg_product_types`
+--
+
+/*!40000 ALTER TABLE `core_mfg_product_types` DISABLE KEYS */;
+INSERT INTO `core_mfg_product_types` (`id`,`name`) VALUES 
+ (1,'Finished Goods'),
+ (2,'Raw Materials'),
+ (3,'Consumable Materials');
+/*!40000 ALTER TABLE `core_mfg_product_types` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_product_units`
+--
+
+DROP TABLE IF EXISTS `core_mfg_product_units`;
+CREATE TABLE `core_mfg_product_units` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `photo` varchar(45) DEFAULT NULL,
+  `icon` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `core_mfg_product_units`
+--
+
+/*!40000 ALTER TABLE `core_mfg_product_units` DISABLE KEYS */;
+INSERT INTO `core_mfg_product_units` (`id`,`name`,`photo`,`icon`) VALUES 
+ (1,'Electronics',NULL,NULL),
+ (2,'Grocery',NULL,NULL);
+/*!40000 ALTER TABLE `core_mfg_product_units` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_production_details`
+--
+
+DROP TABLE IF EXISTS `core_mfg_production_details`;
+CREATE TABLE `core_mfg_production_details` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `production_id` int(10) unsigned NOT NULL,
+  `product_id` int(10) unsigned NOT NULL,
+  `qty` float NOT NULL,
+  `uom_id` int(10) unsigned NOT NULL,
+  `cost` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_production_details`
+--
+
+/*!40000 ALTER TABLE `core_mfg_production_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `core_mfg_production_details` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_productions`
+--
+
+DROP TABLE IF EXISTS `core_mfg_productions`;
+CREATE TABLE `core_mfg_productions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `production_datetime` datetime NOT NULL,
+  `bom_id` int(10) unsigned NOT NULL,
+  `labor_cost` float NOT NULL,
+  `manager_id` int(10) unsigned NOT NULL,
+  `total_cost` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_productions`
+--
+
+/*!40000 ALTER TABLE `core_mfg_productions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `core_mfg_productions` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_products`
+--
+
+DROP TABLE IF EXISTS `core_mfg_products`;
+CREATE TABLE `core_mfg_products` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `offer_price` double DEFAULT NULL,
+  `manufacturer_id` int(10) NOT NULL DEFAULT 0,
+  `regular_price` double NOT NULL DEFAULT 0,
+  `photo` varchar(50) DEFAULT NULL,
+  `product_category_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `product_section_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `is_featured` tinyint(1) DEFAULT 0,
+  `is_brand` tinyint(1) DEFAULT 0,
+  `uom_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `weight` float DEFAULT NULL,
+  `barcode` varchar(45) NOT NULL DEFAULT '',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `product_type_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `product_unit_id` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_products`
+--
+
+/*!40000 ALTER TABLE `core_mfg_products` DISABLE KEYS */;
+INSERT INTO `core_mfg_products` (`id`,`name`,`offer_price`,`manufacturer_id`,`regular_price`,`photo`,`product_category_id`,`product_section_id`,`is_featured`,`is_brand`,`uom_id`,`weight`,`barcode`,`created_at`,`updated_at`,`product_type_id`,`product_unit_id`) VALUES 
+ (17,'Brown Borka',5500,1,1,'17.jpg',1,1,1,1,1,0,'294394','0000-00-00 00:00:00','2025-04-28 12:08:58',1,1),
+ (46,'Shirt4',100,1,1,'46.png',1,1,1,1,1,0,'294394','2025-04-08 11:56:43','2025-04-28 12:05:52',1,1),
+ (47,'Juta44',100,1,1,'47.jpg',1,1,0,0,1,200,'294394','2025-04-08 15:30:20','2025-04-28 12:06:07',1,1),
+ (50,'Apple4rrr',100,1,1,'50.webp',1,1,0,1,1,0,'294394','2025-03-10 15:42:45','2025-04-28 12:06:27',1,1),
+ (52,'Oppo a3x',20000,1,23000,'a3x-jpg.jpg',7,1,1,1,1,3,'3434','2025-03-10 15:44:24','2025-03-10 15:44:24',2,1);
+/*!40000 ALTER TABLE `core_mfg_products` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_purchase_details`
+--
+
+DROP TABLE IF EXISTS `core_mfg_purchase_details`;
+CREATE TABLE `core_mfg_purchase_details` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `purchase_id` int(10) unsigned NOT NULL,
+  `product_id` int(10) unsigned NOT NULL,
+  `qty` float NOT NULL,
+  `price` float NOT NULL,
+  `vat` float NOT NULL DEFAULT 0,
+  `discount` float NOT NULL DEFAULT 0,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_purchase_details`
+--
+
+/*!40000 ALTER TABLE `core_mfg_purchase_details` DISABLE KEYS */;
+INSERT INTO `core_mfg_purchase_details` (`id`,`purchase_id`,`product_id`,`qty`,`price`,`vat`,`discount`,`created_at`,`updated_at`) VALUES 
+ (1,1,17,50,200,0,0,NULL,NULL),
+ (2,1,18,30,250,0,0,NULL,NULL),
+ (3,2,17,20,210,0,0,NULL,NULL),
+ (4,2,40,70,240,0,0,NULL,NULL),
+ (5,3,39,10,202,0,0,NULL,NULL),
+ (6,4,40,30,300,0,0,NULL,NULL),
+ (7,10,1,4,200,0,0,NULL,NULL),
+ (8,15,18,1,180,0,0,NULL,NULL),
+ (9,15,50,1,345,0,0,NULL,NULL),
+ (10,15,17,1,2500,0,0,NULL,NULL),
+ (11,16,50,1,345,0,0,NULL,NULL),
+ (12,16,17,1,2500,0,0,NULL,NULL),
+ (13,17,17,14,2500,0,0,NULL,NULL),
+ (14,17,50,15,345,0,0,NULL,NULL),
+ (15,50,52,6,19000,0,0,NULL,NULL),
+ (16,51,17,3,4000,0,0,NULL,NULL),
+ (17,51,52,1,4000,0,0,NULL,NULL),
+ (18,52,56,100,20,0,0,NULL,NULL),
+ (19,53,56,10,300,0,0,NULL,NULL);
+/*!40000 ALTER TABLE `core_mfg_purchase_details` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_purchases`
+--
+
+DROP TABLE IF EXISTS `core_mfg_purchases`;
+CREATE TABLE `core_mfg_purchases` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `supplier_id` int(10) unsigned NOT NULL,
+  `purchase_date` datetime NOT NULL,
+  `delivery_date` datetime NOT NULL,
+  `shipping_address` text NOT NULL,
+  `purchase_total` double NOT NULL,
+  `paid_amount` double DEFAULT NULL,
+  `remark` text DEFAULT NULL,
+  `status_id` int(10) unsigned NOT NULL,
+  `discount` float DEFAULT 0,
+  `vat` float DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_purchases`
+--
+
+/*!40000 ALTER TABLE `core_mfg_purchases` DISABLE KEYS */;
+INSERT INTO `core_mfg_purchases` (`id`,`supplier_id`,`purchase_date`,`delivery_date`,`shipping_address`,`purchase_total`,`paid_amount`,`remark`,`status_id`,`discount`,`vat`,`created_at`,`updated_at`) VALUES 
+ (1,1,'2023-12-24 00:00:00','2023-12-24 00:00:00','Rangpur',18375,0,'Na',1,0,0,'2024-03-31 16:17:58','2024-03-31 16:17:42'),
+ (2,2,'2023-12-24 00:00:00','2023-12-24 00:00:00','',22050,0,'',1,0,0,'2024-03-31 16:17:58','2024-03-31 16:17:42'),
+ (3,1,'2023-12-24 00:00:00','2023-12-24 00:00:00','',2121,0,'',1,0,0,'2024-03-31 16:17:58','2024-03-31 16:17:42'),
+ (4,1,'2023-12-24 00:00:00','2023-12-24 00:00:00','',9450,0,'',1,0,0,'2024-03-31 16:17:58','2024-03-31 16:17:42'),
+ (5,1,'2024-03-10 00:00:00','2024-03-10 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-03-31 10:20:36','2024-03-31 10:20:36'),
+ (6,1,'2024-03-10 00:00:00','2024-03-10 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-03-31 10:25:03','2024-03-31 10:25:03'),
+ (7,1,'2024-03-10 00:00:00','2024-03-10 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-03-31 10:26:17','2024-03-31 10:26:17'),
+ (8,1,'2024-03-10 00:00:00','2024-03-10 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-04-01 09:52:29','2024-04-01 09:52:29'),
+ (9,1,'2024-03-10 00:00:00','2024-03-10 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-04-01 09:53:48','2024-04-01 09:53:48'),
+ (10,1,'2024-03-10 00:00:00','2024-03-10 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-04-01 09:56:29','2024-04-01 09:56:29'),
+ (11,1,'2024-03-10 00:00:00','2024-03-10 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-04-01 10:22:59','2024-04-01 10:22:59'),
+ (12,2,'2024-04-03 00:00:00','2024-04-03 00:00:00','Test',0,0,NULL,1,0,0,'2024-04-02 09:48:06','2024-04-02 09:48:06'),
+ (13,2,'2024-04-03 00:00:00','2024-04-03 00:00:00','Test',0,0,NULL,1,0,0,'2024-04-02 09:49:37','2024-04-02 09:49:37'),
+ (14,2,'2024-04-03 00:00:00','2024-04-03 00:00:00','Test',0,0,NULL,1,0,0,'2024-04-02 09:50:35','2024-04-02 09:50:35'),
+ (15,2,'2024-04-03 00:00:00','2024-04-03 00:00:00','Test',0,0,NULL,1,0,0,'2024-04-02 09:51:47','2024-04-02 09:51:47'),
+ (16,1,'2024-06-04 00:00:00','2024-06-04 00:00:00','Test',2987.25,0,'  NA',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
+ (17,2,'2024-06-05 00:00:00','2024-06-05 00:00:00','',42183.75,0,'',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
+ (18,1,'2024-01-01 00:00:00','2024-01-05 00:00:00','Rampura',100,1000,'NA',1,0,0,'2024-07-10 12:27:24','2024-07-10 12:27:24'),
+ (19,1,'2024-01-01 00:00:00','2024-01-05 00:00:00','Rampura',100,1000,'NA',1,0,0,'2024-07-14 12:46:30','2024-07-14 12:46:30'),
+ (20,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3621.45,3621.45,'NA',1,0,0,'2024-07-14 12:58:16','2024-07-14 12:58:16'),
+ (21,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:01:43','2024-07-14 13:01:43'),
+ (22,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:04:31','2024-07-14 13:04:31'),
+ (23,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:07:02','2024-07-14 13:07:02'),
+ (24,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:08:00','2024-07-14 13:08:00'),
+ (25,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:08:10','2024-07-14 13:08:10'),
+ (26,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:08:20','2024-07-14 13:08:20'),
+ (27,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:09:04','2024-07-14 13:09:04'),
+ (28,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:09:31','2024-07-14 13:09:31'),
+ (29,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:09:52','2024-07-14 13:09:52'),
+ (30,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:10:11','2024-07-14 13:10:11'),
+ (31,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:10:14','2024-07-14 13:10:14'),
+ (32,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:10:31','2024-07-14 13:10:31'),
+ (33,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:10:55','2024-07-14 13:10:55'),
+ (34,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:14:34','2024-07-14 13:14:34'),
+ (35,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:15:05','2024-07-14 13:15:05'),
+ (36,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:15:07','2024-07-14 13:15:07'),
+ (37,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:15:31','2024-07-14 13:15:31'),
+ (38,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:15:33','2024-07-14 13:15:33'),
+ (39,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:16:00','2024-07-14 13:16:00'),
+ (40,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:16:01','2024-07-14 13:16:01'),
+ (41,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:16:02','2024-07-14 13:16:02'),
+ (42,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:16:05','2024-07-14 13:16:05'),
+ (43,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:16:20','2024-07-14 13:16:20'),
+ (44,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:17:23','2024-07-14 13:17:23'),
+ (45,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:17:31','2024-07-14 13:17:31'),
+ (46,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:18:13','2024-07-14 13:18:13'),
+ (47,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:18:22','2024-07-14 13:18:22'),
+ (48,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:18:42','2024-07-14 13:18:42'),
+ (49,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:19:35','2024-07-14 13:19:35'),
+ (50,4,'2025-03-10 00:00:00','2025-03-10 00:00:00','',119700,0,'Testk',1,0,0,'2025-03-10 15:58:37','2025-03-10 15:58:37'),
+ (51,4,'2025-03-19 00:00:00','2025-03-19 00:00:00','',16800,0,'',1,0,0,'2025-03-19 14:29:20','2025-03-19 14:29:20'),
+ (52,1,'2025-04-10 00:00:00','2025-04-10 00:00:00','',2100,0,'testing',1,0,0,'2025-04-10 18:23:24','2025-04-10 18:23:24'),
+ (53,1,'2025-04-12 00:00:00','2025-04-12 00:00:00','',3150,0,'',1,0,0,'2025-04-12 16:39:29','2025-04-12 16:39:29');
+/*!40000 ALTER TABLE `core_mfg_purchases` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_stock_adjustment_details`
+--
+
+DROP TABLE IF EXISTS `core_mfg_stock_adjustment_details`;
+CREATE TABLE `core_mfg_stock_adjustment_details` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `adjustment_id` int(10) unsigned NOT NULL,
+  `product_id` int(10) unsigned NOT NULL,
+  `qty` float NOT NULL,
+  `price` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_stock_adjustment_details`
+--
+
+/*!40000 ALTER TABLE `core_mfg_stock_adjustment_details` DISABLE KEYS */;
+INSERT INTO `core_mfg_stock_adjustment_details` (`id`,`adjustment_id`,`product_id`,`qty`,`price`) VALUES 
+ (1,2,20,5,400),
+ (2,3,20,50,400),
+ (3,4,28,70,6650),
+ (4,4,20,30,300);
+/*!40000 ALTER TABLE `core_mfg_stock_adjustment_details` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_stock_adjustment_types`
+--
+
+DROP TABLE IF EXISTS `core_mfg_stock_adjustment_types`;
+CREATE TABLE `core_mfg_stock_adjustment_types` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `factor` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_stock_adjustment_types`
+--
+
+/*!40000 ALTER TABLE `core_mfg_stock_adjustment_types` DISABLE KEYS */;
+INSERT INTO `core_mfg_stock_adjustment_types` (`id`,`name`,`factor`) VALUES 
+ (1,'Is Outdated',-1),
+ (2,'Is Damaged',-1),
+ (3,'Material Missing',-1),
+ (4,'Product Is Obsolete',-1),
+ (5,'Existing Inventory',1),
+ (6,'Fixed/Found Inventory',1);
+/*!40000 ALTER TABLE `core_mfg_stock_adjustment_types` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_stock_adjustments`
+--
+
+DROP TABLE IF EXISTS `core_mfg_stock_adjustments`;
+CREATE TABLE `core_mfg_stock_adjustments` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `adjustment_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `user_id` int(10) unsigned NOT NULL,
+  `remark` text NOT NULL,
+  `adjustment_type_id` int(10) unsigned NOT NULL,
+  `werehouse_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_stock_adjustments`
+--
+
+/*!40000 ALTER TABLE `core_mfg_stock_adjustments` DISABLE KEYS */;
+INSERT INTO `core_mfg_stock_adjustments` (`id`,`adjustment_at`,`user_id`,`remark`,`adjustment_type_id`,`werehouse_id`) VALUES 
+ (1,'2021-12-28 00:00:00',1,'ddd',2,1),
+ (2,'2021-12-28 00:00:00',1,'ddd',2,1),
+ (3,'2021-12-28 00:00:00',1,'ddddfd',6,1),
+ (4,'2021-12-28 00:00:00',1,'NA',6,2);
+/*!40000 ALTER TABLE `core_mfg_stock_adjustments` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_stocks`
+--
+
+DROP TABLE IF EXISTS `core_mfg_stocks`;
+CREATE TABLE `core_mfg_stocks` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL,
+  `qty` float NOT NULL,
+  `transaction_type_id` int(10) unsigned NOT NULL,
+  `remark` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `warehouse_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_stocks`
+--
+
+/*!40000 ALTER TABLE `core_mfg_stocks` DISABLE KEYS */;
+INSERT INTO `core_mfg_stocks` (`id`,`product_id`,`qty`,`transaction_type_id`,`remark`,`created_at`,`warehouse_id`) VALUES 
+ (14,50,1,3,'Purchase','2024-06-04 12:47:19',1),
+ (15,17,1,3,'Purchase','2024-06-04 12:47:19',1),
+ (16,17,14,3,'Purchase','2024-06-05 09:22:00',1),
+ (17,50,15,3,'Purchase','2024-06-05 09:22:00',1),
+ (18,17,-1,6,'Damage','0000-00-00 00:00:00',1),
+ (19,50,2,4,'selse return','0000-00-00 00:00:00',1),
+ (20,50,2,2,'yj','0000-00-00 00:00:00',1),
+ (21,17,2,1,'ytjk','0000-00-00 00:00:00',1),
+ (22,17,-1,1,'Order','0000-00-00 00:00:00',0),
+ (23,52,6,3,'Purchase','2025-03-10 15:58:37',1),
+ (24,52,-1,1,'Order','0000-00-00 00:00:00',0),
+ (25,52,3,5,'Test','0000-00-00 00:00:00',2),
+ (26,50,-2,6,'Tst','0000-00-00 00:00:00',1),
+ (27,17,-5,1,'Order','0000-00-00 00:00:00',0),
+ (28,17,-1,1,'Order','0000-00-00 00:00:00',0),
+ (29,17,-1,1,'Order','0000-00-00 00:00:00',0),
+ (30,52,-1,1,'Order','0000-00-00 00:00:00',0),
+ (31,17,3,3,'Purchase','2025-03-19 14:29:20',2),
+ (32,52,1,3,'Purchase','2025-03-19 14:29:20',2),
+ (33,50,10,3,'None','2025-04-09 18:16:31',3),
+ (34,56,100,3,'Purchase','2025-04-10 18:23:24',1),
+ (35,0,-2,1,'Order','0000-00-00 00:00:00',0),
+ (36,17,-1,2,'Sales Delivery','0000-00-00 00:00:00',0),
+ (37,56,-1,2,'Sales Delivery','0000-00-00 00:00:00',0),
+ (38,56,-1,2,'Sales Delivery','0000-00-00 00:00:00',0),
+ (39,56,-1,2,'Sales Delivery','0000-00-00 00:00:00',0),
+ (40,56,-1,2,'Sales Delivery','0000-00-00 00:00:00',0),
+ (41,56,-13,2,'Sales Delivery','0000-00-00 00:00:00',0),
+ (42,56,10,3,'Purchase','2025-04-12 16:39:29',1);
+/*!40000 ALTER TABLE `core_mfg_stocks` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_suppliers`
+--
+
+DROP TABLE IF EXISTS `core_mfg_suppliers`;
+CREATE TABLE `core_mfg_suppliers` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `mobile` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL DEFAULT '',
+  `address` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_suppliers`
+--
+
+/*!40000 ALTER TABLE `core_mfg_suppliers` DISABLE KEYS */;
+INSERT INTO `core_mfg_suppliers` (`id`,`name`,`mobile`,`email`,`address`) VALUES 
+ (1,'Md. Shahin','56879898','shahin@yahoo.com',NULL),
+ (2,'kulsum','07154545','kulsum@gmail.com',NULL),
+ (4,'Jahid','3654533','jahid@gmail.com',NULL),
+ (9,'rahim','1123334','aa@gmail.com',NULL),
+ (10,'kuddush','678798','kuddush@gmail.com',NULL),
+ (15,'ismail riyad4','04555545','karim@.com',NULL),
+ (21,'Abdul','3534354','kader@gmail.com',NULL),
+ (22,'Jahidul Islam','3423423','kader@gmail.com',NULL),
+ (24,'Kader','34343','kader@gmail.com',NULL),
+ (36,'Jahidul Islam','343433333333333','kader@gmail.com',NULL),
+ (37,'Naiyem Limited','343243243444','naiyem',NULL);
+/*!40000 ALTER TABLE `core_mfg_suppliers` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_uoms`
+--
+
+DROP TABLE IF EXISTS `core_mfg_uoms`;
+CREATE TABLE `core_mfg_uoms` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_uoms`
+--
+
+/*!40000 ALTER TABLE `core_mfg_uoms` DISABLE KEYS */;
+INSERT INTO `core_mfg_uoms` (`id`,`name`) VALUES 
+ (1,'Piece'),
+ (2,'Kg'),
+ (3,'Pack'),
+ (4,'Litter'),
+ (5,'Gram'),
+ (6,'Ton'),
+ (7,'Box3'),
+ (8,'Blister'),
+ (9,'Blister2'),
+ (10,'NewOne'),
+ (11,'NewOne'),
+ (12,'NewOne'),
+ (13,'NewOne'),
+ (14,'NewOne'),
+ (15,'NewOne');
+/*!40000 ALTER TABLE `core_mfg_uoms` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_mfg_vendors`
+--
+
+DROP TABLE IF EXISTS `core_mfg_vendors`;
+CREATE TABLE `core_mfg_vendors` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `mobile` varchar(45) NOT NULL,
+  `photo` varchar(45) NOT NULL,
+  `address` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `core_mfg_vendors`
+--
+
+/*!40000 ALTER TABLE `core_mfg_vendors` DISABLE KEYS */;
+INSERT INTO `core_mfg_vendors` (`id`,`name`,`mobile`,`photo`,`address`) VALUES 
+ (1,'Abdur Rahman','23432432','1.jpeg','Testsa fsa fsdaf'),
+ (2,'Jahidul Islam','23432432342','2.png','Test');
+/*!40000 ALTER TABLE `core_mfg_vendors` ENABLE KEYS */;
+
+
+--
+-- Definition of table `core_migrations`
+--
+
+DROP TABLE IF EXISTS `core_migrations`;
+CREATE TABLE `core_migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `core_migrations`
+--
+
+/*!40000 ALTER TABLE `core_migrations` DISABLE KEYS */;
+INSERT INTO `core_migrations` (`id`,`migration`,`batch`) VALUES 
+ (6,'2014_10_12_000000_create_users_table',1),
+ (7,'2014_10_12_100000_create_password_reset_tokens_table',1),
+ (8,'2014_10_12_100000_create_password_resets_table',1),
+ (9,'2019_08_19_000000_create_failed_jobs_table',1),
+ (10,'2019_12_14_000001_create_personal_access_tokens_table',1),
+ (17,'2024_07_02_044553_create_personal_access_tokens_table',3),
+ (18,'0001_01_01_000000_create_users_table',4),
+ (19,'0001_01_01_000001_create_cache_table',4),
+ (20,'0001_01_01_000002_create_jobs_table',4);
+/*!40000 ALTER TABLE `core_migrations` ENABLE KEYS */;
 
 
 --
@@ -2808,30 +3275,6 @@ CREATE TABLE `core_persons` (
 INSERT INTO `core_persons` (`id`,`name`,`position_id`,`sex`,`dob`,`doj`,`mobile`,`address`,`inactive`) VALUES 
  (1,'Jahidul Islam',1,0,'2000-01-01','2021-01-01','677657657567','Rampura',0);
 /*!40000 ALTER TABLE `core_persons` ENABLE KEYS */;
-
-
---
--- Definition of table `core_positions`
---
-
-DROP TABLE IF EXISTS `core_positions`;
-CREATE TABLE `core_positions` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `grade` int(10) unsigned NOT NULL,
-  `department_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_positions`
---
-
-/*!40000 ALTER TABLE `core_positions` DISABLE KEYS */;
-INSERT INTO `core_positions` (`id`,`name`,`grade`,`department_id`) VALUES 
- (1,'Programmer',6,2),
- (2,'System Analyst',3,1);
-/*!40000 ALTER TABLE `core_positions` ENABLE KEYS */;
 
 
 --
@@ -2918,226 +3361,6 @@ INSERT INTO `core_product_sections` (`id`,`name`,`unit_id`,`photo`,`icon`) VALUE
  (5,'Sports & Leisure',1,NULL,NULL),
  (6,'Books & Entertainments',1,NULL,NULL);
 /*!40000 ALTER TABLE `core_product_sections` ENABLE KEYS */;
-
-
---
--- Definition of table `core_product_types`
---
-
-DROP TABLE IF EXISTS `core_product_types`;
-CREATE TABLE `core_product_types` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `core_product_types`
---
-
-/*!40000 ALTER TABLE `core_product_types` DISABLE KEYS */;
-INSERT INTO `core_product_types` (`id`,`name`) VALUES 
- (1,'Finished Goods'),
- (2,'Raw Materials'),
- (3,'Consumable Materials');
-/*!40000 ALTER TABLE `core_product_types` ENABLE KEYS */;
-
-
---
--- Definition of table `core_product_units`
---
-
-DROP TABLE IF EXISTS `core_product_units`;
-CREATE TABLE `core_product_units` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `photo` varchar(45) DEFAULT NULL,
-  `icon` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `core_product_units`
---
-
-/*!40000 ALTER TABLE `core_product_units` DISABLE KEYS */;
-INSERT INTO `core_product_units` (`id`,`name`,`photo`,`icon`) VALUES 
- (1,'Electronics',NULL,NULL),
- (2,'Grocery',NULL,NULL);
-/*!40000 ALTER TABLE `core_product_units` ENABLE KEYS */;
-
-
---
--- Definition of table `core_products`
---
-
-DROP TABLE IF EXISTS `core_products`;
-CREATE TABLE `core_products` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `offer_price` double DEFAULT NULL,
-  `manufacturer_id` int(10) NOT NULL,
-  `regular_price` double NOT NULL,
-  `description` text DEFAULT NULL,
-  `photo` varchar(50) DEFAULT NULL,
-  `product_category_id` int(10) unsigned NOT NULL,
-  `product_section_id` int(10) unsigned NOT NULL,
-  `is_featured` tinyint(1) DEFAULT 0,
-  `star` int(10) unsigned DEFAULT NULL,
-  `is_brand` tinyint(1) DEFAULT 0,
-  `offer_discount` float DEFAULT 0,
-  `uom_id` int(10) unsigned NOT NULL,
-  `weight` float DEFAULT NULL,
-  `barcode` varchar(45) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp(),
-  `product_type_id` int(10) unsigned NOT NULL,
-  `product_unit_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_products`
---
-
-/*!40000 ALTER TABLE `core_products` DISABLE KEYS */;
-INSERT INTO `core_products` (`id`,`name`,`offer_price`,`manufacturer_id`,`regular_price`,`description`,`photo`,`product_category_id`,`product_section_id`,`is_featured`,`star`,`is_brand`,`offer_discount`,`uom_id`,`weight`,`barcode`,`created_at`,`updated_at`,`product_type_id`,`product_unit_id`) VALUES 
- (17,'Brown Borka',5500,1,1,'Na','17.jpg',1,1,1,1,1,10,1,0,'294394','0000-00-00 00:00:00','2025-04-28 12:08:58',1,1),
- (46,'Shirt4',100,1,1,'Na','46.png',1,1,1,1,1,10,1,0,'294394','2025-04-08 11:56:43','2025-04-28 12:05:52',1,1),
- (47,'Juta44',100,1,1,'Na','47.jpg',1,1,0,1,0,10,1,200,'294394','2025-04-08 15:30:20','2025-04-28 12:06:07',1,1),
- (50,'Apple4rrr',100,1,1,'Na','50.webp',1,1,0,1,1,10,1,0,'294394','2025-03-10 15:42:45','2025-04-28 12:06:27',1,1),
- (52,'Oppo a3x',20000,1,23000,'Oppo a3x','a3x-jpg.jpg',7,1,1,3,1,0,1,3,'3434','2025-03-10 15:44:24','2025-03-10 15:44:24',2,1);
-/*!40000 ALTER TABLE `core_products` ENABLE KEYS */;
-
-
---
--- Definition of table `core_purchase_details`
---
-
-DROP TABLE IF EXISTS `core_purchase_details`;
-CREATE TABLE `core_purchase_details` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `purchase_id` int(10) unsigned NOT NULL,
-  `product_id` int(10) unsigned NOT NULL,
-  `qty` float NOT NULL,
-  `price` float NOT NULL,
-  `vat` float NOT NULL DEFAULT 0,
-  `discount` float NOT NULL DEFAULT 0,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_purchase_details`
---
-
-/*!40000 ALTER TABLE `core_purchase_details` DISABLE KEYS */;
-INSERT INTO `core_purchase_details` (`id`,`purchase_id`,`product_id`,`qty`,`price`,`vat`,`discount`,`created_at`,`updated_at`) VALUES 
- (1,1,17,50,200,0,0,NULL,NULL),
- (2,1,18,30,250,0,0,NULL,NULL),
- (3,2,17,20,210,0,0,NULL,NULL),
- (4,2,40,70,240,0,0,NULL,NULL),
- (5,3,39,10,202,0,0,NULL,NULL),
- (6,4,40,30,300,0,0,NULL,NULL),
- (7,10,1,4,200,0,0,NULL,NULL),
- (8,15,18,1,180,0,0,NULL,NULL),
- (9,15,50,1,345,0,0,NULL,NULL),
- (10,15,17,1,2500,0,0,NULL,NULL),
- (11,16,50,1,345,0,0,NULL,NULL),
- (12,16,17,1,2500,0,0,NULL,NULL),
- (13,17,17,14,2500,0,0,NULL,NULL),
- (14,17,50,15,345,0,0,NULL,NULL),
- (15,50,52,6,19000,0,0,NULL,NULL),
- (16,51,17,3,4000,0,0,NULL,NULL),
- (17,51,52,1,4000,0,0,NULL,NULL),
- (18,52,56,100,20,0,0,NULL,NULL),
- (19,53,56,10,300,0,0,NULL,NULL);
-/*!40000 ALTER TABLE `core_purchase_details` ENABLE KEYS */;
-
-
---
--- Definition of table `core_purchases`
---
-
-DROP TABLE IF EXISTS `core_purchases`;
-CREATE TABLE `core_purchases` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `supplier_id` int(10) unsigned NOT NULL,
-  `purchase_date` datetime NOT NULL,
-  `delivery_date` datetime NOT NULL,
-  `shipping_address` text NOT NULL,
-  `purchase_total` double NOT NULL,
-  `paid_amount` double DEFAULT NULL,
-  `remark` text DEFAULT NULL,
-  `status_id` int(10) unsigned NOT NULL,
-  `discount` float DEFAULT 0,
-  `vat` float DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_purchases`
---
-
-/*!40000 ALTER TABLE `core_purchases` DISABLE KEYS */;
-INSERT INTO `core_purchases` (`id`,`supplier_id`,`purchase_date`,`delivery_date`,`shipping_address`,`purchase_total`,`paid_amount`,`remark`,`status_id`,`discount`,`vat`,`created_at`,`updated_at`) VALUES 
- (1,1,'2023-12-24 00:00:00','2023-12-24 00:00:00','Rangpur',18375,0,'Na',1,0,0,'2024-03-31 16:17:58','2024-03-31 16:17:42'),
- (2,2,'2023-12-24 00:00:00','2023-12-24 00:00:00','',22050,0,'',1,0,0,'2024-03-31 16:17:58','2024-03-31 16:17:42'),
- (3,1,'2023-12-24 00:00:00','2023-12-24 00:00:00','',2121,0,'',1,0,0,'2024-03-31 16:17:58','2024-03-31 16:17:42'),
- (4,1,'2023-12-24 00:00:00','2023-12-24 00:00:00','',9450,0,'',1,0,0,'2024-03-31 16:17:58','2024-03-31 16:17:42'),
- (5,1,'2024-03-10 00:00:00','2024-03-10 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-03-31 10:20:36','2024-03-31 10:20:36'),
- (6,1,'2024-03-10 00:00:00','2024-03-10 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-03-31 10:25:03','2024-03-31 10:25:03'),
- (7,1,'2024-03-10 00:00:00','2024-03-10 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-03-31 10:26:17','2024-03-31 10:26:17'),
- (8,1,'2024-03-10 00:00:00','2024-03-10 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-04-01 09:52:29','2024-04-01 09:52:29'),
- (9,1,'2024-03-10 00:00:00','2024-03-10 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-04-01 09:53:48','2024-04-01 09:53:48'),
- (10,1,'2024-03-10 00:00:00','2024-03-10 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-04-01 09:56:29','2024-04-01 09:56:29'),
- (11,1,'2024-03-10 00:00:00','2024-03-10 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-04-01 10:22:59','2024-04-01 10:22:59'),
- (12,2,'2024-04-03 00:00:00','2024-04-03 00:00:00','Test',0,0,NULL,1,0,0,'2024-04-02 09:48:06','2024-04-02 09:48:06'),
- (13,2,'2024-04-03 00:00:00','2024-04-03 00:00:00','Test',0,0,NULL,1,0,0,'2024-04-02 09:49:37','2024-04-02 09:49:37'),
- (14,2,'2024-04-03 00:00:00','2024-04-03 00:00:00','Test',0,0,NULL,1,0,0,'2024-04-02 09:50:35','2024-04-02 09:50:35'),
- (15,2,'2024-04-03 00:00:00','2024-04-03 00:00:00','Test',0,0,NULL,1,0,0,'2024-04-02 09:51:47','2024-04-02 09:51:47'),
- (16,1,'2024-06-04 00:00:00','2024-06-04 00:00:00','Test',2987.25,0,'  NA',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
- (17,2,'2024-06-05 00:00:00','2024-06-05 00:00:00','',42183.75,0,'',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
- (18,1,'2024-01-01 00:00:00','2024-01-05 00:00:00','Rampura',100,1000,'NA',1,0,0,'2024-07-10 12:27:24','2024-07-10 12:27:24'),
- (19,1,'2024-01-01 00:00:00','2024-01-05 00:00:00','Rampura',100,1000,'NA',1,0,0,'2024-07-14 12:46:30','2024-07-14 12:46:30'),
- (20,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3621.45,3621.45,'NA',1,0,0,'2024-07-14 12:58:16','2024-07-14 12:58:16'),
- (21,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:01:43','2024-07-14 13:01:43'),
- (22,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:04:31','2024-07-14 13:04:31'),
- (23,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:07:02','2024-07-14 13:07:02'),
- (24,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:08:00','2024-07-14 13:08:00'),
- (25,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:08:10','2024-07-14 13:08:10'),
- (26,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:08:20','2024-07-14 13:08:20'),
- (27,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:09:04','2024-07-14 13:09:04'),
- (28,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:09:31','2024-07-14 13:09:31'),
- (29,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:09:52','2024-07-14 13:09:52'),
- (30,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:10:11','2024-07-14 13:10:11'),
- (31,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:10:14','2024-07-14 13:10:14'),
- (32,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:10:31','2024-07-14 13:10:31'),
- (33,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:10:55','2024-07-14 13:10:55'),
- (34,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:14:34','2024-07-14 13:14:34'),
- (35,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:15:05','2024-07-14 13:15:05'),
- (36,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:15:07','2024-07-14 13:15:07'),
- (37,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:15:31','2024-07-14 13:15:31'),
- (38,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:15:33','2024-07-14 13:15:33'),
- (39,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:16:00','2024-07-14 13:16:00'),
- (40,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:16:01','2024-07-14 13:16:01'),
- (41,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:16:02','2024-07-14 13:16:02'),
- (42,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',37117.5,37117.5,'NA',1,0,0,'2024-07-14 13:16:05','2024-07-14 13:16:05'),
- (43,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:16:20','2024-07-14 13:16:20'),
- (44,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:17:23','2024-07-14 13:17:23'),
- (45,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:17:31','2024-07-14 13:17:31'),
- (46,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:18:13','2024-07-14 13:18:13'),
- (47,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',3622.5,3622.5,'NA',1,0,0,'2024-07-14 13:18:22','2024-07-14 13:18:22'),
- (48,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:18:42','2024-07-14 13:18:42'),
- (49,1,'2024-07-14 00:00:00','2024-07-14 00:00:00','na',29872.5,29872.5,'NA',1,0,0,'2024-07-14 13:19:35','2024-07-14 13:19:35'),
- (50,4,'2025-03-10 00:00:00','2025-03-10 00:00:00','',119700,0,'Testk',1,0,0,'2025-03-10 15:58:37','2025-03-10 15:58:37'),
- (51,4,'2025-03-19 00:00:00','2025-03-19 00:00:00','',16800,0,'',1,0,0,'2025-03-19 14:29:20','2025-03-19 14:29:20'),
- (52,1,'2025-04-10 00:00:00','2025-04-10 00:00:00','',2100,0,'testing',1,0,0,'2025-04-10 18:23:24','2025-04-10 18:23:24'),
- (53,1,'2025-04-12 00:00:00','2025-04-12 00:00:00','',3150,0,'',1,0,0,'2025-04-12 16:39:29','2025-04-12 16:39:29');
-/*!40000 ALTER TABLE `core_purchases` ENABLE KEYS */;
 
 
 --
@@ -3267,32 +3490,6 @@ CREATE TABLE `core_round63` (
 INSERT INTO `core_round63` (`id`,`name`,`contact`,`email`,`roll`) VALUES 
  (1,'Naiyem','01515618932','mdnaiyem@gmail.com','1286770');
 /*!40000 ALTER TABLE `core_round63` ENABLE KEYS */;
-
-
---
--- Definition of table `core_sections`
---
-
-DROP TABLE IF EXISTS `core_sections`;
-CREATE TABLE `core_sections` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_sections`
---
-
-/*!40000 ALTER TABLE `core_sections` DISABLE KEYS */;
-INSERT INTO `core_sections` (`id`,`name`) VALUES 
- (1,'Electronices'),
- (2,'Clothings'),
- (3,'Food and Beverages'),
- (4,'Health & Beauty'),
- (5,'Sports & Leisure'),
- (6,'Books & Entertainments');
-/*!40000 ALTER TABLE `core_sections` ENABLE KEYS */;
 
 
 --
@@ -3865,115 +4062,6 @@ INSERT INTO `core_status` (`id`,`name`) VALUES
 
 
 --
--- Definition of table `core_stock_adjustment_types`
---
-
-DROP TABLE IF EXISTS `core_stock_adjustment_types`;
-CREATE TABLE `core_stock_adjustment_types` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `factor` int(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_stock_adjustment_types`
---
-
-/*!40000 ALTER TABLE `core_stock_adjustment_types` DISABLE KEYS */;
-INSERT INTO `core_stock_adjustment_types` (`id`,`name`,`factor`) VALUES 
- (1,'Is Outdated',-1),
- (2,'Is Damaged',-1),
- (3,'Material Missing',-1),
- (4,'Product Is Obsolete',-1),
- (5,'Existing Inventory',1),
- (6,'Fixed/Found Inventory',1);
-/*!40000 ALTER TABLE `core_stock_adjustment_types` ENABLE KEYS */;
-
-
---
--- Definition of table `core_stock_adjustments`
---
-
-DROP TABLE IF EXISTS `core_stock_adjustments`;
-CREATE TABLE `core_stock_adjustments` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `adjustment_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `user_id` int(10) unsigned NOT NULL,
-  `remark` text NOT NULL,
-  `adjustment_type_id` int(10) unsigned NOT NULL,
-  `werehouse_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_stock_adjustments`
---
-
-/*!40000 ALTER TABLE `core_stock_adjustments` DISABLE KEYS */;
-INSERT INTO `core_stock_adjustments` (`id`,`adjustment_at`,`user_id`,`remark`,`adjustment_type_id`,`werehouse_id`) VALUES 
- (1,'2021-12-28 00:00:00',1,'ddd',2,1),
- (2,'2021-12-28 00:00:00',1,'ddd',2,1),
- (3,'2021-12-28 00:00:00',1,'ddddfd',6,1),
- (4,'2021-12-28 00:00:00',1,'NA',6,2);
-/*!40000 ALTER TABLE `core_stock_adjustments` ENABLE KEYS */;
-
-
---
--- Definition of table `core_stocks`
---
-
-DROP TABLE IF EXISTS `core_stocks`;
-CREATE TABLE `core_stocks` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `product_id` int(10) unsigned NOT NULL,
-  `qty` float NOT NULL,
-  `transaction_type_id` int(10) unsigned NOT NULL,
-  `remark` text DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `warehouse_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_stocks`
---
-
-/*!40000 ALTER TABLE `core_stocks` DISABLE KEYS */;
-INSERT INTO `core_stocks` (`id`,`product_id`,`qty`,`transaction_type_id`,`remark`,`created_at`,`warehouse_id`) VALUES 
- (14,50,1,3,'Purchase','2024-06-04 12:47:19',1),
- (15,17,1,3,'Purchase','2024-06-04 12:47:19',1),
- (16,17,14,3,'Purchase','2024-06-05 09:22:00',1),
- (17,50,15,3,'Purchase','2024-06-05 09:22:00',1),
- (18,17,-1,6,'Damage','0000-00-00 00:00:00',1),
- (19,50,2,4,'selse return','0000-00-00 00:00:00',1),
- (20,50,2,2,'yj','0000-00-00 00:00:00',1),
- (21,17,2,1,'ytjk','0000-00-00 00:00:00',1),
- (22,17,-1,1,'Order','0000-00-00 00:00:00',0),
- (23,52,6,3,'Purchase','2025-03-10 15:58:37',1),
- (24,52,-1,1,'Order','0000-00-00 00:00:00',0),
- (25,52,3,5,'Test','0000-00-00 00:00:00',2),
- (26,50,-2,6,'Tst','0000-00-00 00:00:00',1),
- (27,17,-5,1,'Order','0000-00-00 00:00:00',0),
- (28,17,-1,1,'Order','0000-00-00 00:00:00',0),
- (29,17,-1,1,'Order','0000-00-00 00:00:00',0),
- (30,52,-1,1,'Order','0000-00-00 00:00:00',0),
- (31,17,3,3,'Purchase','2025-03-19 14:29:20',2),
- (32,52,1,3,'Purchase','2025-03-19 14:29:20',2),
- (33,50,10,3,'None','2025-04-09 18:16:31',3),
- (34,56,100,3,'Purchase','2025-04-10 18:23:24',1),
- (35,0,-2,1,'Order','0000-00-00 00:00:00',0),
- (36,17,-1,2,'Sales Delivery','0000-00-00 00:00:00',0),
- (37,56,-1,2,'Sales Delivery','0000-00-00 00:00:00',0),
- (38,56,-1,2,'Sales Delivery','0000-00-00 00:00:00',0),
- (39,56,-1,2,'Sales Delivery','0000-00-00 00:00:00',0),
- (40,56,-1,2,'Sales Delivery','0000-00-00 00:00:00',0),
- (41,56,-13,2,'Sales Delivery','0000-00-00 00:00:00',0),
- (42,56,10,3,'Purchase','2025-04-12 16:39:29',1);
-/*!40000 ALTER TABLE `core_stocks` ENABLE KEYS */;
-
-
---
 -- Definition of table `core_students`
 --
 
@@ -3998,40 +4086,6 @@ CREATE TABLE `core_students` (
 INSERT INTO `core_students` (`id`,`name`,`fathers_name`,`mothers_name`,`dob`,`contact_no`,`address`,`photo`) VALUES 
  (1,'Mahedi Hassan','Abdur Rahman','Amena Akter','2024-01-19','','Rampura ','1.png');
 /*!40000 ALTER TABLE `core_students` ENABLE KEYS */;
-
-
---
--- Definition of table `core_suppliers`
---
-
-DROP TABLE IF EXISTS `core_suppliers`;
-CREATE TABLE `core_suppliers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `mobile` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `photo` varchar(145) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_suppliers`
---
-
-/*!40000 ALTER TABLE `core_suppliers` DISABLE KEYS */;
-INSERT INTO `core_suppliers` (`id`,`name`,`mobile`,`email`,`photo`) VALUES 
- (1,'Md. Shahin','56879898','shahin@yahoo.com','1.jpeg'),
- (2,'kulsum','07154545','kulsum@gmail.com','2.png'),
- (4,'Jahid','3654533','jahid@gmail.com','4.jpg'),
- (9,'rahim','1123334','aa@gmail.com','9.png'),
- (10,'kuddush','678798','kuddush@gmail.com',NULL),
- (15,'ismail riyad4','04555545','karim@.com',NULL),
- (21,'Abdul','3534354','kader@gmail.com',NULL),
- (22,'Jahidul Islam','3423423','kader@gmail.com',NULL),
- (24,'Kader','34343','kader@gmail.com',NULL),
- (36,'Jahidul Islam','343433333333333','kader@gmail.com','6-png.png'),
- (37,'Naiyem Limited','343243243444','naiyem','images-png.png');
-/*!40000 ALTER TABLE `core_suppliers` ENABLE KEYS */;
 
 
 --
@@ -4251,41 +4305,6 @@ INSERT INTO `core_transaction_types` (`id`,`name`) VALUES
 
 
 --
--- Definition of table `core_uoms`
---
-
-DROP TABLE IF EXISTS `core_uoms`;
-CREATE TABLE `core_uoms` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_uoms`
---
-
-/*!40000 ALTER TABLE `core_uoms` DISABLE KEYS */;
-INSERT INTO `core_uoms` (`id`,`name`) VALUES 
- (1,'Piece'),
- (2,'Kg'),
- (3,'Pack'),
- (4,'Litter'),
- (5,'Gram'),
- (6,'Ton'),
- (7,'Box3'),
- (8,'Blister'),
- (9,'Blister2'),
- (10,'NewOne'),
- (11,'NewOne'),
- (12,'NewOne'),
- (13,'NewOne'),
- (14,'NewOne'),
- (15,'NewOne');
-/*!40000 ALTER TABLE `core_uoms` ENABLE KEYS */;
-
-
---
 -- Definition of table `core_user_deposits`
 --
 
@@ -4418,31 +4437,6 @@ INSERT INTO `core_users0` (`id`,`name`,`email`,`email_verified_at`,`password`,`r
 
 
 --
--- Definition of table `core_vendors`
---
-
-DROP TABLE IF EXISTS `core_vendors`;
-CREATE TABLE `core_vendors` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `mobile` varchar(45) NOT NULL,
-  `photo` varchar(45) NOT NULL,
-  `address` text DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `core_vendors`
---
-
-/*!40000 ALTER TABLE `core_vendors` DISABLE KEYS */;
-INSERT INTO `core_vendors` (`id`,`name`,`mobile`,`photo`,`address`) VALUES 
- (1,'Abdur Rahman','23432432','1.jpeg','Testsa fsa fsdaf'),
- (2,'Jahidul Islam','23432432342','2.png','Test');
-/*!40000 ALTER TABLE `core_vendors` ENABLE KEYS */;
-
-
---
 -- Definition of table `core_warehouses`
 --
 
@@ -4466,44 +4460,6 @@ INSERT INTO `core_warehouses` (`id`,`name`,`city`,`contact`) VALUES
  (3,'Badda','Rampura','3434334324');
 /*!40000 ALTER TABLE `core_warehouses` ENABLE KEYS */;
 
-
---
--- Definition of table `manufacturer`
---
-
-DROP TABLE IF EXISTS `manufacturer`;
-CREATE TABLE `manufacturer` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
-  `contact` text DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `manufacturer`
---
-
-/*!40000 ALTER TABLE `manufacturer` DISABLE KEYS */;
-INSERT INTO `manufacturer` (`id`,`name`,`contact`) VALUES 
- (2,'ISL','2345454'),
- (3,'IDB','9390033'),
- (5,'APCL','23432432');
-/*!40000 ALTER TABLE `manufacturer` ENABLE KEYS */;
-
-
---
--- Definition of trigger `ad_manufacturer`
---
-
-DROP TRIGGER /*!50030 IF EXISTS */ `ad_manufacturer`;
-
-DELIMITER $$
-
-CREATE DEFINER = `root`@`localhost` TRIGGER `ad_manufacturer` AFTER DELETE ON `manufacturer` FOR EACH ROW begin
-  delete from product where manufacturer_id=old.id;
-end $$
-
-DELIMITER ;
 
 --
 -- Definition of table `migrations`
@@ -4549,6 +4505,25 @@ INSERT INTO `product` (`id`,`name`,`price`,`manufacturer_id`) VALUES
  (5,'Car',900000,3),
  (7,'Headphone',2000,5);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
+
+
+--
+-- Definition of table `products`
+--
+
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE `products` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
 
 --
@@ -4649,33 +4624,6 @@ INSERT INTO `users` (`id`,`name`,`password`,`role_id`) VALUES
 
 
 --
--- Definition of table `users1`
---
-
-DROP TABLE IF EXISTS `users1`;
-CREATE TABLE `users1` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `password` varchar(50) DEFAULT NULL,
-  `inactive` tinyint(1) DEFAULT 0,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users1`
---
-
-/*!40000 ALTER TABLE `users1` DISABLE KEYS */;
-INSERT INTO `users1` (`id`,`name`,`created_at`,`password`,`inactive`) VALUES 
- (1,'jahid','2025-02-01 10:50:26','111111',0),
- (2,'rasel','2025-02-01 10:50:26','444444',0),
- (3,'karim','2025-02-01 10:50:26','222222',0);
-/*!40000 ALTER TABLE `users1` ENABLE KEYS */;
-
-
---
 -- Definition of procedure `add_manufacturer`
 --
 
@@ -4687,23 +4635,6 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_manufacturer`(name varchar(20),contact varchar(20))
 begin
   insert into manufacturer(name,contact)values(name,contact);
-end $$
-/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
-
-DELIMITER ;
-
---
--- Definition of procedure `ad_manufacturer`
---
-
-DROP PROCEDURE IF EXISTS `ad_manufacturer`;
-
-DELIMITER $$
-
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ad_manufacturer`(name varchar(20),address varchar(100),contact varchar(20))
-begin
-  insert into manufacturer(name,address,contact)values(name,address,contact);
 end $$
 /*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
 
