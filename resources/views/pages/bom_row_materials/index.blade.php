@@ -5,9 +5,9 @@
     <div class="card bg-primary mb-3 p-4">
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-item-center ">
-                <h3 class=" card-title text-white d-flex align-items-center  m-0">BomRawMaterial List</h3>
-                <a href="{{ route('bom_raw_materials.create') }}" class="btn btn-light btn-sm" title="Create New Product">
-                    <i class="fa fa-plus mr-1"></i> Create New BomRawMaterial
+                <h3 class=" card-title text-white d-flex align-items-center  m-0">BomRowMaterial List</h3>
+                <a href="{{ route('bom_row_materials.create') }}" class="btn btn-light btn-sm" title="Create New Product">
+                    <i class="fa fa-plus mr-1"></i> Create New BomRowMaterial
                 </a>
             </div>
         </div>
@@ -62,11 +62,11 @@
             <table class="table table-striped table-bordered">
                 <thead class="thead-dark"><tr><th>Id</th><th>Item id</th><th>Qty</th><th>Cost</th><th>Bom id</th><th>Uom id</th><th>Actions</th></tr></thead>
                 <tbody>
-                @foreach ($bom_raw_materials as $item)
+                @foreach ($bom_row_materials as $item)
                     <tr><td>{{ $item->id }}</td><td>{{ optional($item->item)->name ?? $item->item_id }}</td><td>{{ $item->qty }}</td><td>{{ $item->cost }}</td><td>{{ optional($item->bom)->name ?? $item->bom_id }}</td><td>{{ optional($item->uom)->name ?? $item->uom_id }}</td><td>
-    <a href="{{ route('bom_raw_materials.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-    <a href="{{ route('bom_raw_materials.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-    <form action="{{ route('bom_raw_materials.destroy', $item->id) }}" method="POST" style="display:inline;">
+    <a href="{{ route('bom_row_materials.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+    <a href="{{ route('bom_row_materials.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+    <form action="{{ route('bom_row_materials.destroy', $item->id) }}" method="POST" style="display:inline;">
         @csrf
         @method('DELETE')
         <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>

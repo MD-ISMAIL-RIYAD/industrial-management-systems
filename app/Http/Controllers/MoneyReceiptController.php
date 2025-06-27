@@ -11,15 +11,15 @@ class MoneyReceiptController extends Controller
 {
     public function index()
     {
-        $moneyReceipts = MoneyReceipt::orderBy('id','desc')->paginate(10);
-        return view('pages.moneyReceipts.index', compact('moneyReceipts'));
+        $money_receipts = MoneyReceipt::orderBy('id','desc')->paginate(10);
+        return view('pages.money_receipts.index', compact('money_receipts'));
     }
 
     public function create()
     {
         $customers = \App\Models\Customer::all();
 
-        return view('pages.moneyReceipts.create', [
+        return view('pages.money_receipts.create', [
             'mode' => 'create',
             'moneyReceipt' => new MoneyReceipt(),
             'customers' => $customers,
@@ -34,19 +34,19 @@ class MoneyReceiptController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         MoneyReceipt::create($data);
-        return redirect()->route('moneyReceipts.index')->with('success', 'Successfully created!');
+        return redirect()->route('money_receipts.index')->with('success', 'Successfully created!');
     }
 
     public function show(MoneyReceipt $moneyReceipt)
     {
-        return view('pages.moneyReceipts.view', compact('moneyReceipt'));
+        return view('pages.money_receipts.view', compact('moneyReceipt'));
     }
 
     public function edit(MoneyReceipt $moneyReceipt)
     {
         $customers = \App\Models\Customer::all();
 
-        return view('pages.moneyReceipts.edit', [
+        return view('pages.money_receipts.edit', [
             'mode' => 'edit',
             'moneyReceipt' => $moneyReceipt,
             'customers' => $customers,
@@ -61,12 +61,12 @@ class MoneyReceiptController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         $moneyReceipt->update($data);
-        return redirect()->route('moneyReceipts.index')->with('success', 'Successfully updated!');
+        return redirect()->route('money_receipts.index')->with('success', 'Successfully updated!');
     }
 
     public function destroy(MoneyReceipt $moneyReceipt)
     {
         $moneyReceipt->delete();
-        return redirect()->route('moneyReceipts.index')->with('success', 'Successfully deleted!');
+        return redirect()->route('money_receipts.index')->with('success', 'Successfully deleted!');
     }
 }

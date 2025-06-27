@@ -13,8 +13,8 @@ class StockAdjustmentController extends Controller
 {
     public function index()
     {
-        $stockAdjustments = StockAdjustment::orderBy('id','desc')->paginate(10);
-        return view('pages.stockAdjustments.index', compact('stockAdjustments'));
+        $stock_adjustments = StockAdjustment::orderBy('id','desc')->paginate(10);
+        return view('pages.stock_adjustments.index', compact('stock_adjustments'));
     }
 
     public function create()
@@ -23,7 +23,7 @@ class StockAdjustmentController extends Controller
         $adjustmentTypes = \App\Models\AdjustmentType::all();
         $werehouses = \App\Models\Werehouse::all();
 
-        return view('pages.stockAdjustments.create', [
+        return view('pages.stock_adjustments.create', [
             'mode' => 'create',
             'stockAdjustment' => new StockAdjustment(),
             'users' => $users,
@@ -40,12 +40,12 @@ class StockAdjustmentController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         StockAdjustment::create($data);
-        return redirect()->route('stockAdjustments.index')->with('success', 'Successfully created!');
+        return redirect()->route('stock_adjustments.index')->with('success', 'Successfully created!');
     }
 
     public function show(StockAdjustment $stockAdjustment)
     {
-        return view('pages.stockAdjustments.view', compact('stockAdjustment'));
+        return view('pages.stock_adjustments.view', compact('stockAdjustment'));
     }
 
     public function edit(StockAdjustment $stockAdjustment)
@@ -54,7 +54,7 @@ class StockAdjustmentController extends Controller
         $adjustmentTypes = \App\Models\AdjustmentType::all();
         $werehouses = \App\Models\Werehouse::all();
 
-        return view('pages.stockAdjustments.edit', [
+        return view('pages.stock_adjustments.edit', [
             'mode' => 'edit',
             'stockAdjustment' => $stockAdjustment,
             'users' => $users,
@@ -71,12 +71,12 @@ class StockAdjustmentController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         $stockAdjustment->update($data);
-        return redirect()->route('stockAdjustments.index')->with('success', 'Successfully updated!');
+        return redirect()->route('stock_adjustments.index')->with('success', 'Successfully updated!');
     }
 
     public function destroy(StockAdjustment $stockAdjustment)
     {
         $stockAdjustment->delete();
-        return redirect()->route('stockAdjustments.index')->with('success', 'Successfully deleted!');
+        return redirect()->route('stock_adjustments.index')->with('success', 'Successfully deleted!');
     }
 }

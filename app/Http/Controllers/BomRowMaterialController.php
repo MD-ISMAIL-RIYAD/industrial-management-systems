@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BomRawMaterial;
+use App\Models\BomRowMaterial;
 use Illuminate\Http\Request;
+use App\Models\Item;
+use App\Models\Bom;
+use App\Models\Uom;
 
 
-class BomRawMaterialController extends Controller
+class BomRowMaterialController extends Controller
 {
     public function index()
     {
-        $bom_row_materials = BomRawMaterial::orderBy('id','desc')->paginate(10);
-        return view('pages.bom_raw_materials.index', compact('bom_row_materials'));
+        $bom_row_materials = BomRowMaterial::orderBy('id','desc')->paginate(10);
+        return view('pages.bom_row_materials.index', compact('bom_row_materials'));
     }
 
     public function create()
@@ -22,7 +25,7 @@ class BomRawMaterialController extends Controller
 
         return view('pages.bom_row_materials.create', [
             'mode' => 'create',
-            'bomRawMaterial' => new BomRawMaterial(),
+            'bomRowMaterial' => new BomRowMaterial(),
             'items' => $items,
             'boms' => $boms,
             'uoms' => $uoms,
@@ -36,16 +39,16 @@ class BomRawMaterialController extends Controller
         if ($request->hasFile('photo')) {
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
-        BomRawMaterial::create($data);
+        BomRowMaterial::create($data);
         return redirect()->route('bom_row_materials.index')->with('success', 'Successfully created!');
     }
 
-    public function show(BomRawMaterial $bomRawMaterial)
+    public function show(BomRowMaterial $bomRowMaterial)
     {
-        return view('pages.bom_row_materials.view', compact('bomRawMaterial'));
+        return view('pages.bom_row_materials.view', compact('bomRowMaterial'));
     }
 
-    public function edit(BomRawMaterial $bomRawMaterial)
+    public function edit(BomRowMaterial $bomRowMaterial)
     {
         $items = \App\Models\Item::all();
         $boms = \App\Models\Bom::all();
@@ -53,7 +56,7 @@ class BomRawMaterialController extends Controller
 
         return view('pages.bom_row_materials.edit', [
             'mode' => 'edit',
-            'bomRawMaterial' => $bomRawMaterial,
+            'bomRowMaterial' => $bomRowMaterial,
             'items' => $items,
             'boms' => $boms,
             'uoms' => $uoms,
@@ -61,19 +64,19 @@ class BomRawMaterialController extends Controller
         ]);
     }
 
-    public function update(Request $request, BomRawMaterial $bomRawMaterial)
+    public function update(Request $request, BomRowMaterial $bomRowMaterial)
     {
         $data = $request->all();
         if ($request->hasFile('photo')) {
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
-        $bomRawMaterial->update($data);
+        $bomRowMaterial->update($data);
         return redirect()->route('bom_row_materials.index')->with('success', 'Successfully updated!');
     }
 
-    public function destroy(BomRawMaterial $bomRawMaterial)
+    public function destroy(BomRowMaterial $bomRowMaterial)
     {
-        $bomRawMaterial->delete();
+        $bomRowMaterial->delete();
         return redirect()->route('bom_row_materials.index')->with('success', 'Successfully deleted!');
     }
 }

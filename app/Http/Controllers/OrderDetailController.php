@@ -12,8 +12,8 @@ class OrderDetailController extends Controller
 {
     public function index()
     {
-        $orderDetails = OrderDetail::orderBy('id','desc')->paginate(10);
-        return view('pages.orderDetails.index', compact('orderDetails'));
+        $order_details = OrderDetail::orderBy('id','desc')->paginate(10);
+        return view('pages.order_details.index', compact('order_details'));
     }
 
     public function create()
@@ -21,7 +21,7 @@ class OrderDetailController extends Controller
         $orders = \App\Models\Order::all();
         $products = \App\Models\Product::all();
 
-        return view('pages.orderDetails.create', [
+        return view('pages.order_details.create', [
             'mode' => 'create',
             'orderDetail' => new OrderDetail(),
             'orders' => $orders,
@@ -37,12 +37,12 @@ class OrderDetailController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         OrderDetail::create($data);
-        return redirect()->route('orderDetails.index')->with('success', 'Successfully created!');
+        return redirect()->route('order_details.index')->with('success', 'Successfully created!');
     }
 
     public function show(OrderDetail $orderDetail)
     {
-        return view('pages.orderDetails.view', compact('orderDetail'));
+        return view('pages.order_details.view', compact('orderDetail'));
     }
 
     public function edit(OrderDetail $orderDetail)
@@ -50,7 +50,7 @@ class OrderDetailController extends Controller
         $orders = \App\Models\Order::all();
         $products = \App\Models\Product::all();
 
-        return view('pages.orderDetails.edit', [
+        return view('pages.order_details.edit', [
             'mode' => 'edit',
             'orderDetail' => $orderDetail,
             'orders' => $orders,
@@ -66,12 +66,12 @@ class OrderDetailController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         $orderDetail->update($data);
-        return redirect()->route('orderDetails.index')->with('success', 'Successfully updated!');
+        return redirect()->route('order_details.index')->with('success', 'Successfully updated!');
     }
 
     public function destroy(OrderDetail $orderDetail)
     {
         $orderDetail->delete();
-        return redirect()->route('orderDetails.index')->with('success', 'Successfully deleted!');
+        return redirect()->route('order_details.index')->with('success', 'Successfully deleted!');
     }
 }

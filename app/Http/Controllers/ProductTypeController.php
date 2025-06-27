@@ -10,14 +10,14 @@ class ProductTypeController extends Controller
 {
     public function index()
     {
-        $productTypes = ProductType::orderBy('id','desc')->paginate(10);
-        return view('pages.productTypes.index', compact('productTypes'));
+        $product_types = ProductType::orderBy('id','desc')->paginate(10);
+        return view('pages.product_types.index', compact('product_types'));
     }
 
     public function create()
     {
 
-        return view('pages.productTypes.create', [
+        return view('pages.product_types.create', [
             'mode' => 'create',
             'productType' => new ProductType(),
 
@@ -31,18 +31,18 @@ class ProductTypeController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         ProductType::create($data);
-        return redirect()->route('productTypes.index')->with('success', 'Successfully created!');
+        return redirect()->route('product_types.index')->with('success', 'Successfully created!');
     }
 
     public function show(ProductType $productType)
     {
-        return view('pages.productTypes.view', compact('productType'));
+        return view('pages.product_types.view', compact('productType'));
     }
 
     public function edit(ProductType $productType)
     {
 
-        return view('pages.productTypes.edit', [
+        return view('pages.product_types.edit', [
             'mode' => 'edit',
             'productType' => $productType,
 
@@ -56,12 +56,12 @@ class ProductTypeController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         $productType->update($data);
-        return redirect()->route('productTypes.index')->with('success', 'Successfully updated!');
+        return redirect()->route('product_types.index')->with('success', 'Successfully updated!');
     }
 
     public function destroy(ProductType $productType)
     {
         $productType->delete();
-        return redirect()->route('productTypes.index')->with('success', 'Successfully deleted!');
+        return redirect()->route('product_types.index')->with('success', 'Successfully deleted!');
     }
 }

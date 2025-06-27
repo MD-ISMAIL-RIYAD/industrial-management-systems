@@ -12,8 +12,8 @@ class PurchaseDetailController extends Controller
 {
     public function index()
     {
-        $purchaseDetails = PurchaseDetail::orderBy('id','desc')->paginate(10);
-        return view('pages.purchaseDetails.index', compact('purchaseDetails'));
+        $purchase_details = PurchaseDetail::orderBy('id','desc')->paginate(10);
+        return view('pages.purchase_details.index', compact('purchase_details'));
     }
 
     public function create()
@@ -21,7 +21,7 @@ class PurchaseDetailController extends Controller
         $purchases = \App\Models\Purchase::all();
         $products = \App\Models\Product::all();
 
-        return view('pages.purchaseDetails.create', [
+        return view('pages.purchase_details.create', [
             'mode' => 'create',
             'purchaseDetail' => new PurchaseDetail(),
             'purchases' => $purchases,
@@ -37,12 +37,12 @@ class PurchaseDetailController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         PurchaseDetail::create($data);
-        return redirect()->route('purchaseDetails.index')->with('success', 'Successfully created!');
+        return redirect()->route('purchase_details.index')->with('success', 'Successfully created!');
     }
 
     public function show(PurchaseDetail $purchaseDetail)
     {
-        return view('pages.purchaseDetails.view', compact('purchaseDetail'));
+        return view('pages.purchase_details.view', compact('purchaseDetail'));
     }
 
     public function edit(PurchaseDetail $purchaseDetail)
@@ -50,7 +50,7 @@ class PurchaseDetailController extends Controller
         $purchases = \App\Models\Purchase::all();
         $products = \App\Models\Product::all();
 
-        return view('pages.purchaseDetails.edit', [
+        return view('pages.purchase_details.edit', [
             'mode' => 'edit',
             'purchaseDetail' => $purchaseDetail,
             'purchases' => $purchases,
@@ -66,12 +66,12 @@ class PurchaseDetailController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         $purchaseDetail->update($data);
-        return redirect()->route('purchaseDetails.index')->with('success', 'Successfully updated!');
+        return redirect()->route('purchase_details.index')->with('success', 'Successfully updated!');
     }
 
     public function destroy(PurchaseDetail $purchaseDetail)
     {
         $purchaseDetail->delete();
-        return redirect()->route('purchaseDetails.index')->with('success', 'Successfully deleted!');
+        return redirect()->route('purchase_details.index')->with('success', 'Successfully deleted!');
     }
 }

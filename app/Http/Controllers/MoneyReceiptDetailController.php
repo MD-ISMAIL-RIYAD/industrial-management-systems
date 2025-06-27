@@ -12,8 +12,8 @@ class MoneyReceiptDetailController extends Controller
 {
     public function index()
     {
-        $moneyReceiptDetails = MoneyReceiptDetail::orderBy('id','desc')->paginate(10);
-        return view('pages.moneyReceiptDetails.index', compact('moneyReceiptDetails'));
+        $money_receipt_details = MoneyReceiptDetail::orderBy('id','desc')->paginate(10);
+        return view('pages.money_receipt_details.index', compact('money_receipt_details'));
     }
 
     public function create()
@@ -21,7 +21,7 @@ class MoneyReceiptDetailController extends Controller
         $moneyReceipts = \App\Models\MoneyReceipt::all();
         $products = \App\Models\Product::all();
 
-        return view('pages.moneyReceiptDetails.create', [
+        return view('pages.money_receipt_details.create', [
             'mode' => 'create',
             'moneyReceiptDetail' => new MoneyReceiptDetail(),
             'moneyReceipts' => $moneyReceipts,
@@ -37,12 +37,12 @@ class MoneyReceiptDetailController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         MoneyReceiptDetail::create($data);
-        return redirect()->route('moneyReceiptDetails.index')->with('success', 'Successfully created!');
+        return redirect()->route('money_receipt_details.index')->with('success', 'Successfully created!');
     }
 
     public function show(MoneyReceiptDetail $moneyReceiptDetail)
     {
-        return view('pages.moneyReceiptDetails.view', compact('moneyReceiptDetail'));
+        return view('pages.money_receipt_details.view', compact('moneyReceiptDetail'));
     }
 
     public function edit(MoneyReceiptDetail $moneyReceiptDetail)
@@ -50,7 +50,7 @@ class MoneyReceiptDetailController extends Controller
         $moneyReceipts = \App\Models\MoneyReceipt::all();
         $products = \App\Models\Product::all();
 
-        return view('pages.moneyReceiptDetails.edit', [
+        return view('pages.money_receipt_details.edit', [
             'mode' => 'edit',
             'moneyReceiptDetail' => $moneyReceiptDetail,
             'moneyReceipts' => $moneyReceipts,
@@ -66,12 +66,12 @@ class MoneyReceiptDetailController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         $moneyReceiptDetail->update($data);
-        return redirect()->route('moneyReceiptDetails.index')->with('success', 'Successfully updated!');
+        return redirect()->route('money_receipt_details.index')->with('success', 'Successfully updated!');
     }
 
     public function destroy(MoneyReceiptDetail $moneyReceiptDetail)
     {
         $moneyReceiptDetail->delete();
-        return redirect()->route('moneyReceiptDetails.index')->with('success', 'Successfully deleted!');
+        return redirect()->route('money_receipt_details.index')->with('success', 'Successfully deleted!');
     }
 }

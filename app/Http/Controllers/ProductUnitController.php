@@ -10,14 +10,14 @@ class ProductUnitController extends Controller
 {
     public function index()
     {
-        $productUnits = ProductUnit::orderBy('id','desc')->paginate(10);
-        return view('pages.productUnits.index', compact('productUnits'));
+        $product_units = ProductUnit::orderBy('id','desc')->paginate(10);
+        return view('pages.product_units.index', compact('product_units'));
     }
 
     public function create()
     {
 
-        return view('pages.productUnits.create', [
+        return view('pages.product_units.create', [
             'mode' => 'create',
             'productUnit' => new ProductUnit(),
 
@@ -31,18 +31,18 @@ class ProductUnitController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         ProductUnit::create($data);
-        return redirect()->route('productUnits.index')->with('success', 'Successfully created!');
+        return redirect()->route('product_units.index')->with('success', 'Successfully created!');
     }
 
     public function show(ProductUnit $productUnit)
     {
-        return view('pages.productUnits.view', compact('productUnit'));
+        return view('pages.product_units.view', compact('productUnit'));
     }
 
     public function edit(ProductUnit $productUnit)
     {
 
-        return view('pages.productUnits.edit', [
+        return view('pages.product_units.edit', [
             'mode' => 'edit',
             'productUnit' => $productUnit,
 
@@ -56,12 +56,12 @@ class ProductUnitController extends Controller
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
         }
         $productUnit->update($data);
-        return redirect()->route('productUnits.index')->with('success', 'Successfully updated!');
+        return redirect()->route('product_units.index')->with('success', 'Successfully updated!');
     }
 
     public function destroy(ProductUnit $productUnit)
     {
         $productUnit->delete();
-        return redirect()->route('productUnits.index')->with('success', 'Successfully deleted!');
+        return redirect()->route('product_units.index')->with('success', 'Successfully deleted!');
     }
 }
