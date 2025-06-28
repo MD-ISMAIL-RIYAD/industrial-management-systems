@@ -47,3 +47,5 @@ Route::resource('sales_invoice_items', App\Http\Controllers\SalesInvoiceItemCont
 Route::resource('purchase_invoices_items', App\Http\Controllers\PurchaseInvoicesItemController::class);
 Route::resource('purchase_invoice_items', App\Http\Controllers\PurchaseInvoiceItemController::class);
 Route::resource('sales_invoices_items', App\Http\Controllers\SalesInvoicesItemController::class);
+Route::resource('items', App\Http\Controllers\ItemController::class);
+Route::resource('warehouses', App\Http\Controllers\WarehouseController::class);

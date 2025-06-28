@@ -7,45 +7,21 @@
   <ul class="nav collapse" id="inventory">
 
     <li class="nav-item">
-      <a class="nav-link dropdown-indicator" href="#product" data-bs-toggle="collapse"
+      <a class="nav-link dropdown-indicator" href="#items" data-bs-toggle="collapse"
         aria-expanded="false" aria-controls="inventory">
-        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Product</span>
+        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Item Master</span>
         </div>
       </a>
       <!-- more inner pages-->
-      <ul class="nav collapse" id="product">
-        <li class="nav-item"><a class="nav-link" href="{{url('products/create')}}">
-            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create Product</span>
+      <ul class="nav collapse" id="items">
+        <li class="nav-item"><a class="nav-link" href="{{url('items/create')}}">
+            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create items</span>
             </div>
           </a>
           <!-- more inner pages-->
         </li>
-        <li class="nav-item"><a class="nav-link" href="{{url('products')}}">
-            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Product</span>
-            </div>
-          </a>
-          <!-- more inner pages-->
-        </li>
-
-
-      </ul>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link dropdown-indicator" href="#manufacturer" data-bs-toggle="collapse"
-        aria-expanded="false" aria-controls="inventory">
-        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manufatrurer</span>
-        </div>
-      </a>
-      <!-- more inner pages-->
-      <ul class="nav collapse" id="manufacturer">
-        <li class="nav-item"><a class="nav-link" href="{{url('manufacturers/create')}}">
-            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create Manufatrurer</span>
-            </div>
-          </a>
-          <!-- more inner pages-->
-        </li>
-        <li class="nav-item"><a class="nav-link" href="{{url('manufacturers')}}">
-            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Manufatrurer</span>
+        <li class="nav-item"><a class="nav-link" href="{{url('items')}}">
+            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Bom</span>
             </div>
           </a>
           <!-- more inner pages-->
@@ -56,21 +32,21 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link dropdown-indicator" href="#category" data-bs-toggle="collapse"
+      <a class="nav-link dropdown-indicator" href="#inventory_movements" data-bs-toggle="collapse"
         aria-expanded="false" aria-controls="inventory">
-        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Category</span>
+        <div class="d-flex align-center"><span class="nav-link-text ps-1">Inventory Movements</span>
         </div>
       </a>
       <!-- more inner pages-->
-      <ul class="nav collapse" id="category">
-        <li class="nav-item"><a class="nav-link" href="app/e-learning/course/course-list.html">
-            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create Category</span>
+      <ul class="nav collapse" id="inventory_movements">
+        <li class="nav-item"><a class="nav-link" href="{{url('inventory_movements/create')}}">
+            <div class="d-flex align-center"><span class="nav-link-text ps-1">Create New</span>
             </div>
           </a>
           <!-- more inner pages-->
         </li>
-        <li class="nav-item"><a class="nav-link" href="app/e-learning/course/course-grid.html">
-            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Category</span>
+        <li class="nav-item"><a class="nav-link" href="{{url('inventory_movements')}}">
+            <div class="d-flex align-center"><span class="nav-link-text ps-1">Manage</span>
             </div>
           </a>
           <!-- more inner pages-->
@@ -81,21 +57,21 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link dropdown-indicator" href="#uom" data-bs-toggle="collapse"
-        aria-expanded="false" aria-controls="inventory">
-        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">UoM</span>
+      <a class="nav-link dropdown-indicator" href="#warehouses" data-bs-toggle="collapse"
+        aria-expanded="false" aria-controls="production">
+        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Warehouse</span>
         </div>
       </a>
       <!-- more inner pages-->
-      <ul class="nav collapse" id="uom">
-        <li class="nav-item"><a class="nav-link" href="app/e-learning/course/course-list.html">
-            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create UoM</span>
+      <ul class="nav collapse" id="warehouses">
+        <li class="nav-item"><a class="nav-link" href="{{url('warehouses/create')}}">
+            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create Warehouse</span>
             </div>
           </a>
           <!-- more inner pages-->
         </li>
-        <li class="nav-item"><a class="nav-link" href="app/e-learning/course/course-grid.html">
-            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage UoM</span>
+        <li class="nav-item"><a class="nav-link" href="{{url('warehouses')}}">
+            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Warehouse</span>
             </div>
           </a>
           <!-- more inner pages-->
@@ -105,7 +81,83 @@
       </ul>
     </li>
 
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link dropdown-indicator" href="#stocks" data-bs-toggle="collapse"
+        aria-expanded="false" aria-controls="production">
+        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Stock</span>
+        </div>
+      </a>
+      <!-- more inner pages-->
+      <ul class="nav collapse" id="stocks">
+        <li class="nav-item"><a class="nav-link" href="{{url('stocks/create')}}">
+            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create Stock</span>
+            </div>
+          </a>
+          <!-- more inner pages-->
+        </li>
+        <li class="nav-item"><a class="nav-link" href="{{url('stocks')}}">
+            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Stock</span>
+            </div>
+          </a>
+          <!-- more inner pages-->
+        </li>
 
 
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link dropdown-indicator" href="#stock_adjustments" data-bs-toggle="collapse"
+        aria-expanded="false" aria-controls="production">
+        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Stock Adjustments</span>
+        </div>
+      </a>
+      <!-- more inner pages-->
+      <ul class="nav collapse" id="stock_adjustments">
+        <li class="nav-item"><a class="nav-link" href="{{url('stock_adjustments/create')}}">
+            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create New Stock</span>
+            </div>
+          </a>
+          <!-- more inner pages-->
+        </li>
+        <li class="nav-item"><a class="nav-link" href="{{url('stock_adjustments')}}">
+            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Stock</span>
+            </div>
+          </a>
+          <!-- more inner pages-->
+        </li>
+
+
+      </ul>
+    </li>
+
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link dropdown-indicator" href="#uoms" data-bs-toggle="collapse"
+        aria-expanded="false" aria-controls="production">
+        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Units of Measure</span>
+        </div>
+      </a>
+      <!-- more inner pages-->
+      <ul class="nav collapse" id="uoms">
+        <li class="nav-item"><a class="nav-link" href="{{url('uoms/create')}}">
+            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">New UOM</span>
+            </div>
+          </a>
+          <!-- more inner pages-->
+        </li>
+        <li class="nav-item"><a class="nav-link" href="{{url('uoms')}}">
+            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage UOM</span>
+            </div>
+          </a>
+          <!-- more inner pages-->
+        </li>
+
+
+      </ul>
+    </li>
 
   </ul>
