@@ -26,7 +26,6 @@ Route::resource('order_details', App\Http\Controllers\OrderDetailController::cla
 Route::resource('positions', App\Http\Controllers\PositionController::class);
 Route::resource('product_units', App\Http\Controllers\ProductUnitController::class);
 Route::resource('product_types', App\Http\Controllers\ProductTypeController::class);
-Route::resource('product_categories', App\Http\Controllers\ProductCategoryController::class);
 Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
 Route::resource('purchase_details', App\Http\Controllers\PurchaseDetailController::class); 
 Route::resource('stocks', App\Http\Controllers\StockController::class);
@@ -49,3 +48,4 @@ Route::resource('purchase_invoice_items', App\Http\Controllers\PurchaseInvoiceIt
 Route::resource('sales_invoices_items', App\Http\Controllers\SalesInvoicesItemController::class);
 Route::resource('items', App\Http\Controllers\ItemController::class);
 Route::resource('warehouses', App\Http\Controllers\WarehouseController::class);
+Route::resource('product_categories', App\Http\Controllers\ProductCategoryController::class);

@@ -33,6 +33,7 @@
         @include("layouts.menus.purchase")
         @include("layouts.menus.hr_managment")
         @include("layouts.menus.finance_accounts")
+        @include("layouts.menus.reports")
 
       </ul>
       <div class="settings mb-3">

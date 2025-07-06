@@ -114,7 +114,7 @@
      6.. Finance Management
 
           => Payments
-          => Receipts
+          => Money Receipts
           => Adjustments
           => Transactions
           => Account Ledger

@@ -5,7 +5,6 @@
     </div>
   </a>
   <ul class="nav collapse" id="stock">
-
     <li class="nav-item">
       <a class="nav-link dropdown-indicator" href="#course" data-bs-toggle="collapse"
         aria-expanded="false" aria-controls="stock">
@@ -26,11 +25,8 @@
           </a>
           <!-- more inner pages-->
         </li>
-
-
       </ul>
     </li>
-
     <li class="nav-item">
       <a class="nav-link dropdown-indicator" href="#course" data-bs-toggle="collapse"
         aria-expanded="false" aria-controls="e-learning">
@@ -51,11 +47,8 @@
           </a>
           <!-- more inner pages-->
         </li>
-
-
       </ul>
     </li>
-
     <li class="nav-item">
       <a class="nav-link dropdown-indicator" href="#course" data-bs-toggle="collapse"
         aria-expanded="false" aria-controls="e-learning">
@@ -76,19 +69,6 @@
           </a>
           <!-- more inner pages-->
         </li>
-
-
       </ul>
     </li>
-
-
-
-
-
-  </ul>
-  </li>
-
-
-
-
   </ul>

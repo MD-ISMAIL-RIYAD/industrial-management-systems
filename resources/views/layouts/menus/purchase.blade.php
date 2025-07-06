@@ -5,7 +5,6 @@
     </div>
   </a>
   <ul class="nav collapse" id="purchase">
-
     <li class="nav-item">
       <a class="nav-link dropdown-indicator" href="#purchases" data-bs-toggle="collapse"
         aria-expanded="false" aria-controls="production">
@@ -26,8 +25,6 @@
           </a>
           <!-- more inner pages-->
         </li>
-
-
       </ul>
     </li>
     <li class="nav-item">
@@ -50,11 +47,8 @@
           </a>
           <!-- more inner pages-->
         </li>
-
-
       </ul>
     </li>
-
     <li class="nav-item">
       <a class="nav-link dropdown-indicator" href="#purchase_invoices" data-bs-toggle="collapse"
         aria-expanded="false" aria-controls="production">
@@ -75,11 +69,8 @@
           </a>
           <!-- more inner pages-->
         </li>
-
-
       </ul>
     </li>
-
     <li class="nav-item">
       <a class="nav-link dropdown-indicator" href="#purchase_invoices" data-bs-toggle="collapse"
         aria-expanded="false" aria-controls="production">
@@ -100,11 +91,6 @@
           </a>
           <!-- more inner pages-->
         </li>
-
-
       </ul>
     </li>
-
-
-
   </ul>
