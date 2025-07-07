@@ -1,6 +1,4 @@
--- MySQL Administrator dump 1.4
---
--- ------------------------------------------------------
+
 -- Server version	5.5.5-10.4.32-MariaDB
 
 

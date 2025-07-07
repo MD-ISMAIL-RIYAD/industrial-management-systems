@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
@@ -20,12 +21,14 @@ class PurchaseController extends Controller
     {
         $suppliers = \App\Models\Supplier::all();
         $statuses = \App\Models\Status::all();
+        $products=Product::all();
 
         return view('pages.purchases.create', [
             'mode' => 'create',
             'purchase' => new Purchase(),
             'suppliers' => $suppliers,
             'statuses' => $statuses,
+            'products' => $products,
 
         ]);
     }
