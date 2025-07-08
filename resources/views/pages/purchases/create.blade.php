@@ -216,17 +216,21 @@
 
         <div class="invoice-content">
             <div class="row invoice-header align-items-center">
-                <div class="col-md-7" style="margin-top: 30px;">
+                <div class="col-md-8" style="margin-top: 30px;">
                     <h1 class="invoice-title">ORDER INVOICE</h1>
                     <p class="project-name">Food and Beverage Manufacturing</p>
                     <div class="invoice-details">
-                        <p>INVOICE NO: <span id="invoice-id">#INV-FBM-12345</span></p>
+                        <p>INVOICE NO: <span id="invoice-id">{{$newPurchaseId}}</span></p>
                         <p>Current Date: <span id="current-date">July 07, 2025</span></p>
                     </div>
                 </div>
-                <div class="col-md-5 invoice-to">
-                    <p class="mb-1 text-muted">Invoice to:</p>
-                    <h5 id="customer-name">Yael Amari</h5>
+                <div class="col-md-4 invoice-to d-flex justify-content-end flex-column " style="min-width: 180px;">
+                    <p class="mb-1 fw-bold text-light">Invoice to</p>
+                    <select name="customer" id="customer-id" class="form-select w-75 align-self-end mb-1">
+                        @foreach($customers as $customer)
+                            <option value="{{$customer->id}}">{{$customer->name}}</option>
+                        @endforeach
+                    </select>
                     <p id="customer-email" class="mb-0">hello@reallygreatsite.com</p>
                     <p id="shipping-address">123 Anywhere St, Any City, ST 12345</p>
                 </div>
@@ -382,21 +386,22 @@
 
                 `;
             tbody.appendChild(tr);
-        });        
+        });
     }
 
 
     //remove items
-    function removeItem(i){
-        items.splice(i,1);
+    function removeItem(i) {
+        items.splice(i, 1);
         showItems();
     }
-
+    
     //save purchase
-    document.getElementById('save-btn').addEventListener('click',()=>{
+    document.getElementById('save-btn').addEventListener('click', () => {
         alert('Successfully Saved!');
-        items=[];
+        items = [];
         showItems();
+        window.location.assign("{{ route('purchases.index') }}");
     });
 </script>
 

@@ -49,3 +49,4 @@ Route::resource('sales_invoices_items', App\Http\Controllers\SalesInvoicesItemCo
 Route::resource('items', App\Http\Controllers\ItemController::class);
 Route::resource('warehouses', App\Http\Controllers\WarehouseController::class);
 Route::resource('product_categories', App\Http\Controllers\ProductCategoryController::class);
+Route::resource('bom_raw_materials', App\Http\Controllers\BomRawMaterialController::class);

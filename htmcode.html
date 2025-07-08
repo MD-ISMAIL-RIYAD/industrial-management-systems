@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Invoice - Food and Beverage Manufacturing</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Parisienne&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .invoice-container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .invoice-header {
+            position: relative;
+            height: 120px;
+            background: linear-gradient(95deg, #1a5276 60%, #e67e22 40%);
+            color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .invoice-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .company-name {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        .invoice-info {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            text-align: right;
+        }
+        
+        .invoice-info div {
+            margin-bottom: 5px;
+        }
+        
+        .client-info {
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+        
+        .client-label {
+            font-weight: 600;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        .client-details {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        
+        .table-header {
+            background-color: #1a5276;
+            color: white;
+        }
+        
+        .table-header th:first-child,
+        .table-header th:nth-child(2),
+        .table-header th:nth-child(3) {
+            color: #9b59b6;
+        }
+        
+        .table thead th {
+            border-bottom: none;
+            font-weight: 500;
+            vertical-align: middle;
+        }
+        
+        .table tbody tr:nth-child(odd) {
+            background-color: #f8f9fa;
+        }
+        
+        .table tbody tr:nth-child(even) {
+            background-color: white;
+        }
+        
+        .payment-details, .totals-summary {
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .payment-title, .totals-title {
+            font-weight: 600;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .totals-table {
+            width: 100%;
+        }
+        
+        .totals-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .totals-table tr:last-child {
+            background-color: #1a5276;
+            color: white;
+        }
+        
+        .totals-table tr:last-child td {
+            border-bottom: none;
+            font-weight: 600;
+            padding: 10px 0;
+        }
+        
+        .footer-section {
+            padding: 20px;
+            margin-top: 50px;
+            border-top: 1px solid #eee;
+        }
+        
+        .contact-title, .thankyou-title {
+            font-weight: 600;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .thankyou-text {
+            font-family: 'Parisienne', cursive;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .signature-line {
+            border-top: 1px solid #333;
+            width: 200px;
+            margin-bottom: 5px;
+        }
+        
+        .signature-title {
+            font-weight: 500;
+        }
+        
+        @media print {
+            body {
+                background: none;
+            }
+            
+            .invoice-container {
+                box-shadow: none;
+                margin: 0;
+                max-width: 100%;
+            }
+            
+            .no-print {
+                display: none !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .invoice-header {
+                height: auto;
+                padding-bottom: 80px;
+            }
+            
+            .invoice-info {
+                position: static;
+                text-align: left;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="invoice-container">
+                    <!-- Header with angled color blocks -->
+                    <div class="invoice-header">
+                        <div>
+                            <div class="invoice-title">ORDER INVOICE</div>
+                            <div class="company-name">Food and Beverage Manufacturing</div>
+                        </div>
+                        <div class="invoice-info">
+                            <div>INVOICE NO: {{ $order->invoice_number ?? 'INT-001' }}</div>
+                            <div>Current Date: {{ \Carbon\Carbon::parse($order->order_date ?? now())->format('F d, Y') }}</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Client Information -->
+                    <div class="row client-info">
+                        <div class="col-md-6">
+                            <div class="client-label">Invoice to:</div>
+                            <div class="client-details">
+                                <div>{{ $order->customer->name ?? 'Customer Name' }}</div>
+                                <div>{{ $order->customer->email ?? 'customer@example.com' }}</div>
+                                <div>{{ $order->shipping_address ?? 'Shipping Address' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Order Details Table -->
+                    <div class="table-responsive px-3">
+                        <table class="table">
+                            <thead class="table-header">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Order Date</th>
+                                    <th>Delivery Date</th>
+                                    <th>Shipping Address</th>
+                                    <th>Qty</th>
+                                    <th>Cost</th>
+                                    <th>Discount</th>
+                                    <th>VAT</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($order->items as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($order->order_date)->format('m/d/Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($order->delivery_date)->format('m/d/Y') }}</td>
+                                    <td>{{ $order->shipping_address }}</td>
+                                    <td>{{ $item->quantity }}</td>
+                                    <td>${{ number_format($item->unit_price, 2) }}</td>
+                                    <td>${{ number_format($item->discount, 2) }}</td>
+                                    <td>${{ number_format($item->vat, 2) }}</td>
+                                    <td>${{ number_format(($item->unit_price * $item->quantity) - $item->discount + $item->vat, 2) }}</td>
+                                </tr>
+                                @endforeach
+                                
+                                <!-- Sample data (fallback if no items) -->
+                                @if(!isset($order->items) || count($order->items) === 0)
+                                <tr>
+                                    <td>1</td>
+                                    <td>07/01/2025</td>
+                                    <td>07/05/2025</td>
+                                    <td>4312 Wood Road, New York, NY 10031</td>
+                                    <td>2</td>
+                                    <td>$50.00</td>
+                                    <td>$5.00</td>
+                                    <td>$4.50</td>
+                                    <td>$99.50</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>07/02/2025</td>
+                                    <td>07/06/2025</td>
+                                    <td>2019 Redbud Drive, New York, NY 10011</td>
+                                    <td>1</td>
+                                    <td>$100.00</td>
+                                    <td>$10.00</td>
+                                    <td>$9.00</td>
+                                    <td>$99.00</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>07/03/2025</td>
+                                    <td>07/07/2025</td>
+                                    <td>4312 Wood Road, New York, NY 10031</td>
+                                    <td>3</td>
+                                    <td>$15.00</td>
+                                    <td>$2.25</td>
+                                    <td>$1.91</td>
+                                    <td>$43.66</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Payment and Totals Section -->
+                    <div class="row">
+                        <div class="col-md-6 payment-details">
+                            <div class="payment-title">PAYMENT DETAILS:</div>
+                            <div class="mb-2"><i class="bi bi-bank me-2"></i> <strong>Bank Code:</strong> 123-456-7890</div>
+                            <div class="mb-2"><i class="bi bi-building me-2"></i> <strong>Bank Name:</strong> Fauget Bank</div>
+                            <div class="mb-2"><i class="bi bi-credit-card me-2"></i> <strong>Account Number:</strong> 1234567890</div>
+                            <div><i class="bi bi-arrow-left-right me-2"></i> <strong>Routing:</strong> 098765432</div>
+                        </div>
+                        <div class="col-md-6 totals-summary">
+                            <div class="totals-title">TOTALS SUMMARY</div>
+                            <table class="totals-table">
+                                <tr>
+                                    <td>Subtotal:</td>
+                                    <td class="text-end">${{ number_format($order->order_total - $order->vat, 2) ?? '242.16' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tax:</td>
+                                    <td class="text-end">${{ number_format($order->vat, 2) ?? '15.41' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>TOTAL:</td>
+                                    <td class="text-end">${{ number_format($order->order_total, 2) ?? '257.57' }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Footer Section -->
+                    <div class="row footer-section">
+                        <div class="col-md-6">
+                            <div class="contact-title">CONTACT US</div>
+                            <div class="mb-2"><i class="bi bi-telephone me-2"></i> 01879865517</div>
+                            <div class="mb-2"><i class="bi bi-globe me-2"></i> www.riyad.intelsofts.com</div>
+                            <div><i class="bi bi-geo-alt me-2"></i> 812/ A, Middle Monipur, Mirpur, Dhaka-1216</div>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <div class="thankyou-title">THANK YOU FOR YOUR BUSINESS</div>
+                            <div class="thankyou-text">Thank You!</div>
+                            <div class="signature-line"></div>
+                            <div class="signature-title">Administrator</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Print Button (hidden when printing) -->
+                    <div class="text-center mb-4 no-print">
+                        <button class="btn btn-primary" onclick="window.print()">
+                            <i class="bi bi-printer me-2"></i> Print Invoice
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

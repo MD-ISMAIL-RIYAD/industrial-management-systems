@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
@@ -22,6 +23,11 @@ class PurchaseController extends Controller
         $suppliers = \App\Models\Supplier::all();
         $statuses = \App\Models\Status::all();
         $products=Product::all();
+        $purchase=Purchase::all();
+        $customers=Customer::all();
+        $purchaseId=$purchase->max('id');
+        $newPurchaseId='#POI-'. str_pad($purchaseId+1,5,'0', STR_PAD_LEFT);
+
 
         return view('pages.purchases.create', [
             'mode' => 'create',
@@ -29,6 +35,8 @@ class PurchaseController extends Controller
             'suppliers' => $suppliers,
             'statuses' => $statuses,
             'products' => $products,
+            'newPurchaseId'=>$newPurchaseId,
+            'customers'=>$customers,
 
         ]);
     }

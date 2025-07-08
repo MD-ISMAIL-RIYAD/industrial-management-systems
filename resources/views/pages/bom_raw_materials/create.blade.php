@@ -239,11 +239,11 @@
             <!-- inputs -->
             <div class="d-flex align-items-center gap-2 my-4">
                 <div style="min-width: 180px;">
-                    <p class="m-0">Product</p>
-                    <select name="product-id" id="product-id" class="form-select">
-                        <option value="">Select Product</option>
-                        @foreach($products as $product)
-                        <option value="{{$product->id}}">{{$product->name}}</option>
+                    <p class="m-0">bom_raw_material</p>
+                    <select name="bom_raw_material-id" id="bom_raw_material-id" class="form-select">
+                        <option value="">Select bom_raw_material</option>
+                        @foreach($bom_raw_materials as $bom_raw_material)
+                        <option value="{{$bom_raw_material->id}}">{{$bom_raw_material->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -269,7 +269,7 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Product</th>
+                            <th>bom_raw_material</th>
                             <th>Price</th>
                             <th>Qty</th>
                             <th>VAT</th>
@@ -288,8 +288,8 @@
                 <div class="col-md-6">
                     <div class="payment-details">
                         <h5 class="text-primary">PAYMENT DETAILS:</h5>
-                        <p><strong>Bank A\C:</strong> 123-456-7890-301</p>
-                        <p><strong>Bank Name:</strong> The City bank PLC </p>
+                        <p><strong>Bank Code:</strong> 123-456-7890</p>
+                        <p><strong>Bank Name:</strong> Fauget Bank</p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -341,16 +341,16 @@
 <script>
     let items = [];
     document.getElementById('add-item').addEventListener('click', () => {
-        const productEl = document.getElementById('product-id');
-        const product_id = productEl.value;
-        const product_name = productEl.options[productEl.selectedIndex].text;
+        const bom_raw_materialEl = document.getElementById('bom_raw_material-id');
+        const bom_raw_material_id = bom_raw_materialEl.value;
+        const bom_raw_material_name = bom_raw_materialEl.options[bom_raw_materialEl.selectedIndex].text;
         const qty = document.getElementById('qty').value;
         const price = document.getElementById('price').value;
         const vat = document.getElementById('vat').value;
         const discount = document.getElementById('discount').value;
         const item = {
-            product_id,
-            product_name,
+            bom_raw_material_id,
+            bom_raw_material_name,
             qty,
             price,
             vat,
@@ -368,7 +368,7 @@
         items.forEach((item, index) => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${item.product_name}</td>
+                <td>${item.bom_raw_material_name}</td>
                 <td>$${item.price}</td>
                 <td>${item.qty}</td>
                 <td>$${item.vat}</td>
