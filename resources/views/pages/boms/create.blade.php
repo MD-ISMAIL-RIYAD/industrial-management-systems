@@ -220,13 +220,17 @@
                     <h1 class="invoice-title">ORDER INVOICE</h1>
                     <p class="project-name">Food and Beverage Manufacturing</p>
                     <div class="invoice-details">
-                        <p>INVOICE NO: <span id="invoice-id">#INV-FBM-12345</span></p>
+                        <p>INVOICE NO: <span id="invoice-id">{{$newPurchaseId}}</span></p>
                         <p>Current Date: <span id="current-date">July 07, 2025</span></p>
                     </div>
                 </div>
-                <div class="col-md-4 invoice-to " style="min-width: 180px;">
-                    <p class="mb-1 text-muted">Invoice to:</p>
-                    <h5 id="customer-name">Yael Amari</h5>
+                <div class="col-md-4 invoice-to d-flex justify-content-end flex-column " style="min-width: 180px;">
+                    <p class="mb-1 fw-bold text-light">Invoice to</p>
+                    <select name="customer" id="customer-id" class="form-select w-75 align-self-end mb-1">
+                        @foreach($customers as $customer)
+                            <option value="{{$customer->id}}">{{$customer->name}}</option>
+                        @endforeach
+                    </select>
                     <p id="customer-email" class="mb-0">hello@reallygreatsite.com</p>
                     <p id="shipping-address">123 Anywhere St, Any City, ST 12345</p>
                 </div>
@@ -274,8 +278,8 @@
                             <th>Qty</th>
                             <th>VAT</th>
                             <th>Discount</th>
-                            <th>Total</th>
-                            <th>Actions</th>
+                            <th class="text-center">Actions</th>
+                            <th class="text-end">Total</th>
                         </tr>
                     </thead>
                     <tbody id="order-items-body">
@@ -288,23 +292,25 @@
                 <div class="col-md-6">
                     <div class="payment-details">
                         <h5 class="text-primary">PAYMENT DETAILS:</h5>
-                        <p><strong>Bank A\C:</strong> 123-456-7890-301</p>
-                        <p><strong>Bank Name:</strong> The City bank PLC </p>
+                        <p><strong>Bank Code:</strong> 123-456-7890</p>
+                        <p><strong>Bank Name:</strong> Fauget Bank</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="totals-summary p-3">
                         <div class="row mb-2">
                             <div class="col-6 text-end">Subtotal:</div>
-                            <div class="col-6 text-end" id="subtotal-amount">$16,320.00</div>
+                            <div class="col-6 text-end" id="subtotal-amount" >$0</div>
                         </div>
                         <div class="row mb-2">
-                            <div class="col-6 text-end">Tax:</div>
-                            <div class="col-6 text-end" id="tax-amount">$163.00</div>
+                            <div class="col-6 text-end">Special Discount:</div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <input type="number" id="tax-amount" class="form-control w-50" placeholder="$0">
+                            </div>
                         </div>
                         <div class="row total-row">
                             <div class="col-6 text-end">TOTAL:</div>
-                            <div class="col-6 text-end" id="total-amount">$16,483.00</div>
+                            <div class="col-6 text-end pe-0" id="total-amount">$0</div>
                         </div>
                         <div class="d-flex justify-content-end mt-4">
                             <button id="save-btn" class="btn btn-primary">Save</button>
@@ -351,10 +357,10 @@
         const item = {
             product_id,
             product_name,
-            qty,
-            price,
-            vat,
-            discount
+            qty:parseFloat(qty),
+            price:parseFloat(price),
+            vat:parseFloat(vat),
+            discount:parseFloat(discount),
         }
         items.push(item);
         showItems();
@@ -365,25 +371,42 @@
     function showItems() {
         const tbody = document.getElementById('order-items-body');
         tbody.innerHTML = '';
+        let lineTotal=0;
+        let subtotal=0;
         items.forEach((item, index) => {
             const tr = document.createElement('tr');
+            lineTotal=(item.qty*item.price)-item.discount+item.vat;
+            subtotal+=lineTotal;
+            document.getElementById('subtotal-amount').textContent='$'+subtotal;
             tr.innerHTML = `
                 <td>${item.product_name}</td>
                 <td>$${item.price}</td>
                 <td>${item.qty}</td>
                 <td>$${item.vat}</td>
                 <td>$${item.discount}</td>
-                <td>$${item.qty*item.price}</td>
-                <td>
+                <td class="text-center">
                     <button onclick="removeItem(${index})" class="btn btn-sm btn-danger">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>
+                <td class="text-end">$${lineTotal}</td>
 
                 `;
             tbody.appendChild(tr);
         });
     }
+
+    //handel special discount
+    const specialDiscountDiv=document.getElementById('tax-amount');
+    specialDiscountDiv.addEventListener('input',()=>{
+        const fullSubtotal=document.getElementById('subtotal-amount').textContent;
+        const subtotalArr=fullSubtotal.split('$');
+        const subtotal=subtotalArr[1];
+        const subtotalNum=parseFloat(subtotal);
+        const specialDiscountNum=parseFloat(specialDiscountDiv.value);
+        const total= subtotalNum-specialDiscountNum;        
+        document.getElementById('total-amount').textContent=total;
+    })
 
 
     //remove items
@@ -391,12 +414,13 @@
         items.splice(i, 1);
         showItems();
     }
-
+    
     //save purchase
     document.getElementById('save-btn').addEventListener('click', () => {
         alert('Successfully Saved!');
         items = [];
         showItems();
+        window.location.assign("{{ route('purchases.index') }}");
     });
 </script>
 
