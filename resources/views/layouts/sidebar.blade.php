@@ -15,7 +15,8 @@
     </div>
     <a class="navbar-brand" href="index.html">
       <div class="d-flex align-items-center py-3"><img class="me-2"
-          src="assets/img/icons/spot-illustrations/Intellect.png" alt="" width="40" /><span
+          src="{{asset('assets/img/icons/spot-illustrations/Intellect.png')}}"
+           alt="" width="40" /><span
           class="font-sans-serif">Industral managment system </span>
       </div>
     </a>
@@ -43,7 +44,8 @@
               <button class="btn btn-link btn-close-falcon p-0" aria-label="Close"
                 data-bs-dismiss="alert"></button>
             </div>
-            <div class="text-center"><img src="assets/img/icons/spot-illustrations/navbar-vertical.png" alt=""
+            <div class="text-center"><img src="{{asset('assets/img/icons/spot-illustrations/navbar-vertical.png')}}"
+             alt=""
                 width="80" />
               <p class="fs--2 mt-2">Loving what you see? <br />Get your copy of <a href="#!">Intellect</a></p>
               <div class="d-grid"><a class="btn btn-sm btn-purchase"

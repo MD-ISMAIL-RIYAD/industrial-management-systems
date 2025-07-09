@@ -278,8 +278,8 @@
                             <th>Qty</th>
                             <th>VAT</th>
                             <th>Discount</th>
-                            <th>Total</th>
-                            <th>Actions</th>
+                            <th class="text-center">Actions</th>
+                            <th class="text-end">Total</th>
                         </tr>
                     </thead>
                     <tbody id="order-items-body">
@@ -300,15 +300,17 @@
                     <div class="totals-summary p-3">
                         <div class="row mb-2">
                             <div class="col-6 text-end">Subtotal:</div>
-                            <div class="col-6 text-end" id="subtotal-amount">$16,320.00</div>
+                            <div class="col-6 text-end" id="subtotal-amount" >$0</div>
                         </div>
                         <div class="row mb-2">
-                            <div class="col-6 text-end">Tax:</div>
-                            <div class="col-6 text-end" id="tax-amount">$163.00</div>
+                            <div class="col-6 text-end">Special Discount:</div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <input type="number" id="tax-amount" class="form-control w-50" placeholder="$0">
+                            </div>
                         </div>
                         <div class="row total-row">
                             <div class="col-6 text-end">TOTAL:</div>
-                            <div class="col-6 text-end" id="total-amount">$16,483.00</div>
+                            <div class="col-6 text-end pe-0" id="total-amount">$0</div>
                         </div>
                         <div class="d-flex justify-content-end mt-4">
                             <button id="save-btn" class="btn btn-primary">Save</button>
@@ -355,10 +357,10 @@
         const item = {
             product_id,
             product_name,
-            qty,
-            price,
-            vat,
-            discount
+            qty:parseFloat(qty),
+            price:parseFloat(price),
+            vat:parseFloat(vat),
+            discount:parseFloat(discount),
         }
         items.push(item);
         showItems();
@@ -369,25 +371,42 @@
     function showItems() {
         const tbody = document.getElementById('order-items-body');
         tbody.innerHTML = '';
+        let lineTotal=0;
+        let subtotal=0;
         items.forEach((item, index) => {
             const tr = document.createElement('tr');
+            lineTotal=(item.qty*item.price)-item.discount+item.vat;
+            subtotal+=lineTotal;
+            document.getElementById('subtotal-amount').textContent='$'+subtotal;
             tr.innerHTML = `
                 <td>${item.product_name}</td>
                 <td>$${item.price}</td>
                 <td>${item.qty}</td>
                 <td>$${item.vat}</td>
                 <td>$${item.discount}</td>
-                <td>$${item.qty*item.price}</td>
-                <td>
+                <td class="text-center">
                     <button onclick="removeItem(${index})" class="btn btn-sm btn-danger">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>
+                <td class="text-end">$${lineTotal}</td>
 
                 `;
             tbody.appendChild(tr);
         });
     }
+
+    //handel special discount
+    const specialDiscountDiv=document.getElementById('tax-amount');
+    specialDiscountDiv.addEventListener('input',()=>{
+        const fullSubtotal=document.getElementById('subtotal-amount').textContent;
+        const subtotalArr=fullSubtotal.split('$');
+        const subtotal=subtotalArr[1];
+        const subtotalNum=parseFloat(subtotal);
+        const specialDiscountNum=parseFloat(specialDiscountDiv.value);
+        const total= subtotalNum-specialDiscountNum;        
+        document.getElementById('total-amount').textContent=total;
+    })
 
 
     //remove items

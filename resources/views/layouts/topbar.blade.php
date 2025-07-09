@@ -6,7 +6,7 @@
       class="toggle-line"></span></span></button>
 <a class="navbar-brand me-1 me-sm-3" href="/">
   <div class="d-flex align-items-center"><img class="me-2"
-      src="assets/img/icons/spot-illustrations/Intellect.png" alt="" width="40" /><span
+      src="{{asset('assets/img/icons/spot-illustrations/Intellect')}}.png" alt="" width="40" /><span
       class="font-sans-serif">Intellect</span>
   </div>
 </a>
@@ -69,7 +69,7 @@
             class="dropdown-item px-x1 py-2" href="#!">
             <div class="d-flex align-items-center">
               <div class="file-thumbnail me-2"><img class="border h-100 w-100 fit-cover rounded-3"
-                  src="assets/img/products/3-thumb.png" alt="" /></div>
+                  src="{{asset('assets/img/products/3-thumb.png')}}" alt="" /></div>
               <div class="flex-1">
                 <h6 class="mb-0 title">iPhone</h6>
                 <p class="fs--2 mb-0 d-flex"><span class="fw-semi-bold">Antony</span><span
@@ -79,7 +79,7 @@
           </a>
           <a class="dropdown-item px-x1 py-2" href="#!">
             <div class="d-flex align-items-center">
-              <div class="file-thumbnail me-2"><img class="img-fluid" src="assets/img/icons/zip.png" alt="" />
+              <div class="file-thumbnail me-2"><img class="img-fluid" src="{{asset('assets/img/icons/zip.png')}}" alt="" />
               </div>
               <div class="flex-1">
                 <h6 class="mb-0 title">Intellect v1.8.2</h6>
@@ -94,7 +94,7 @@
             class="dropdown-item px-x1 py-2" href="pages/user/profile.html">
             <div class="d-flex align-items-center">
               <div class="avatar avatar-l status-online me-2">
-                <img class="rounded-circle" src="assets/img/team/1.jpg" alt="" />
+                <img class="rounded-circle" src="{{asset('assets/img/team/1.jpg')}}" alt="" />
 
               </div>
               <div class="flex-1">
@@ -106,7 +106,7 @@
           <a class="dropdown-item px-x1 py-2" href="pages/user/profile.html">
             <div class="d-flex align-items-center">
               <div class="avatar avatar-l me-2">
-                <img class="rounded-circle" src="assets/img/team/2.jpg" alt="" />
+                <img class="rounded-circle" src="{{asset('assets/img/team/2.jpg')}}" alt="" />
 
               </div>
               <div class="flex-1">
@@ -118,7 +118,7 @@
           <a class="dropdown-item px-x1 py-2" href="pages/user/profile.html">
             <div class="d-flex align-items-center">
               <div class="avatar avatar-l me-2">
-                <img class="rounded-circle" src="assets/img/team/3.jpg" alt="" />
+                <img class="rounded-circle" src="{{asset('assets/img/team/3.jpg')}}" alt="" />
 
               </div>
               <div class="flex-1">
@@ -180,7 +180,7 @@
               <a class="notification notification-flush notification-unread" href="#!">
                 <div class="notification-avatar">
                   <div class="avatar avatar-2xl me-3">
-                    <img class="rounded-circle" src="assets/img/team/1-thumb.png" alt="" />
+                    <img class="rounded-circle" src="{{asset('assets/img/team/1-thumb.png')}}" alt="" />
 
                   </div>
                 </div>
@@ -215,7 +215,7 @@
               <a class="notification notification-flush" href="#!">
                 <div class="notification-avatar">
                   <div class="avatar avatar-2xl me-3">
-                    <img class="rounded-circle" src="assets/img/icons/weather-sm.jpg" alt="" />
+                    <img class="rounded-circle" src="{{asset('assets/img/icons/weather-sm.jpg')}}" alt="" />
 
                   </div>
                 </div>
@@ -233,7 +233,7 @@
               <a class="border-bottom-0 notification-unread  notification notification-flush" href="#!">
                 <div class="notification-avatar">
                   <div class="avatar avatar-xl me-3">
-                    <img class="rounded-circle" src="assets/img/logos/oxford.png" alt="" />
+                    <img class="rounded-circle" src="{{asset('assets/img/logos/oxford.png')}}" alt="" />
 
                   </div>
                 </div>
@@ -251,7 +251,7 @@
               <a class="border-bottom-0 notification notification-flush" href="#!">
                 <div class="notification-avatar">
                   <div class="avatar avatar-xl me-3">
-                    <img class="rounded-circle" src="assets/img/team/10.jpg" alt="" />
+                    <img class="rounded-circle" src="{{asset('assets/img/team/10.jpg')}}" alt="" />
 
                   </div>
                 </div>
@@ -298,67 +298,67 @@
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
                   href="pages/user/profile.html" target="_blank">
-                  <div class="avatar avatar-2xl"> <img class="rounded-circle" src="assets/img/team/3.jpg"
+                  <div class="avatar avatar-2xl"> <img class="rounded-c{{asset('ircle" src="assets/img')}}/team/3.jpg"
                       alt="" /></div>
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2">Account</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
                   href="https://Intellect.com/" target="_blank"><img class="rounded"
-                    src="assets/img/nav-icons/Intellect.png" alt="" width="40" height="40" />
+                    src="{{asset('assets/img/icons/spot-illustrations/Intellect.png')}}" alt="" width="40" height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Intellect</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
                   href="https://mailbluster.com/" target="_blank"><img class="rounded"
-                    src="assets/img/nav-icons/mailbluster.png" alt="" width="40" height="40" />
+                    src="{{asset('assets/img/nav-icons/mailbluster.png')}}" alt="" width="40" height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Mailbluster</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/google.png" alt="" width="40"
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/google.png')}}" alt="" width="40"
                     height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Google</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/spotify.png" alt=""
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/spotify.png')}}" alt=""
                     width="40" height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Spotify</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/steam.png" alt="" width="40"
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/steam.png')}}" alt="" width="40"
                     height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Steam</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/github-light.png" alt=""
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/github-light')}}.png" alt=""
                     width="40" height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Github</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/discord.png" alt=""
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/discord.png')}}" alt=""
                     width="40" height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Discord</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/xbox.png" alt="" width="40"
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/xbox.png')}}" alt="" width="40"
                     height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">xbox</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/trello.png" alt="" width="40"
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/trello.png')}}" alt="" width="40"
                     height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Kanban</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/hp.png" alt="" width="40"
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/hp.png')}}" alt="" width="40"
                     height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Hp</p>
                 </a></div>
@@ -367,43 +367,43 @@
               </div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/linkedin.png" alt=""
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/linkedin.png')}}" alt=""
                     width="40" height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Linkedin</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/twitter.png" alt=""
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/twitter.png')}}" alt=""
                     width="40" height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Twitter</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/facebook.png" alt=""
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/facebook.png')}}" alt=""
                     width="40" height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Facebook</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/instagram.png" alt=""
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/instagram.png')}}" alt=""
                     width="40" height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Instagram</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/pinterest.png" alt=""
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/pinterest.png')}}" alt=""
                     width="40" height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Pinterest</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/slack.png" alt="" width="40"
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/slack.png')}}" alt="" width="40"
                     height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Slack</p>
                 </a></div>
               <div class="col-4"><a
                   class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none" href="#!"
-                  target="_blank"><img class="rounded" src="assets/img/nav-icons/deviantart.png" alt=""
+                  target="_blank"><img class="rounded" src="{{asset('assets/img/nav-icons/deviantart.png')}}" alt=""
                     width="40" height="40" />
                   <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">Deviantart</p>
                 </a></div>
@@ -427,7 +427,7 @@
   <li class="nav-item dropdown"><a class="nav-link pe-0 ps-2" id="navbarDropdownUser" role="button"
       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <div class="avatar avatar-xl">
-        <img class="rounded-circle" src="assets/img/team/3-thumb.png" alt="" />
+        <img class="rounded-circle" src="{{asset('assets/img/team/3-thumb.png')}}" alt="" />
 
       </div>
     </a>
