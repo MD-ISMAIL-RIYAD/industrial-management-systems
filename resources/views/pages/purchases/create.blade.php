@@ -84,7 +84,7 @@
             z-index: 10;
             /* Ensure text is above angles */
             margin-bottom: 30px;
-            margin-top: -70px;
+            margin-top: -55px;
         }
 
         .invoice-title {
@@ -218,27 +218,38 @@
             <div class="row invoice-header align-items-center">
                 <div class="col-md-8" style="margin-top: 30px;">
                     <h1 class="invoice-title">ORDER INVOICE</h1>
-                    <p class="project-name">Food and Beverage Manufacturing</p>
+                    <p class="project-name mb-0">Food and Beverage Manufacturing</p>
                     <div class="invoice-details">
-                        <p>INVOICE NO: <span id="invoice-id">{{$newPurchaseId}}</span></p>
-                        <p>Current Date: <span id="current-date">July 07, 2025</span></p>
+                        <p class="mb-0">INVOICE NO: <span id="invoice-id" class="fw-bold">{{$newPurchaseId}}</span></p>
+                        <p class="mb-0">Current Date: <span id="current-date" class="fw-bold"> {{now()->format('F d, Y')}}</span></p>
+                        <p class="mt-0 w-50 d-flex align-items-center gap-1">Delivery Date: <input type="date" id="delivery-date" class="py-0 form-control" /></p>
                     </div>
                 </div>
                 <div class="col-md-4 invoice-to d-flex justify-content-end flex-column " style="min-width: 180px;">
                     <p class="mb-1 fw-bold text-light">Invoice to</p>
-                    <select name="customer" id="customer-id" class="form-select w-75 align-self-end mb-1">
-                        @foreach($customers as $customer)
-                            <option value="{{$customer->id}}">{{$customer->name}}</option>
+                    <select name="supplier" id="supplier-id" class="form-select w-75 align-self-end mb-1">
+                        @foreach($suppliers as $supplier)
+                        <option value="{{$supplier->id}}">{{$supplier->name}}</option>
                         @endforeach
                     </select>
-                    <p id="customer-email" class="mb-0">hello@reallygreatsite.com</p>
+                    <p id="supplier-email" class="mb-0">hello@reallygreatsite.com</p>
                     <p id="shipping-address">123 Anywhere St, Any City, ST 12345</p>
                 </div>
             </div>
 
             <hr class="my-4">
 
-            <h4 class="mb-3 text-primary">Order Details</h4>
+            <h4 class="mb-3 text-primary">Order Details </h4>
+            <!-- <div class="d-flex justify-content-between align-items-center">
+                <h4 class="mb-3 text-primary">Order Details </h4>
+                <select name="status-id" id="status-id" class="form-select w-25">
+                    <option value="1">Pending</option>
+                    <option value="2">Shipped</option>
+                    <option value="3">Delivered</option>
+                    <option value="4">Cancelled</option>
+                </select>
+            </div> -->
+
 
             <!-- inputs -->
             <div class="d-flex align-items-center gap-2 my-4">
@@ -295,12 +306,20 @@
                         <p><strong>Bank Code:</strong> 123-456-7890</p>
                         <p><strong>Bank Name:</strong> Fauget Bank</p>
                     </div>
+                    <div class="ps-3">
+                        <label for="shipping-address">Shipping Address:</label>
+                        <textarea class="form-control w-50" name="shipping-address" rows="1" placeholder="Add your address" cols="30" id="ship-address"></textarea>
+                    </div>
+                    <div class="ps-3">
+                        <label for="remark">Remark:</label> <br>
+                        <textarea class="form-control w-50" name="remark" rows="1" placeholder="Any Special notes" cols="30" id="remark"></textarea>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="totals-summary p-3">
                         <div class="row mb-2">
                             <div class="col-6 text-end">Subtotal:</div>
-                            <div class="col-6 text-end" id="subtotal-amount" >$0</div>
+                            <div class="col-6 text-end" id="subtotal-amount">$0</div>
                         </div>
                         <div class="row mb-2">
                             <div class="col-6 text-end">Special Discount:</div>
@@ -310,7 +329,7 @@
                         </div>
                         <div class="row total-row">
                             <div class="col-6 text-end">TOTAL:</div>
-                            <div class="col-6 text-end pe-0" id="total-amount">$0</div>
+                            <div class="col-6 text-end pe-0">$<span id="total-amount">000</span></div>
                         </div>
                         <div class="d-flex justify-content-end mt-4">
                             <button id="save-btn" class="btn btn-primary">Save</button>
@@ -330,7 +349,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="thank-you">
-                        <h2>Thank You!</h2>
+                        <h2>Riyad</h2>
                         <div class="signature"></div>
                         <p class="administrator-text">Administrator</p>
                     </div>
@@ -357,10 +376,10 @@
         const item = {
             product_id,
             product_name,
-            qty:parseFloat(qty),
-            price:parseFloat(price),
-            vat:parseFloat(vat),
-            discount:parseFloat(discount),
+            qty: parseFloat(qty),
+            price: parseFloat(price),
+            vat: parseFloat(vat),
+            discount: parseFloat(discount),
         }
         items.push(item);
         showItems();
@@ -371,13 +390,13 @@
     function showItems() {
         const tbody = document.getElementById('order-items-body');
         tbody.innerHTML = '';
-        let lineTotal=0;
-        let subtotal=0;
+        let lineTotal = 0;
+        let subtotal = 0;
         items.forEach((item, index) => {
             const tr = document.createElement('tr');
-            lineTotal=(item.qty*item.price)-item.discount+item.vat;
-            subtotal+=lineTotal;
-            document.getElementById('subtotal-amount').textContent='$'+subtotal;
+            lineTotal = (item.qty * item.price) - item.discount + item.vat;
+            subtotal += lineTotal;
+            document.getElementById('subtotal-amount').textContent = '$' + subtotal;
             tr.innerHTML = `
                 <td>${item.product_name}</td>
                 <td>$${item.price}</td>
@@ -397,15 +416,15 @@
     }
 
     //handel special discount
-    const specialDiscountDiv=document.getElementById('tax-amount');
-    specialDiscountDiv.addEventListener('input',()=>{
-        const fullSubtotal=document.getElementById('subtotal-amount').textContent;
-        const subtotalArr=fullSubtotal.split('$');
-        const subtotal=subtotalArr[1];
-        const subtotalNum=parseFloat(subtotal);
-        const specialDiscountNum=parseFloat(specialDiscountDiv.value);
-        const total= subtotalNum-specialDiscountNum;        
-        document.getElementById('total-amount').textContent=total;
+    const specialDiscountDiv = document.getElementById('tax-amount');
+    specialDiscountDiv.addEventListener('input', () => {
+        const fullSubtotal = document.getElementById('subtotal-amount').textContent;
+        const subtotalArr = fullSubtotal.split('$');
+        const subtotal = subtotalArr[1];
+        const subtotalNum = parseFloat(subtotal);
+        const specialDiscountNum = parseFloat(specialDiscountDiv.value);
+        const total = subtotalNum - specialDiscountNum;
+        document.getElementById('total-amount').textContent = total;
     })
 
 
@@ -414,13 +433,55 @@
         items.splice(i, 1);
         showItems();
     }
-    
+
     //save purchase
-    document.getElementById('save-btn').addEventListener('click', () => {
-        alert('Successfully Saved!');
-        items = [];
-        showItems();
-        window.location.assign("{{ route('purchases.index') }}");
+    document.getElementById('save-btn').addEventListener('click', async() => {
+
+        const supplier_id = document.getElementById('supplier-id').value;
+        const delivery_date = document.getElementById('delivery-date').value;
+        const shipping_address = document.getElementById('ship-address').value;
+        console.log(shipping_address);
+        const remark = document.getElementById('remark').value;
+        const purchase_total = document.getElementById('total-amount').textContent;
+        const discount=document.getElementById('tax-amount').value;
+
+        const payload = {
+            supplier_id,
+            delivery_date,
+            shipping_address,
+            remark,
+            discount,
+            purchase_total,
+            items
+        }
+
+        try {
+                const response = await fetch('http://127.0.0.1:8000/api/purchases', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`);
+                }
+
+                const result = await response.json();
+                console.log('Purchase created:', result);
+                alert('Purchase created successfully!');
+
+                //redirect to the index page
+                window.location.assign("{{ route('purchases.index') }}");
+
+            } catch (error) {
+                console.error('Failed to create Purchase:', error);
+                alert('Error creating Purchase.');
+            }
+        console.log(payload);
+
     });
 </script>
 
