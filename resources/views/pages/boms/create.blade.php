@@ -228,7 +228,11 @@
                     <p class="mb-1 fw-bold text-light">Invoice to</p>
                     <select name="customer" id="customer-id" class="form-select w-75 align-self-end mb-1">
                         @foreach($customers as $customer)
+<<<<<<< HEAD
                         <option value="{{$customer->id}}">{{$customer->name}}</option>
+=======
+                            <option value="{{$customer->id}}">{{$customer->name}}</option>
+>>>>>>> b5eef4b227d3eaa3f4691383762b60b03d80ac28
                         @endforeach
                     </select>
                     <p id="customer-email" class="mb-0">hello@reallygreatsite.com</p>
@@ -300,7 +304,11 @@
                     <div class="totals-summary p-3">
                         <div class="row mb-2">
                             <div class="col-6 text-end">Subtotal:</div>
+<<<<<<< HEAD
                             <div class="col-6 text-end" id="subtotal-amount">$0</div>
+=======
+                            <div class="col-6 text-end" id="subtotal-amount" >$0</div>
+>>>>>>> b5eef4b227d3eaa3f4691383762b60b03d80ac28
                         </div>
                         <div class="row mb-2">
                             <div class="col-6 text-end">Special Discount:</div>
@@ -357,10 +365,17 @@
         const item = {
             product_id,
             product_name,
+<<<<<<< HEAD
             qty: parseFloat(qty),
             price: parseFloat(price),
             vat: parseFloat(vat),
             discount: parseFloat(discount),
+=======
+            qty:parseFloat(qty),
+            price:parseFloat(price),
+            vat:parseFloat(vat),
+            discount:parseFloat(discount),
+>>>>>>> b5eef4b227d3eaa3f4691383762b60b03d80ac28
         }
         items.push(item);
         showItems();
@@ -371,6 +386,7 @@
     function showItems() {
         const tbody = document.getElementById('order-items-body');
         tbody.innerHTML = '';
+<<<<<<< HEAD
         let lineTotal = 0;
         let subtotal = 0;
         items.forEach((item, index) => {
@@ -378,6 +394,15 @@
             lineTotal = (item.qty * item.price) - item.discount + item.vat;
             subtotal += lineTotal;
             document.getElementById('subtotal-amount').textContent = '$' + subtotal;
+=======
+        let lineTotal=0;
+        let subtotal=0;
+        items.forEach((item, index) => {
+            const tr = document.createElement('tr');
+            lineTotal=(item.qty*item.price)-item.discount+item.vat;
+            subtotal+=lineTotal;
+            document.getElementById('subtotal-amount').textContent='$'+subtotal;
+>>>>>>> b5eef4b227d3eaa3f4691383762b60b03d80ac28
             tr.innerHTML = `
                 <td>${item.product_name}</td>
                 <td>$${item.price}</td>
@@ -397,6 +422,7 @@
     }
 
     //handel special discount
+<<<<<<< HEAD
     const specialDiscountDiv = document.getElementById('tax-amount');
     specialDiscountDiv.addEventListener('input', () => {
         const fullSubtotal = document.getElementById('subtotal-amount').textContent;
@@ -406,6 +432,17 @@
         const specialDiscountNum = parseFloat(specialDiscountDiv.value);
         const total = subtotalNum - specialDiscountNum;
         document.getElementById('total-amount').textContent = total;
+=======
+    const specialDiscountDiv=document.getElementById('tax-amount');
+    specialDiscountDiv.addEventListener('input',()=>{
+        const fullSubtotal=document.getElementById('subtotal-amount').textContent;
+        const subtotalArr=fullSubtotal.split('$');
+        const subtotal=subtotalArr[1];
+        const subtotalNum=parseFloat(subtotal);
+        const specialDiscountNum=parseFloat(specialDiscountDiv.value);
+        const total= subtotalNum-specialDiscountNum;        
+        document.getElementById('total-amount').textContent=total;
+>>>>>>> b5eef4b227d3eaa3f4691383762b60b03d80ac28
     })
 
 
@@ -414,7 +451,7 @@
         items.splice(i, 1);
         showItems();
     }
-
+    
     //save purchase
     document.getElementById('save-btn').addEventListener('click', () => {
         alert('Successfully Saved!');
