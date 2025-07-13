@@ -23,34 +23,33 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        $purchase=new Purchase();
-        $purchase->supplier_id=$request->supplier_id;
+        $purchase = new Purchase();
+        $purchase->supplier_id = $request->supplier_id;
         $purchase->purchase_date = Carbon::parse($request->purchase_date)->format('Y-m-d');
         $purchase->delivery_date = Carbon::parse($request->delivery_date)->format('Y-m-d');
-        $purchase->remark=$request->remark;
-        $purchase->vat=0;
-        $purchase->discount=$request->discount;
-        $purchase->status_id=1;
-        $purchase->purchase_total=$request->purchase_total;
-        $purchase->paid_amount=$request->purchase_total;
-        $purchase->paid_amount=$request->purchase_total;
-        $purchase->shipping_address=$request->shipping_address;
+        $purchase->remark = $request->remark;
+        $purchase->vat = 0;
+        $purchase->discount = $request->discount;
+        $purchase->status_id = 1;
+        $purchase->purchase_total = $request->purchase_total;
+        $purchase->paid_amount = $request->purchase_total;
+        $purchase->paid_amount = $request->purchase_total;
+        $purchase->shipping_address = $request->shipping_address;
         $purchase->save();
 
-        $items=$request->items;
-        foreach($items as $item){
-            $details=new PurchaseDetail();
-            $details->purchase_id=$purchase->id;
-            $details->product_id=$item['product_id'];
-            $details->qty=$item['qty'];
-            $details->price=$item['price'];
-            $details->vat=$item['vat'];
-            $details->discount=$item['discount'];
+        $items = $request->items;
+        foreach ($items as $item) {
+            $details = new PurchaseDetail();
+            $details->purchase_id = $purchase->id;
+            $details->product_id = $item['product_id'];
+            $details->qty = $item['qty'];
+            $details->price = $item['price'];
+            $details->vat = $item['vat'];
+            $details->discount = $item['discount'];
             $details->save();
         }
 
         return response()->json($purchase);
-        
     }
 
     /**

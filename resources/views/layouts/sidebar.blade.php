@@ -17,7 +17,7 @@
       <div class="d-flex align-items-center py-3"><img class="me-2"
           src="{{asset('assets/img/icons/spot-illustrations/Intellect.png')}}"
            alt="" width="40" /><span
-          class="font-sans-serif">Industral managment system </span>
+          class="font-sans-serif">FOOD&BEVARAGE MFG</span>
       </div>
     </a>
   </div>

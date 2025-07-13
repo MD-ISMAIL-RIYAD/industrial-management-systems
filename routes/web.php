@@ -27,7 +27,7 @@ Route::resource('positions', App\Http\Controllers\PositionController::class);
 Route::resource('product_units', App\Http\Controllers\ProductUnitController::class);
 Route::resource('product_types', App\Http\Controllers\ProductTypeController::class);
 Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
-Route::resource('purchase_details', App\Http\Controllers\PurchaseDetailController::class); 
+Route::resource('purchase_details', App\Http\Controllers\PurchaseDetailController::class);
 Route::resource('stocks', App\Http\Controllers\StockController::class);
 Route::resource('stock_adjustments', App\Http\Controllers\StockAdjustmentController::class);
 Route::resource('stock_adjustment_details', App\Http\Controllers\StockAdjustmentDetailController::class);
