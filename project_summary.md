@@ -138,6 +138,37 @@
      
 
 
+         ===== Production Management=====
+         Document	                            Description
+   Bill of Materials (BOM)✅✅          Defines components required to make a product.
+   Production Planning✅                 Document	Scheduling and allocation of production resources.
+   Production Status Report	             Tracks progress of active production orders.
+   Production Report                     from Production Orders
+        ======== Inventory Management=======
+   Stock Transfer Note                   Transfer of items between warehouses.
+   Stock Adjustment Record✅	            Adjustment of inventory due to damage, loss, etc.
+   Inventory Ledger Report	             item-level stock movement (optional document/report).
+   Inventory Report                      from stock movement
+        ======Sales & Order Management======
+   Sales Order✅✅	                     Customer request for products.
+   Sales Invoice✅✅                     Final bill issued to the customer.
+   Delivery Note	                        Document for shipping products to the customer.
+   Customer Record	                      Customer details and transaction history (Master Data).
+   Sales Report                           from Invoices
+        ====== Purchase Management======
+   Purchase Order (PO)✅✅                Request to supplier to buy items.
+   Purchase Receipt	                       Record of goods received from supplier.
+   Purchase Return Note	                   Record of returned items to supplier.
+        ======HR Management=======
+   Employee Profile✅                      Master data for employees.
+   Attendance Sheet	                       Daily/monthly presence records.
+   Payroll Document/Payslip	               Salary statement for an employee.
+        ====== Finance Management=====
+   Payment Voucher	                       Payment made to vendor/supplier.
+   Money Receipt (bill)✅✅               Money received from customer.
+   Transaction Record	                     Financial transaction (general ledger).
+   Account Ledger	                         Summary of all transactions of an account.
+   
 
 
 
