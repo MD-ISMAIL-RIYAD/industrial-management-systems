@@ -2474,6 +2474,30 @@ INSERT INTO `core_manufacturers` (`id`,`name`) VALUES
 
 
 --
+-- Definition of table `core_mfg_bom_details`
+--
+
+DROP TABLE IF EXISTS `core_mfg_bom_details`;
+CREATE TABLE `core_mfg_bom_details` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `bom_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `item_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `unit_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `qty` decimal(10,0) NOT NULL DEFAULT 0,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `core_mfg_bom_details`
+--
+
+/*!40000 ALTER TABLE `core_mfg_bom_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `core_mfg_bom_details` ENABLE KEYS */;
+
+
+--
 -- Definition of table `core_mfg_bom_finished_goods`
 --
 
