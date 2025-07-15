@@ -14,10 +14,8 @@
 
     </div>
     <a class="navbar-brand" href="index.html">
-      <div class="d-flex align-items-center py-3"><img class="me-2"
-          src="{{asset('assets/img/icons/spot-illustrations/Intellect.png')}}"
-           alt="" width="40" /><span
-          class="font-sans-serif">FOOD&BEVARAGE MFG</span>
+      <div class="d-flex align-items-center py-3">
+        <span class="font-sans-serif">Food & Beverage Manufacturing In. </span>
       </div>
     </a>
   </div>
@@ -45,9 +43,9 @@
                 data-bs-dismiss="alert"></button>
             </div>
             <div class="text-center"><img src="{{asset('assets/img/icons/spot-illustrations/navbar-vertical.png')}}"
-             alt=""
+                alt=""
                 width="80" />
-              <p class="fs--2 mt-2">Loving what you see? <br />Get your copy of <a href="#!">Intellect</a></p>
+              <p class="fs--2 mt-2">Loving what you see? <br />Get your copy of <a href="http://riyad.intelsofts.com/">@RIYAD</a></p>
               <div class="d-grid"><a class="btn btn-sm btn-purchase"
                   href="https://themes.getbootstrap.com/product/falcon-admin-dashboard-webapp-template/"
                   target="_blank">Purchase</a></div>

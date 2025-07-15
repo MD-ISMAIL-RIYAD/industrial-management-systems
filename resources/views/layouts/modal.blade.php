@@ -5,7 +5,7 @@
             <div class="modal-header px-5 position-relative modal-shape-header bg-shape">
                 <div class="position-relative z-index-1 light">
                     <h4 class="mb-0 text-white" id="authentication-modal-label">Register</h4>
-                    <p class="fs--1 mb-0 text-white">Please create your free Intellect account</p>
+                    <p class="fs--1 mb-0 text-white">Please create your account</p>
                 </div>
                 <button class="btn-close btn-close-white position-absolute top-0 end-0 mt-2 me-2"
                     data-bs-dismiss="modal" aria-label="Close"></button>
@@ -47,9 +47,12 @@
                 </div>
                 <div class="row g-2 mt-2">
                     <div class="col-sm-6"><a class="btn btn-outline-google-plus btn-sm d-block w-100" href="#"><span
-                                class="fab fa-google-plus-g me-2" data-fa-transform="grow-8"></span> google</a></div>
+                                class="fab fa-google-plus-g me-2" data-fa-transform="grow-8"></span>Google</a></div>
                     <div class="col-sm-6"><a class="btn btn-outline-facebook btn-sm d-block w-100" href="#"><span
-                                class="fab fa-facebook-square me-2" data-fa-transform="grow-8"></span> facebook</a>
+                                class="fab fa-facebook-square me-2" data-fa-transform="grow-8"></span>Linkdin</a>
+                    </div>
+                    <div class="col-sm-6"><a class="btn btn-outline-facebook btn-sm d-block w-100" href="#"><span
+                                class="fab fa-facebook-square me-2" data-fa-transform="grow-8"></span> Facebook</a>
                     </div>
                 </div>
             </div>

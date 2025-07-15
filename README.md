@@ -25,7 +25,7 @@
 
 =================== Commands after clone form Github
 
-  copy.env.example .env (copy files form .env.example to .env) ->setup database in .env file
+  copy .env.example .env (copy files form .env.example to .env) ->setup database in .env file
   composer install (install all dependencies)
   php artisan key:generate (generate all keys)
   

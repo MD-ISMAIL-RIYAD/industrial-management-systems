@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Invoice - Food and Beverage Manufacturing</title>
+    <title>Purchase Order - Food and Beverage Manufacturing</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -217,7 +217,7 @@
         <div class="invoice-content">
             <div class="row invoice-header align-items-center">
                 <div class="col-md-8" style="margin-top: 30px;">
-                    <h1 class="invoice-title">ORDER INVOICE</h1>
+                    <h2 class="invoice-title">Purchase Order</h2>
                     <p class="project-name mb-0">Food and Beverage Manufacturing</p>
                     <div class="invoice-details">
                         <p class="mb-0">INVOICE NO: <span id="invoice-id" class="fw-bold">{{$newPurchaseId}}</span></p>

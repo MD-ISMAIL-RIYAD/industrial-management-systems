@@ -120,9 +120,9 @@
       <div class="text-center mt-5"><img class="mb-4" src="{{asset('assets/img/icons/spot-illustrations/47.png')}}" alt=""
           width="120" />
         <h5>Like What You See?</h5>
-        <p class="fs--1">Get Intellect now and create beautiful dashboards with hundreds of widgets.</p><a
+        <p class="fs--1">"Hey Gentleman, Get Intellect now and start creating beautiful dashboards with hundreds of powerful widgets!"</p><a
           class="mb-3 btn btn-primary"
-          href="https://themes.getbootstrap.com/product/falcon-admin-dashboard-webapp-template/"
+          href="http://riyad.intelsofts.com/"
           target="_blank">Purchase</a>
       </div>
     </div>

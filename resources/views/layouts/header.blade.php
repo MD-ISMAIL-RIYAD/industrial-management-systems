@@ -10,7 +10,7 @@
   <!-- ===============================================-->
   <!--    Document Title-->
   <!-- ===============================================-->
-  <title>Intellect | Dashboard &amp; Web App Template</title>
+  <title>@riyad | Dashboard &amp; Laravel web Template</title>
 
 
   <!-- ===============================================-->
@@ -39,19 +39,19 @@
   <link href="{{asset('assets/css/theme.min.css')}}" rel="stylesheet" id="style-default">
   <link href="{{asset('assets/css/user-rtl.min.css')}}" rel="stylesheet" id="user-style-rtl">
   <link href="{{asset('assets/css/user.min.css')}}" rel="stylesheet" id="user-style-default">
-   <style>
-        .input-group-prepend .input-group-text {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px 0 0 5px;
-        }
+  <style>
+    .input-group-prepend .input-group-text {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px 0 0 5px;
+    }
 
-        .input-group-prepend .input-group-text i {
-            font-size: 1.2rem;
-        }
-    </style>
+    .input-group-prepend .input-group-text i {
+      font-size: 1.2rem;
+    }
+  </style>
   <script>
     var isRTL = JSON.parse(localStorage.getItem('isRTL'));
     if (isRTL) {
