@@ -26,10 +26,10 @@
 
         <!-- parent pages-->
 
+        @include("layouts.menus.purchase")
         @include("layouts.menus.production")
         @include("layouts.menus.inventory")
         @include("layouts.menus.sales_order")
-        @include("layouts.menus.purchase")
         @include("layouts.menus.hr_managment")
         @include("layouts.menus.finance_accounts")
         @include("layouts.menus.reports")
