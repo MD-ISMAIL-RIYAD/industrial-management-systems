@@ -10,7 +10,7 @@
   <!-- ===============================================-->
   <!--    Document Title-->
   <!-- ===============================================-->
-  <title>@riyad | Dashboard &amp; Laravel web Template</title>
+  <title>Food &amp; Beverage Manufacturing In.</title>
 
 
   <!-- ===============================================-->

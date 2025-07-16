@@ -7,15 +7,15 @@
   </script>
   <div class="d-flex align-items-center">
     <div class="toggle-icon-wrapper">
-
-      <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip"
-        data-bs-placement="left" title="Toggle Navigation"><span class="navbar-toggle-icon"><span
-            class="toggle-line"></span></span></button>
-
+      <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Navigation">
+        <span class="navbar-toggle-icon">
+          <span class="toggle-line"></span>
+        </span>
+      </button>
     </div>
     <a class="navbar-brand" href="index.html">
       <div class="d-flex align-items-center py-3">
-        <span class="font-sans-serif">Food & Beverage Manufacturing In. </span>
+        <span class="font-sans-serif">RIYAD</span>
       </div>
     </a>
   </div>

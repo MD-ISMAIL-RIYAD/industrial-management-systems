@@ -60,19 +60,39 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark"><tr><th>Id</th><th>Product id</th><th>Qty</th><th>Transaction type id</th><th>Remark</th><th>Created at</th><th>Warehouse id</th><th>Actions</th></tr></thead>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Product id</th>
+                        <th>Qty</th>
+                        <th>Transaction type id</th>
+                        <th>Remark</th>
+                        <th>Created at</th>
+                        <th>Warehouse id</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody>
-                @foreach ($stocks as $item)
-                    <tr><td>{{ $item->id }}</td><td>{{ optional($item->product)->name ?? $item->product_id }}</td><td>{{ $item->qty }}</td><td>{{ optional($item->transactionType)->name ?? $item->transaction_type_id }}</td><td>{{ $item->remark }}</td><td>{{ $item->created_at }}</td><td>{{ optional($item->warehouse)->name ?? $item->warehouse_id }}</td><td>
-    <a href="{{ route('stocks.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-    <a href="{{ route('stocks.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-    <form action="{{ route('stocks.destroy', $item->id) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
-</td></tr>
-                @endforeach
+                    @foreach ($stocks as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ optional($item->product)->name ?? $item->product_id }}</td>
+                        <td>{{ $item->qty }}</td>
+                        <td>{{ optional($item->transactionType)->name ?? $item->transaction_type_id }}</td>
+                        <td>{{ $item->remark }}</td>
+                        <td>{{ $item->created_at }}</td>
+                        <td>{{ optional($item->warehouse)->name ?? $item->warehouse_id }}</td>
+                        <td style="min-width: 225px;">
+                            <a href="{{ route('stocks.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+                            <a href="{{ route('stocks.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('stocks.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

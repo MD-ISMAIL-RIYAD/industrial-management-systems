@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Purchase;
 use App\Models\PurchaseDetail;
+use App\Models\Stock;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -47,6 +48,17 @@ class PurchaseController extends Controller
             $details->vat = $item['vat'];
             $details->discount = $item['discount'];
             $details->save();
+
+            // product_id, qty, transaction_type_id, remark, created_at, warehouse_id, product_type
+            $stock= new Stock();
+            $stock->product_id=$item['product_id'];
+            $stock->qty=+$item['qty'];
+            $stock->transaction_type_id='1';
+            $stock->remark=$request->remark;
+            $stock->created_at=now();
+            $stock->warehouse_id=1;
+            $stock->product_type="Raw Materials";
+            $stock->save();
         }
 
         return response()->json($purchase);

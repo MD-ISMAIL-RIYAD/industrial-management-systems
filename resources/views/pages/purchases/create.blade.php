@@ -218,7 +218,7 @@
             <div class="row invoice-header align-items-center">
                 <div class="col-md-8" style="margin-top: 30px;">
                     <h2 class="invoice-title">Purchase Order</h2>
-                    <p class="project-name mb-0">Food and Beverage Manufacturing</p>
+                    <p class="project-name mb-0">Food & Beverage Manufacturing In.</p>
                     <div class="invoice-details">
                         <p class="mb-0">INVOICE NO: <span id="invoice-id" class="fw-bold">{{$newPurchaseId}}</span></p>
                         <p class="mb-0">Current Date: <span id="current-date" class="fw-bold"> {{now()->format('F d, Y')}}</span></p>
@@ -232,8 +232,8 @@
                         <option value="{{$supplier->id}}">{{$supplier->name}}</option>
                         @endforeach
                     </select>
-                    <p id="supplier-email" class="mb-0">hello@reallygreatsite.com</p>
-                    <p id="shipping-address">123 Anywhere St, Any City, ST 12345</p>
+                    <p id="supplier-email" class="mb-0">supplier@reallygreatsite.com</p>
+                    <p id="shipping-address">893/A West-Monipur, Mirpur, Dhaka-1216</p>
                 </div>
             </div>
 
@@ -307,6 +307,13 @@
                         <p><strong>Bank Name:</strong> Fauget Bank</p>
                     </div>
                     <div class="ps-3">
+                        <label for="product-type">Product Type:</label> <br>
+                        <select name="product-type" id="product-type" class="form-select w-50">                         
+                            <option value="Raw Materials">Raw Materials</option>
+                            <option value="Finished Goods">Finished Goods</option>
+                        </select>
+                    </div>
+                    <div class="ps-3 my-2">
                         <label for="shipping-address">Shipping Address:</label>
                         <textarea class="form-control w-50" name="shipping-address" rows="1" placeholder="Add your address" cols="30" id="ship-address"></textarea>
                     </div>
@@ -435,7 +442,7 @@
     }
 
     //save purchase
-    document.getElementById('save-btn').addEventListener('click', async() => {
+    document.getElementById('save-btn').addEventListener('click', async () => {
 
         const supplier_id = document.getElementById('supplier-id').value;
         const delivery_date = document.getElementById('delivery-date').value;
@@ -443,7 +450,7 @@
         console.log(shipping_address);
         const remark = document.getElementById('remark').value;
         const purchase_total = document.getElementById('total-amount').textContent;
-        const discount=document.getElementById('tax-amount').value;
+        const discount = document.getElementById('tax-amount').value;
 
         const payload = {
             supplier_id,
@@ -456,30 +463,30 @@
         }
 
         try {
-                const response = await fetch('http://127.0.0.1:8000/api/purchases', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
+            const response = await fetch('http://127.0.0.1:8000/api/purchases', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
 
-                if (!response.ok) {
-                    throw new Error(`Server error: ${response.status}`);
-                }
-
-                const result = await response.json();
-                console.log('Purchase created:', result);
-                alert('Purchase created successfully!');
-
-                //redirect to the index page
-                window.location.assign("{{ route('purchases.index') }}");
-
-            } catch (error) {
-                console.error('Failed to create Purchase:', error);
-                alert('Error creating Purchase.');
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
             }
+
+            const result = await response.json();
+            console.log('Purchase created:', result);
+            alert('Purchase created successfully!');
+
+            //redirect to the index page
+            window.location.assign("{{ route('purchases.index') }}");
+
+        } catch (error) {
+            console.error('Failed to create Purchase:', error);
+            alert('Error creating Purchase.');
+        }
         console.log(payload);
 
     });

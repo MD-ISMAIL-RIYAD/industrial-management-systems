@@ -304,7 +304,7 @@
                 <div class="col-4"><a
                     class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
                     href="http://riyad.intelsofts.com/" target="_blank"><img class="rounded"
-                      src="{{asset('assets/img/icons/spot-illustrations/@RIAYD.png')}}" alt="" width="40" height="40" />
+                      src="{{asset('assets/img/icons/spot-illustrations/intellect.png')}}" alt="" width="40" height="40" />
                     <p class="mb-0 fw-medium text-800 text-truncate fs--2 pt-1">@RIAYD</p>
                   </a></div>
                 <div class="col-4"><a

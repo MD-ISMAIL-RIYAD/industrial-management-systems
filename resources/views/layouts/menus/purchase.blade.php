@@ -6,21 +6,21 @@
   </a>
   <ul class="nav collapse" id="purchase">
     <li class="nav-item">
-      <a class="nav-link dropdown-indicator" href="#purchase_orders" data-bs-toggle="collapse"
+      <a class="nav-link dropdown-indicator" href="#purchase_order" data-bs-toggle="collapse"
         aria-expanded="false" aria-controls="purchase">
         <div class="d-flex align-items-center"><span class="nav-link-text ps-1"> Orders</span>
         </div>
       </a>
       <!-- more inner pages-->
-      <ul class="nav collapse" id="purchase_orders">
-        <li class="nav-item"><a class="nav-link" href="{{url('purchase_orders/create')}}">
+      <ul class="nav collapse" id="purchase_order">
+        <li class="nav-item"><a class="nav-link" href="{{url('purchases/create')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create New Orders</span>
             </div>
           </a>
           <!-- more inner pages-->
         </li>
 
-        <li class="nav-item"><a class="nav-link" href="{{url('purchase_orders')}}">
+        <li class="nav-item"><a class="nav-link" href="{{url('purchases')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Orders</span>
             </div>
           </a>
@@ -64,14 +64,14 @@
 
       <!-- more inner pages-->
       <ul class="nav collapse" id="invoice">
-        <li class="nav-item"><a class="nav-link" href="{{url('invoice/create')}}">
+        <li class="nav-item"><a class="nav-link" href="{{url('invoices/create')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">New Invoices</span>
             </div>
           </a>
           <!-- more inner pages-->
         </li>
 
-        <li class="nav-item"><a class="nav-link" href="{{url('invoice')}}">
+        <li class="nav-item"><a class="nav-link" href="{{url('invoices')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Invoices </span>
             </div>
           </a>
@@ -99,32 +99,6 @@
 
         <li class="nav-item"><a class="nav-link" href="{{url('purchase_returns')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Adjusment Product </span>
-            </div>
-          </a>
-          <!-- more inner pages-->
-        </li>
-
-      </ul>
-
-    </li>
-    <li class="nav-item">
-      <a class="nav-link dropdown-indicator" href="#purchase_stock" data-bs-toggle="collapse"
-        aria-expanded="false" aria-controls="purchase">
-        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Stock</span>
-        </div>
-      </a>
-
-      <!-- more inner pages-->
-      <ul class="nav collapse" id="purchase_stock">
-        <li class="nav-item"><a class="nav-link" href="{{url('purchase_stock/create')}}">
-            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">New Stock</span>
-            </div>
-          </a>
-          <!-- more inner pages-->
-        </li>
-
-        <li class="nav-item"><a class="nav-link" href="{{url('purchase_stock')}}">
-            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Stock </span>
             </div>
           </a>
           <!-- more inner pages-->
