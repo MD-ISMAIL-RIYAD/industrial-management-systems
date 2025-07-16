@@ -60,19 +60,37 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark"><tr><th>Id</th><th>Item id</th><th>Qty</th><th>Cost</th><th>Bom id</th><th>Uom id</th><th>Actions</th></tr></thead>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Item id</th>
+                        <th>Qty</th>
+                        <th>Cost</th>
+                        <th>Bom id</th>
+                        <th>Uom id</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody>
-                @foreach ($bom_raw_materials as $item)
-                    <tr><td>{{ $item->id }}</td><td>{{ optional($item->item)->name ?? $item->item_id }}</td><td>{{ $item->qty }}</td><td>{{ $item->cost }}</td><td>{{ optional($item->bom)->name ?? $item->bom_id }}</td><td>{{ optional($item->uom)->name ?? $item->uom_id }}</td><td>
-    <a href="{{ route('bom_raw_materials.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-    <a href="{{ route('bom_raw_materials.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-    <form action="{{ route('bom_raw_materials.destroy', $item->id) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
-</td></tr>
-                @endforeach
+                    @foreach ($bom_raw_materials as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ optional($item->item)->name ?? $item->item_id }}</td>
+                        <td>{{ $item->qty }}</td>
+                        <td>{{ $item->cost }}</td>
+                        <td>{{ optional($item->bom)->name ?? $item->bom_id }}</td>
+                        <td>{{ optional($item->uom)->name ?? $item->uom_id }}</td>
+                        <td style="min-width: 225px;">
+                            <a href="{{ route('bom_raw_materials.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+                            <a href="{{ route('bom_raw_materials.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('bom_raw_materials.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

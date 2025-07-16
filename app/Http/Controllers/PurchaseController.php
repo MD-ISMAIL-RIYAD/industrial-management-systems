@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Purchase;
+use App\Models\RawMaterial;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
 use App\Models\Status;
@@ -22,7 +23,7 @@ class PurchaseController extends Controller
     {
         $suppliers = \App\Models\Supplier::all();
         $statuses = \App\Models\Status::all();
-        $products=Product::all();
+        $raw_materials=RawMaterial::all();
         $purchase=Purchase::all();
         $customers=Customer::all();
         $purchaseId=$purchase->max('id');
@@ -34,7 +35,7 @@ class PurchaseController extends Controller
             'purchase' => new Purchase(),
             'suppliers' => $suppliers,
             'statuses' => $statuses,
-            'products' => $products,
+            'raw_materials' => $raw_materials,
             'newPurchaseId'=>$newPurchaseId,
             'customers'=>$customers,
 

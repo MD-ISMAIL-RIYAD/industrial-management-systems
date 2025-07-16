@@ -5,9 +5,9 @@
     <div class="card bg-primary mb-3 p-4">
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-item-center ">
-                <h3 class=" card-title text-white d-flex align-items-center  m-0">Bom List</h3>
-                <a href="{{ route('boms.create') }}" class="btn btn-light btn-sm" title="Create New Product">
-                    <i class="fa fa-plus mr-1"></i> Create New Bom
+                <h3 class=" card-title text-white d-flex align-items-center  m-0">RawMaterial List</h3>
+                <a href="{{ route('raw_materials.create') }}" class="btn btn-light btn-sm" title="Create New Product">
+                    <i class="fa fa-plus mr-1"></i> Create New RawMaterial
                 </a>
             </div>
         </div>
@@ -60,41 +60,19 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Id</th>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Product id</th>
-                        <th>Qty</th>
-                        <th>Labour cost</th>
-                        <th>Date</th>
-                        <th>Remark</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
+                <thead class="thead-dark"><tr><th>Id</th><th>Name</th><th>Code</th><th>Description</th><th>Unit id</th><th>Category id</th><th>Created at</th><th>Updated at</th><th>Actions</th></tr></thead>
                 <tbody>
-                    @foreach ($boms as $item)
-                    <tr>
-                        <td>{{ $item->id }}</td>
-                        <td>{{ $item->code }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ optional($item->product)->name ?? $item->product_id }}</td>
-                        <td>{{ $item->qty }}</td>
-                        <td>{{ $item->labour_cost }}</td>
-                        <td>{{ $item->date }}</td>
-                        <td>{{ $item->remark }}</td>
-                        <td style="min-width: 225px;">
-                            <a href="{{ route('boms.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-                            <a href="{{ route('boms.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                            <form action="{{ route('boms.destroy', $item->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
+                @foreach ($raw_materials as $item)
+                    <tr><td>{{ $item->id }}</td><td>{{ $item->name }}</td><td>{{ $item->code }}</td><td>{{ $item->description }}</td><td>{{ optional($item->unit)->name ?? $item->unit_id }}</td><td>{{ optional($item->category)->name ?? $item->category_id }}</td><td>{{ $item->created_at }}</td><td>{{ $item->updated_at }}</td><td>
+    <a href="{{ route('raw_materials.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+    <a href="{{ route('raw_materials.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+    <form action="{{ route('raw_materials.destroy', $item->id) }}" method="POST" style="display:inline;">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+    </form>
+</td></tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

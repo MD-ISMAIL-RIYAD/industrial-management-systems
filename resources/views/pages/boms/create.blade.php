@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Invoice - Food and Beverage Manufacturing</title>
+    <title>Purchase Order - Food and Beverage Manufacturing</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -217,23 +217,11 @@
         <div class="invoice-content">
             <div class="row invoice-header align-items-center">
                 <div class="col-md-8" style="margin-top: 30px;">
-                    <h1 class="invoice-title">ORDER INVOICE</h1>
-                    <p class="project-name mb-0">Food and Beverage Manufacturing</p>
+                    <h2 class="invoice-title">Purchase Order</h2>
+                    <p class="project-name mb-0">Food & Beverage Manufacturing In.</p>
                     <div class="invoice-details">
-                        <p class="mb-0">INVOICE NO: <span id="invoice-id" class="fw-bold">{{$newPurchaseId}}</span></p>
-                        <p class="mb-0">Current Date: <span id="current-date" class="fw-bold"> {{now()->format('F d, Y')}}</span></p>
-                        <p class="mt-0 w-50 d-flex align-items-center gap-1">Delivery Date: <input type="date" id="delivery-date" class="py-0 form-control" /></p>
+                        <p class="mb-0">INVOICE NO: <span id="invoice-id" class="fw-bold">{{$newBomId}}</span></p>
                     </div>
-                </div>
-                <div class="col-md-4 invoice-to d-flex justify-content-end flex-column " style="min-width: 180px;">
-                    <p class="mb-1 fw-bold text-light">Invoice to</p>
-                    <select name="supplier" id="supplier-id" class="form-select w-75 align-self-end mb-1">
-                        @foreach($suppliers as $supplier)
-                        <option value="{{$supplier->id}}">{{$supplier->name}}</option>
-                        @endforeach
-                    </select>
-                    <p id="supplier-email" class="mb-0">hello@reallygreatsite.com</p>
-                    <p id="shipping-address">123 Anywhere St, Any City, ST 12345</p>
                 </div>
             </div>
 
@@ -257,8 +245,8 @@
                     <p class="m-0">Product</p>
                     <select name="product-id" id="product-id" class="form-select">
                         <option value="">Select Product</option>
-                        @foreach($products as $product)
-                        <option value="{{$product->id}}">{{$product->name}}</option>
+                        @foreach($raw_materials as $product)
+                        <option value="{{$product->product_id}}">{{$product->product_id}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -304,9 +292,16 @@
                     <div class="payment-details">
                         <h5 class="text-primary">PAYMENT DETAILS:</h5>
                         <p><strong>Bank Code:</strong> 123-456-7890</p>
-                        <p><strong>Bank Name:</strong> Fauget Bank</p>
+                        <p><strong>Bank Name:</strong>The City Bank PLC</p>
                     </div>
                     <div class="ps-3">
+                        <label for="product-type">Product Type:</label> <br>
+                        <select name="product-type" id="product-type" class="form-select w-50">
+                            <option value="Raw Materials">Raw Materials</option>
+                            <option value="Finished Goods">Finished Goods</option>
+                        </select>
+                    </div>
+                    <div class="ps-3 my-2">
                         <label for="shipping-address">Shipping Address:</label>
                         <textarea class="form-control w-50" name="shipping-address" rows="1" placeholder="Add your address" cols="30" id="ship-address"></textarea>
                     </div>
@@ -371,8 +366,8 @@
         const product_name = productEl.options[productEl.selectedIndex].text;
         const qty = document.getElementById('qty').value;
         const price = document.getElementById('price').value;
-        const vat = document.getElementById('vat').value;
-        const discount = document.getElementById('discount').value;
+        // const vat = document.getElementById('vat').value;
+        // const discount = document.getElementById('discount').value;
         const item = {
             product_id,
             product_name,
@@ -435,7 +430,7 @@
     }
 
     //save purchase
-    document.getElementById('save-btn').addEventListener('click', async() => {
+    document.getElementById('save-btn').addEventListener('click', async () => {
 
         const supplier_id = document.getElementById('supplier-id').value;
         const delivery_date = document.getElementById('delivery-date').value;
@@ -443,7 +438,7 @@
         console.log(shipping_address);
         const remark = document.getElementById('remark').value;
         const purchase_total = document.getElementById('total-amount').textContent;
-        const discount=document.getElementById('tax-amount').value;
+        const discount = document.getElementById('tax-amount').value;
 
         const payload = {
             supplier_id,
@@ -456,30 +451,30 @@
         }
 
         try {
-                const response = await fetch('http://127.0.0.1:8000/api/purchases', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
+            const response = await fetch(`${BASE_URL}/api/purchases`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
 
-                if (!response.ok) {
-                    throw new Error(`Server error: ${response.status}`);
-                }
-
-                const result = await response.json();
-                console.log('Purchase created:', result);
-                alert('Purchase created successfully!');
-
-                //redirect to the index page
-                window.location.assign("{{ route('purchases.index') }}");
-
-            } catch (error) {
-                console.error('Failed to create Purchase:', error);
-                alert('Error creating Purchase.');
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
             }
+
+            const result = await response.json();
+            console.log('Purchase created:', result);
+            alert('Purchase created successfully!');
+
+            //redirect to the index page
+            window.location.assign("{{ route('purchases.index') }}");
+
+        } catch (error) {
+            console.error('Failed to create Purchase:', error);
+            alert('Error creating Purchase.');
+        }
         console.log(payload);
 
     });

@@ -257,7 +257,7 @@
                     <p class="m-0">Product</p>
                     <select name="product-id" id="product-id" class="form-select">
                         <option value="">Select Product</option>
-                        @foreach($products as $product)
+                        @foreach($raw_materials as $product)
                         <option value="{{$product->id}}">{{$product->name}}</option>
                         @endforeach
                     </select>
@@ -371,6 +371,7 @@
 
 </section>
 <script>
+    const BASE_URL="http://127.0.0.1:8000";
     let items = [];
     document.getElementById('add-item').addEventListener('click', () => {
         const productEl = document.getElementById('product-id');
@@ -463,7 +464,7 @@
         }
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/purchases', {
+            const response = await fetch(`${BASE_URL}/api/purchases`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

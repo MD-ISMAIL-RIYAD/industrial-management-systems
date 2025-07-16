@@ -52,3 +52,4 @@ Route::resource('product_categories', App\Http\Controllers\ProductCategoryContro
 Route::resource('bom_raw_materials', App\Http\Controllers\BomRawMaterialController::class);
 
 Route::resource('purchase_stocks', App\Http\Controllers\PurchaseStockController::class);
+Route::resource('raw_materials', App\Http\Controllers\RawMaterialController::class);

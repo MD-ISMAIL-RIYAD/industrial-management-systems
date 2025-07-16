@@ -1994,6 +1994,37 @@ CREATE TABLE `core_job_batches` (
 /*!40000 ALTER TABLE `core_job_batches` ENABLE KEYS */;
 
 
+-- -----------------------------------------------------
+-- Table Structure for `raw_materials`
+-- -----------------------------------------------------
+CREATE TABLE `core_mfg_raw_materials` (
+   `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+   `name` VARCHAR(150) NOT NULL,
+   `code` VARCHAR(100) UNIQUE NOT NULL,
+   `description` TEXT DEFAULT NULL,
+   `unit_id` BIGINT UNSIGNED NOT NULL,
+   `category_id` BIGINT UNSIGNED DEFAULT NULL,
+   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `core_mfg_raw_materials` (`name`, `code`, `description`, `unit_id`, `category_id`)
+VALUES
+('Sugar', 'RM-SUG-001', 'Granulated white sugar used as a sweetener.', 1, 1),
+('Wheat Flour', 'RM-WFL-002', 'Refined wheat flour for baking.', 1, 2),
+('Milk Powder', 'RM-MIL-003', 'Dehydrated milk used in dairy-based products.', 1, 3),
+('Citric Acid', 'RM-CIT-004', 'Acidulant used in beverages and preservation.', 1, 4),
+('Vanilla Essence', 'RM-VAN-005', 'Flavoring agent used in desserts and beverages.', 2, 5),
+('Salt', 'RM-SAL-006', 'Common salt for seasoning and preservation.', 1, 1),
+('Cocoa Powder', 'RM-COC-007', 'Used in chocolate-flavored products.', 1, 6),
+('Yeast', 'RM-YES-008', 'Used for fermentation in baking and brewing.', 1, 7),
+('Vegetable Oil', 'RM-OIL-009', 'Sunflower oil for frying and processing.', 2, 2),
+('Sodium Benzoate', 'RM-SOD-010', 'Preservative used in beverages.', 1, 4);
+
+
+
 --
 -- Definition of table `core_mfg_bom_finished_goods`
 --

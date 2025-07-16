@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bom;
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use App\Models\Stock;
 
 class BomController extends Controller
 {
@@ -17,14 +17,26 @@ class BomController extends Controller
 
     public function create()
     {
-        $products = \App\Models\Product::all();
+        {
+        $statuses = \App\Models\Status::all();
+        $raw_materials=Stock::where('product_type','Row Materials')
+                    ->select('product_id')
+                    ->get();
+        $boms=Bom::all();
+        $bomId=$boms->max('bom_no');
+        $newBomId='#BOM-'. str_pad($bomId+1,5,'0', STR_PAD_LEFT);
+
+
+
 
         return view('pages.boms.create', [
             'mode' => 'create',
-            'bom' => new Bom(),
-            'products' => $products,
+            'statuses' => $statuses,
+            'raw_materials' => $raw_materials,
+            'newBomId'=>$newBomId,
 
         ]);
+    }
     }
 
     public function store(Request $request)
