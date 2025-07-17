@@ -53,3 +53,6 @@ Route::resource('bom_raw_materials', App\Http\Controllers\BomRawMaterialControll
 
 Route::resource('purchase_stocks', App\Http\Controllers\PurchaseStockController::class);
 Route::resource('raw_materials', App\Http\Controllers\RawMaterialController::class);
+Route::resource('stocks', App\Http\Controllers\StockController::class);
+Route::resource('stocks', App\Http\Controllers\StockController::class);
+Route::resource('units', App\Http\Controllers\UnitController::class);

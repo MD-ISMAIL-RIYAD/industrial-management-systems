@@ -6,6 +6,7 @@ use App\Models\Bom;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Stock;
+use App\Models\Unit;
 
 class BomController extends Controller
 {
@@ -19,12 +20,14 @@ class BomController extends Controller
     {
         {
         $statuses = \App\Models\Status::all();
-        $raw_materials=Stock::where('product_type','Row Materials')
-                    ->select('product_id')
+        $raw_materials=Stock::where('product_type','Raw Materials')
+                    ->where('qty', '>',0)
+                    ->select('product_id','product_name')
                     ->get();
         $boms=Bom::all();
         $bomId=$boms->max('bom_no');
         $newBomId='#BOM-'. str_pad($bomId+1,5,'0', STR_PAD_LEFT);
+        $units= Unit::all();
 
 
 
@@ -34,6 +37,7 @@ class BomController extends Controller
             'statuses' => $statuses,
             'raw_materials' => $raw_materials,
             'newBomId'=>$newBomId,
+            'units'=>$units,
 
         ]);
     }

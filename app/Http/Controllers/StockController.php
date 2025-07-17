@@ -20,14 +20,12 @@ class StockController extends Controller
     public function create()
     {
         $products = \App\Models\Product::all();
-        $transactionTypes = \App\Models\TransactionType::all();
         $warehouses = \App\Models\Warehouse::all();
 
         return view('pages.stocks.create', [
             'mode' => 'create',
             'stock' => new Stock(),
             'products' => $products,
-            'transactionTypes' => $transactionTypes,
             'warehouses' => $warehouses,
 
         ]);

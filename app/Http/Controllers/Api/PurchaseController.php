@@ -52,6 +52,7 @@ class PurchaseController extends Controller
             // product_id, qty, transaction_type_id, remark, created_at, warehouse_id, product_type
             $stock= new Stock();
             $stock->product_id=$item['product_id'];
+            $stock->product_name=$item['product_name'];
             $stock->qty=+$item['qty'];
             $stock->transaction_type_id='1';
             $stock->remark=$request->remark;

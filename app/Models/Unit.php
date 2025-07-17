@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Unit extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'abbreviation', 'created_at', 'updated_at', 'item_categories'];
 }

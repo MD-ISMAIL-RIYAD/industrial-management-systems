@@ -217,10 +217,10 @@
         <div class="invoice-content">
             <div class="row invoice-header align-items-center">
                 <div class="col-md-8" style="margin-top: 30px;">
-                    <h2 class="invoice-title">Purchase Order</h2>
+                    <h2 class="invoice-title">Create Bom</h2>
                     <p class="project-name mb-0">Food & Beverage Manufacturing In.</p>
                     <div class="invoice-details">
-                        <p class="mb-0">INVOICE NO: <span id="invoice-id" class="fw-bold">{{$newBomId}}</span></p>
+                        <p class="mb-0">BOM NO: <span id="bom-id" class="fw-bold">{{$newBomId}}</span></p>
                     </div>
                 </div>
             </div>
@@ -241,33 +241,41 @@
 
             <!-- inputs -->
             <div class="d-flex align-items-center gap-2 my-4">
-                <div style="min-width: 180px;">
-                    <p class="m-0">Product</p>
-                    <select name="product-id" id="product-id" class="form-select">
-                        <option value="">Select Product</option>
-                        @foreach($raw_materials as $product)
-                        <option value="{{$product->product_id}}">{{$product->product_id}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div>
-                    <label class="m-0" for="price">Price</label><br>
-                    <input type="number" name="price" class="form-control" id="price">
-                </div>
-                <div>
-                    <label class="m-0" for="qty">Qty</label><br>
-                    <input type="number" name="qty" class="form-control" id="qty">
-                </div>
-                <div>
-                    <label class="m-0" for="vat">Vat</label><br>
-                    <input type="number" name="vat" class="form-control" id="vat">
-                </div>
-                <div>
-                    <label class="m-0" for="discount">Discount</label><br>
-                    <input type="number" name="discount" class="form-control" id="discount">
-                </div>
-                <button id="add-item" class="btn btn-primary mt-3">Add</button>
-            </div>
+    <div style="flex: 1;">
+        <p class="m-0">Item</p>
+        <select name="item-id" id="item-id" class="form-select">
+            <option value="">Select Bom Item</option>
+            @foreach($raw_materials as $product)
+                <option value="{{ $product->product_id }}">{{ $product->product_name }}</option>
+            @endforeach
+        </select>
+    </div>
+    
+    <div style="flex: 1;">
+        <label class="m-0">Unit</label><br>
+        <select name="unit_id" id="unit_id" class="form-select">
+            <option value="">Select Unit</option>
+            @foreach($units as $unit)
+                <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+            @endforeach
+        </select>
+    </div>
+
+    <div style="flex: 1;">
+        <label class="m-0" for="price">Price</label><br>
+        <input type="number" name="price" class="form-control" id="price">
+    </div>
+    <div style="flex: 1;">
+        <label class="m-0" for="qty">Qty</label><br>
+        <input type="number" name="qty" class="form-control" id="qty">
+    </div>
+
+    <div>
+        <label class="m-0"></label><br>
+        <button id="add-item" class="btn btn-primary">Add</button>
+    </div>
+</div>
+
             <div class="table-responsive">
                 <table class="table table-striped table-bordered">
                     <thead>
@@ -275,8 +283,6 @@
                             <th>Product</th>
                             <th>Price</th>
                             <th>Qty</th>
-                            <th>VAT</th>
-                            <th>Discount</th>
                             <th class="text-center">Actions</th>
                             <th class="text-end">Total</th>
                         </tr>
@@ -289,25 +295,11 @@
 
             <div class="row mt-4">
                 <div class="col-md-6">
-                    <div class="payment-details">
-                        <h5 class="text-primary">PAYMENT DETAILS:</h5>
-                        <p><strong>Bank Code:</strong> 123-456-7890</p>
-                        <p><strong>Bank Name:</strong>The City Bank PLC</p>
-                    </div>
-                    <div class="ps-3">
-                        <label for="product-type">Product Type:</label> <br>
-                        <select name="product-type" id="product-type" class="form-select w-50">
-                            <option value="Raw Materials">Raw Materials</option>
-                            <option value="Finished Goods">Finished Goods</option>
-                        </select>
-                    </div>
-                    <div class="ps-3 my-2">
-                        <label for="shipping-address">Shipping Address:</label>
-                        <textarea class="form-control w-50" name="shipping-address" rows="1" placeholder="Add your address" cols="30" id="ship-address"></textarea>
-                    </div>
-                    <div class="ps-3">
-                        <label for="remark">Remark:</label> <br>
-                        <textarea class="form-control w-50" name="remark" rows="1" placeholder="Any Special notes" cols="30" id="remark"></textarea>
+                    <div class="contact-info">
+                        <h5 class="text-primary">CONTACT US</h5>
+                        <p><i class="bi bi-phone"></i> 01879865517</p>
+                        <p><i class="bi bi-globe"></i> <a href="http://www.riyad.intelsofts.com" class="text-decoration-none text-dark">www.riyad.intelsofts.com</a></p>
+                        <p><i class="bi bi-geo-alt"></i> 812/ A, Middle Monipur, Mirpur, Dhaka-1216</p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -317,17 +309,14 @@
                             <div class="col-6 text-end" id="subtotal-amount">$0</div>
                         </div>
                         <div class="row mb-2">
-                            <div class="col-6 text-end">Special Discount:</div>
+                            <div class="col-6 text-end">Labour Cost:</div>
                             <div class="col-6 d-flex justify-content-end">
-                                <input type="number" id="tax-amount" class="form-control w-50" placeholder="$0">
+                                <input type="number" id="labour-cost" class="form-control w-50 text-end" placeholder="$0">
                             </div>
                         </div>
                         <div class="row total-row">
                             <div class="col-6 text-end">TOTAL:</div>
                             <div class="col-6 text-end pe-0">$<span id="total-amount">000</span></div>
-                        </div>
-                        <div class="d-flex justify-content-end mt-4">
-                            <button id="save-btn" class="btn btn-primary">Save</button>
                         </div>
                     </div>
                 </div>
@@ -335,12 +324,10 @@
 
             <div class="row mt-5">
                 <div class="col-md-6">
-                    <div class="contact-info">
-                        <h5 class="text-primary">CONTACT US</h5>
-                        <p><i class="bi bi-phone"></i> 01879865517</p>
-                        <p><i class="bi bi-globe"></i> <a href="http://www.riyad.intelsofts.com" class="text-decoration-none text-dark">www.riyad.intelsofts.com</a></p>
-                        <p><i class="bi bi-geo-alt"></i> 812/ A, Middle Monipur, Mirpur, Dhaka-1216</p>
-                    </div>
+                    
+                        <div class="d-flex justify-content-end mt-4">
+                            <button id="save-btn" class="btn btn-primary">Save</button>
+                        </div>
                 </div>
                 <div class="col-md-6">
                     <div class="thank-you">
@@ -361,20 +348,18 @@
 <script>
     let items = [];
     document.getElementById('add-item').addEventListener('click', () => {
-        const productEl = document.getElementById('product-id');
-        const product_id = productEl.value;
-        const product_name = productEl.options[productEl.selectedIndex].text;
+        const itemEl = document.getElementById('item-id');
+        const item_id = itemEl.value;
+        const item_name = itemEl.options[itemEl.selectedIndex].text;
         const qty = document.getElementById('qty').value;
         const price = document.getElementById('price').value;
         // const vat = document.getElementById('vat').value;
         // const discount = document.getElementById('discount').value;
         const item = {
-            product_id,
-            product_name,
+            item_id,
+            item_name,
             qty: parseFloat(qty),
             price: parseFloat(price),
-            vat: parseFloat(vat),
-            discount: parseFloat(discount),
         }
         items.push(item);
         showItems();
@@ -389,15 +374,13 @@
         let subtotal = 0;
         items.forEach((item, index) => {
             const tr = document.createElement('tr');
-            lineTotal = (item.qty * item.price) - item.discount + item.vat;
+            lineTotal = (item.qty * item.price);
             subtotal += lineTotal;
             document.getElementById('subtotal-amount').textContent = '$' + subtotal;
             tr.innerHTML = `
-                <td>${item.product_name}</td>
+                <td>${item.item_name}</td>
                 <td>$${item.price}</td>
                 <td>${item.qty}</td>
-                <td>$${item.vat}</td>
-                <td>$${item.discount}</td>
                 <td class="text-center">
                     <button onclick="removeItem(${index})" class="btn btn-sm btn-danger">
                         <i class="fa fa-trash"></i>
@@ -411,7 +394,7 @@
     }
 
     //handel special discount
-    const specialDiscountDiv = document.getElementById('tax-amount');
+    const specialDiscountDiv = document.getElementById('labour-cost');
     specialDiscountDiv.addEventListener('input', () => {
         const fullSubtotal = document.getElementById('subtotal-amount').textContent;
         const subtotalArr = fullSubtotal.split('$');
@@ -419,7 +402,7 @@
         const subtotalNum = parseFloat(subtotal);
         const specialDiscountNum = parseFloat(specialDiscountDiv.value);
         const total = subtotalNum - specialDiscountNum;
-        document.getElementById('total-amount').textContent = total;
+        document.getElementById('labour-cost').textContent = total;
     })
 
 
@@ -432,21 +415,14 @@
     //save purchase
     document.getElementById('save-btn').addEventListener('click', async () => {
 
-        const supplier_id = document.getElementById('supplier-id').value;
-        const delivery_date = document.getElementById('delivery-date').value;
-        const shipping_address = document.getElementById('ship-address').value;
-        console.log(shipping_address);
-        const remark = document.getElementById('remark').value;
-        const purchase_total = document.getElementById('total-amount').textContent;
-        const discount = document.getElementById('tax-amount').value;
+        const bom_id = document.getElementById('bom-id').value;
+        const labour_cost=document.getElementById('labour-cost').value;
+        const bom_total = document.getElementById('total-amount').textContent;
 
         const payload = {
-            supplier_id,
-            delivery_date,
-            shipping_address,
-            remark,
-            discount,
-            purchase_total,
+            bom_id,
+            labour_cost,
+            bom_total,
             items
         }
 

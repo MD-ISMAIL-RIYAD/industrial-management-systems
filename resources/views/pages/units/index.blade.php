@@ -5,9 +5,9 @@
     <div class="card bg-primary mb-3 p-4">
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-item-center ">
-                <h3 class=" card-title text-white d-flex align-items-center  m-0">Stock List</h3>
-                <a href="{{ route('stocks.create') }}" class="btn btn-light btn-sm" title="Create New Product">
-                    <i class="fa fa-plus mr-1"></i> Create New Stock
+                <h3 class=" card-title text-white d-flex align-items-center  m-0">Unit List</h3>
+                <a href="{{ route('units.create') }}" class="btn btn-light btn-sm" title="Create New Product">
+                    <i class="fa fa-plus mr-1"></i> Create New Unit
                 </a>
             </div>
         </div>
@@ -60,13 +60,13 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark"><tr><th>Id</th><th>Product id</th><th>Qty</th><th>Transaction type id</th><th>Remark</th><th>Created at</th><th>Warehouse id</th><th>Product type</th><th>Product name</th><th>Actions</th></tr></thead>
+                <thead class="thead-dark"><tr><th>Id</th><th>Name</th><th>Abbreviation</th><th>Created at</th><th>Updated at</th><th>Item categories</th><th>Actions</th></tr></thead>
                 <tbody>
-                @foreach ($stocks as $item)
-                    <tr><td>{{ $item->id }}</td><td>{{ optional($item->product)->name ?? $item->product_id }}</td><td>{{ $item->qty }}</td><td>{{ optional($item->transactionType)->name ?? $item->transaction_type_id }}</td><td>{{ $item->remark }}</td><td>{{ $item->created_at }}</td><td>{{ optional($item->warehouse)->name ?? $item->warehouse_id }}</td><td>{{ $item->product_type }}</td><td>{{ $item->product_name }}</td><td>
-    <a href="{{ route('stocks.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-    <a href="{{ route('stocks.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-    <form action="{{ route('stocks.destroy', $item->id) }}" method="POST" style="display:inline;">
+                @foreach ($units as $item)
+                    <tr><td>{{ $item->id }}</td><td>{{ $item->name }}</td><td>{{ $item->abbreviation }}</td><td>{{ $item->created_at }}</td><td>{{ $item->updated_at }}</td><td>{{ $item->item_categories }}</td><td>
+    <a href="{{ route('units.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+    <a href="{{ route('units.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+    <form action="{{ route('units.destroy', $item->id) }}" method="POST" style="display:inline;">
         @csrf
         @method('DELETE')
         <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>

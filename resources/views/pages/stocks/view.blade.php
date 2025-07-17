@@ -32,5 +32,11 @@
 <div class="mb-2">
     <strong>Warehouse id:</strong> {{ $stock->warehouse->name ?? $stock->warehouse_id }}
 </div>
+<div class="mb-2">
+    <strong>Product type:</strong> {{ $stock->product_type }}
+</div>
+<div class="mb-2">
+    <strong>Product name:</strong> {{ $stock->product_name }}
+</div>
 
 @endsection
