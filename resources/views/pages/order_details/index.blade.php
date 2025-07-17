@@ -60,19 +60,43 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark"><tr><th>Id</th><th>Order id</th><th>Product id</th><th>Qty</th><th>Price</th><th>Vat</th><th>Discount</th><th>Created at</th><th>Updated at</th><th>Actions</th></tr></thead>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Order id</th>
+                        <th>Product id</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Vat</th>
+                        <th>Discount</th>
+                        <th>Created at</th>
+                        <th>Updated at</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody>
-                @foreach ($order_details as $item)
-                    <tr><td>{{ $item->id }}</td><td>{{ optional($item->order)->name ?? $item->order_id }}</td><td>{{ optional($item->product)->name ?? $item->product_id }}</td><td>{{ $item->qty }}</td><td>{{ $item->price }}</td><td>{{ $item->vat }}</td><td>{{ $item->discount }}</td><td>{{ $item->created_at }}</td><td>{{ $item->updated_at }}</td><td>
-    <a href="{{ route('order_details.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-    <a href="{{ route('order_details.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-    <form action="{{ route('order_details.destroy', $item->id) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
-</td></tr>
-                @endforeach
+                    @foreach ($order_details as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ optional($item->order)->name ?? $item->order_id }}</td>
+                        <td>{{ optional($item->product)->name ?? $item->product_id }}</td>
+                        <td>{{ $item->qty }}</td>
+                        <td>{{ $item->price }}</td>
+                        <td>{{ $item->vat }}</td>
+                        <td>{{ $item->discount }}</td>
+                        <td>{{ $item->created_at }}</td>
+                        <td>{{ $item->updated_at }}</td>
+                        <td style="min-width: 225px;">
+                            <a href="{{ route('order_details.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+                            <a href="{{ route('order_details.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('order_details.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

@@ -60,19 +60,37 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark"><tr><th>Id</th><th>Purchase invoice id</th><th>Product id</th><th>Quantity</th><th>Unit price</th><th>Total price</th><th>Actions</th></tr></thead>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Purchase invoice id</th>
+                        <th>Product id</th>
+                        <th>Quantity</th>
+                        <th>Unit price</th>
+                        <th>Total price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody>
-                @foreach ($purchase_invoices_items as $item)
-                    <tr><td>{{ $item->id }}</td><td>{{ optional($item->purchaseInvoice)->name ?? $item->purchase_invoice_id }}</td><td>{{ optional($item->product)->name ?? $item->product_id }}</td><td>{{ $item->quantity }}</td><td>{{ $item->unit_price }}</td><td>{{ $item->total_price }}</td><td>
-    <a href="{{ route('purchase_invoices_items.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-    <a href="{{ route('purchase_invoices_items.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-    <form action="{{ route('purchase_invoices_items.destroy', $item->id) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
-</td></tr>
-                @endforeach
+                    @foreach ($purchase_invoices_items as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ optional($item->purchaseInvoice)->name ?? $item->purchase_invoice_id }}</td>
+                        <td>{{ optional($item->product)->name ?? $item->product_id }}</td>
+                        <td>{{ $item->quantity }}</td>
+                        <td>{{ $item->unit_price }}</td>
+                        <td>{{ $item->total_price }}</td>
+                        <td style="min-width: 225px;">
+                            <a href="{{ route('purchase_invoices_items.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+                            <a href="{{ route('purchase_invoices_items.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('purchase_invoices_items.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

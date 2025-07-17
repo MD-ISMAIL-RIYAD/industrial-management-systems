@@ -60,19 +60,43 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark"><tr><th>Id</th><th>Invoice number</th><th>Customer id</th><th>Total amount</th><th>Discount</th><th>Grand total</th><th>Created by</th><th>Created at</th><th>Updated at</th><th>Actions</th></tr></thead>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Invoice number</th>
+                        <th>Customer id</th>
+                        <th>Total amount</th>
+                        <th>Discount</th>
+                        <th>Grand total</th>
+                        <th>Created by</th>
+                        <th>Created at</th>
+                        <th>Updated at</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody>
-                @foreach ($sales_invoices as $item)
-                    <tr><td>{{ $item->id }}</td><td>{{ $item->invoice_number }}</td><td>{{ optional($item->customer)->name ?? $item->customer_id }}</td><td>{{ $item->total_amount }}</td><td>{{ $item->discount }}</td><td>{{ $item->grand_total }}</td><td>{{ $item->created_by }}</td><td>{{ $item->created_at }}</td><td>{{ $item->updated_at }}</td><td>
-    <a href="{{ route('sales_invoices.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-    <a href="{{ route('sales_invoices.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-    <form action="{{ route('sales_invoices.destroy', $item->id) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
-</td></tr>
-                @endforeach
+                    @foreach ($sales_invoices as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->invoice_number }}</td>
+                        <td>{{ optional($item->customer)->name ?? $item->customer_id }}</td>
+                        <td>{{ $item->total_amount }}</td>
+                        <td>{{ $item->discount }}</td>
+                        <td>{{ $item->grand_total }}</td>
+                        <td>{{ $item->created_by }}</td>
+                        <td>{{ $item->created_at }}</td>
+                        <td>{{ $item->updated_at }}</td>
+                        <td style="min-width: 225px;">
+                            <a href="{{ route('sales_invoices.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+                            <a href="{{ route('sales_invoices.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('sales_invoices.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

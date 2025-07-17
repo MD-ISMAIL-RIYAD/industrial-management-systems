@@ -60,19 +60,37 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark"><tr><th>Id</th><th>Production datetime</th><th>Bom id</th><th>Labor cost</th><th>Manager id</th><th>Total cost</th><th>Actions</th></tr></thead>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Production datetime</th>
+                        <th>Bom id</th>
+                        <th>Labor cost</th>
+                        <th>Manager id</th>
+                        <th>Total cost</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody>
-                @foreach ($productions as $item)
-                    <tr><td>{{ $item->id }}</td><td>{{ $item->production_datetime }}</td><td>{{ optional($item->bom)->name ?? $item->bom_id }}</td><td>{{ $item->labor_cost }}</td><td>{{ optional($item->manager)->name ?? $item->manager_id }}</td><td>{{ $item->total_cost }}</td><td>
-    <a href="{{ route('productions.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-    <a href="{{ route('productions.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-    <form action="{{ route('productions.destroy', $item->id) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
-</td></tr>
-                @endforeach
+                    @foreach ($productions as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->production_datetime }}</td>
+                        <td>{{ optional($item->bom)->name ?? $item->bom_id }}</td>
+                        <td>{{ $item->labor_cost }}</td>
+                        <td>{{ optional($item->manager)->name ?? $item->manager_id }}</td>
+                        <td>{{ $item->total_cost }}</td>
+                        <td style="min-width: 225px;">
+                            <a href="{{ route('productions.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+                            <a href="{{ route('productions.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('productions.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

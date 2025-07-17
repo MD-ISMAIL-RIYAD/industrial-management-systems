@@ -60,19 +60,41 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark"><tr><th>Id</th><th>Purchase id</th><th>Item id</th><th>Warehouse id</th><th>Qty</th><th>Unit id</th><th>Created at</th><th>Updated at</th><th>Actions</th></tr></thead>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Purchase id</th>
+                        <th>Item id</th>
+                        <th>Warehouse id</th>
+                        <th>Qty</th>
+                        <th>Unit id</th>
+                        <th>Created at</th>
+                        <th>Updated at</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody>
-                @foreach ($purchase_stocks as $item)
-                    <tr><td>{{ $item->id }}</td><td>{{ optional($item->purchase)->name ?? $item->purchase_id }}</td><td>{{ optional($item->item)->name ?? $item->item_id }}</td><td>{{ optional($item->warehouse)->name ?? $item->warehouse_id }}</td><td>{{ $item->qty }}</td><td>{{ optional($item->unit)->name ?? $item->unit_id }}</td><td>{{ $item->created_at }}</td><td>{{ $item->updated_at }}</td><td>
-    <a href="{{ route('purchase_stocks.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-    <a href="{{ route('purchase_stocks.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-    <form action="{{ route('purchase_stocks.destroy', $item->id) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
-</td></tr>
-                @endforeach
+                    @foreach ($purchase_stocks as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ optional($item->purchase)->name ?? $item->purchase_id }}</td>
+                        <td>{{ optional($item->item)->name ?? $item->item_id }}</td>
+                        <td>{{ optional($item->warehouse)->name ?? $item->warehouse_id }}</td>
+                        <td>{{ $item->qty }}</td>
+                        <td>{{ optional($item->unit)->name ?? $item->unit_id }}</td>
+                        <td>{{ $item->created_at }}</td>
+                        <td>{{ $item->updated_at }}</td>
+                        <td style="min-width: 225px;">
+                            <a href="{{ route('purchase_stocks.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+                            <a href="{{ route('purchase_stocks.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('purchase_stocks.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

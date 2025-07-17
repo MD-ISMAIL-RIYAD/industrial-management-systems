@@ -60,19 +60,33 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark"><tr><th>Id</th><th>Name</th><th>Email</th><th>Create at</th><th>Actions</th></tr></thead>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Create at</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody>
-                @foreach ($suppliers_payments as $item)
-                    <tr><td>{{ $item->id }}</td><td>{{ $item->name }}</td><td>{{ $item->email }}</td><td>{{ $item->create_at }}</td><td>
-    <a href="{{ route('suppliers_payments.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-    <a href="{{ route('suppliers_payments.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-    <form action="{{ route('suppliers_payments.destroy', $item->id) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
-</td></tr>
-                @endforeach
+                    @foreach ($suppliers_payments as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->email }}</td>
+                        <td>{{ $item->create_at }}</td>
+                        <td style="min-width: 225px;">
+                            <a href="{{ route('suppliers_payments.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+                            <a href="{{ route('suppliers_payments.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('suppliers_payments.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

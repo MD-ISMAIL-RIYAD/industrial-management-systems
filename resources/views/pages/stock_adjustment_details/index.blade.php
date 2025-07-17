@@ -60,19 +60,35 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark"><tr><th>Id</th><th>Adjustment id</th><th>Product id</th><th>Qty</th><th>Price</th><th>Actions</th></tr></thead>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Adjustment id</th>
+                        <th>Product id</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody>
-                @foreach ($stock_adjustment_details as $item)
-                    <tr><td>{{ $item->id }}</td><td>{{ optional($item->adjustment)->name ?? $item->adjustment_id }}</td><td>{{ optional($item->product)->name ?? $item->product_id }}</td><td>{{ $item->qty }}</td><td>{{ $item->price }}</td><td>
-    <a href="{{ route('stock_adjustment_details.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-    <a href="{{ route('stock_adjustment_details.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-    <form action="{{ route('stock_adjustment_details.destroy', $item->id) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
-</td></tr>
-                @endforeach
+                    @foreach ($stock_adjustment_details as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ optional($item->adjustment)->name ?? $item->adjustment_id }}</td>
+                        <td>{{ optional($item->product)->name ?? $item->product_id }}</td>
+                        <td>{{ $item->qty }}</td>
+                        <td>{{ $item->price }}</td>
+                        <td style="min-width: 225px;">
+                            <a href="{{ route('stock_adjustment_details.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+                            <a href="{{ route('stock_adjustment_details.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('stock_adjustment_details.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

@@ -60,19 +60,41 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark"><tr><th>Id</th><th>Name</th><th>Code</th><th>Description</th><th>Unit id</th><th>Category id</th><th>Created at</th><th>Updated at</th><th>Actions</th></tr></thead>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Code</th>
+                        <th>Description</th>
+                        <th>Unit id</th>
+                        <th>Category id</th>
+                        <th>Created at</th>
+                        <th>Updated at</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody>
-                @foreach ($raw_materials as $item)
-                    <tr><td>{{ $item->id }}</td><td>{{ $item->name }}</td><td>{{ $item->code }}</td><td>{{ $item->description }}</td><td>{{ optional($item->unit)->name ?? $item->unit_id }}</td><td>{{ optional($item->category)->name ?? $item->category_id }}</td><td>{{ $item->created_at }}</td><td>{{ $item->updated_at }}</td><td>
-    <a href="{{ route('raw_materials.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-    <a href="{{ route('raw_materials.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-    <form action="{{ route('raw_materials.destroy', $item->id) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
-</td></tr>
-                @endforeach
+                    @foreach ($raw_materials as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->code }}</td>
+                        <td>{{ $item->description }}</td>
+                        <td>{{ optional($item->unit)->name ?? $item->unit_id }}</td>
+                        <td>{{ optional($item->category)->name ?? $item->category_id }}</td>
+                        <td>{{ $item->created_at }}</td>
+                        <td>{{ $item->updated_at }}</td>
+                        <td style="min-width: 225px;">
+                            <a href="{{ route('raw_materials.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+                            <a href="{{ route('raw_materials.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('raw_materials.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

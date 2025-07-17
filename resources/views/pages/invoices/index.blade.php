@@ -60,19 +60,43 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark"><tr><th>Id</th><th>Customer id</th><th>Created at</th><th>Remark</th><th>Payment term</th><th>Updated at</th><th>Invoice total</th><th>Paid total</th><th>Previous due</th><th>Actions</th></tr></thead>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Customer id</th>
+                        <th>Created at</th>
+                        <th>Remark</th>
+                        <th>Payment term</th>
+                        <th>Updated at</th>
+                        <th>Invoice total</th>
+                        <th>Paid total</th>
+                        <th>Previous due</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody>
-                @foreach ($invoices as $item)
-                    <tr><td>{{ $item->id }}</td><td>{{ optional($item->customer)->name ?? $item->customer_id }}</td><td>{{ $item->created_at }}</td><td>{{ $item->remark }}</td><td>{{ $item->payment_term }}</td><td>{{ $item->updated_at }}</td><td>{{ $item->invoice_total }}</td><td>{{ $item->paid_total }}</td><td>{{ $item->previous_due }}</td><td>
-    <a href="{{ route('invoices.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-    <a href="{{ route('invoices.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-    <form action="{{ route('invoices.destroy', $item->id) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
-</td></tr>
-                @endforeach
+                    @foreach ($invoices as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ optional($item->customer)->name ?? $item->customer_id }}</td>
+                        <td>{{ $item->created_at }}</td>
+                        <td>{{ $item->remark }}</td>
+                        <td>{{ $item->payment_term }}</td>
+                        <td>{{ $item->updated_at }}</td>
+                        <td>{{ $item->invoice_total }}</td>
+                        <td>{{ $item->paid_total }}</td>
+                        <td>{{ $item->previous_due }}</td>
+                        <td style="min-width: 225px;">
+                            <a href="{{ route('invoices.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+                            <a href="{{ route('invoices.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('invoices.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
