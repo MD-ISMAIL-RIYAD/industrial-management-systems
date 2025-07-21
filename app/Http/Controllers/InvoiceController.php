@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use Illuminate\Http\Request;
+use App\Models\Order;
 use App\Models\Customer;
 
 
@@ -17,11 +18,13 @@ class InvoiceController extends Controller
 
     public function create()
     {
+        $orders = \App\Models\Order::all();
         $customers = \App\Models\Customer::all();
 
         return view('pages.invoices.create', [
             'mode' => 'create',
             'invoice' => new Invoice(),
+            'orders' => $orders,
             'customers' => $customers,
 
         ]);
@@ -44,11 +47,13 @@ class InvoiceController extends Controller
 
     public function edit(Invoice $invoice)
     {
+        $orders = \App\Models\Order::all();
         $customers = \App\Models\Customer::all();
 
         return view('pages.invoices.edit', [
             'mode' => 'edit',
             'invoice' => $invoice,
+            'orders' => $orders,
             'customers' => $customers,
 
         ]);

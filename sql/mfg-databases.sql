@@ -21,6 +21,16 @@
 CREATE DATABASE IF NOT EXISTS test;
 USE test;
 
+--
+-- Temporary table structure for view `v_product_list1`
+--
+DROP TABLE IF EXISTS `v_product_list1`;
+DROP VIEW IF EXISTS `v_product_list1`;
+CREATE TABLE `v_product_list1` (
+  `id` int(10),
+  `product_name` varchar(50),
+  `mfg_name` varchar(50)
+);
 
 --
 -- Definition of table `core_academy_admissions`
@@ -1272,30 +1282,6 @@ INSERT INTO `core_divisions` (`id`,`name`) VALUES
 
 
 --
--- Definition of table `core_driver_assignments`
---
-
-DROP TABLE IF EXISTS `core_driver_assignments`;
-CREATE TABLE `core_driver_assignments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `driver_id` int(11) DEFAULT NULL,
-  `booking_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `driver_id` (`driver_id`),
-  KEY `booking_id` (`booking_id`),
-  CONSTRAINT `core_driver_assignments_ibfk_1` FOREIGN KEY (`driver_id`) REFERENCES `core_drivers` (`id`),
-  CONSTRAINT `core_driver_assignments_ibfk_2` FOREIGN KEY (`booking_id`) REFERENCES `core_bookings` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_driver_assignments`
---
-
-/*!40000 ALTER TABLE `core_driver_assignments` DISABLE KEYS */;
-/*!40000 ALTER TABLE `core_driver_assignments` ENABLE KEYS */;
-
-
---
 -- Definition of table `core_driver_payments`
 --
 
@@ -2478,7 +2464,7 @@ CREATE TABLE `core_mfg_bom_details` (
   `updated_at` datetime DEFAULT NULL,
   `price` float NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `core_mfg_bom_details`
@@ -2493,7 +2479,12 @@ INSERT INTO `core_mfg_bom_details` (`id`,`bom_id`,`item_id`,`unit_id`,`qty`,`cre
  (5,6,0,1,'306',NULL,NULL,806),
  (6,6,0,2,'939',NULL,NULL,796),
  (7,7,0,2,'856',NULL,NULL,124),
- (8,7,0,3,'772',NULL,NULL,861);
+ (8,7,0,3,'772',NULL,NULL,861),
+ (9,8,0,14,'159',NULL,NULL,872),
+ (10,9,0,10,'52',NULL,NULL,659),
+ (11,9,0,9,'142',NULL,NULL,447),
+ (12,10,0,12,'233',NULL,NULL,487),
+ (13,10,0,13,'273',NULL,NULL,6);
 /*!40000 ALTER TABLE `core_mfg_bom_details` ENABLE KEYS */;
 
 
@@ -2557,7 +2548,7 @@ CREATE TABLE `core_mfg_boms` (
   `labour_cost` float NOT NULL DEFAULT 0,
   `unit_id` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `core_mfg_boms`
@@ -2571,7 +2562,10 @@ INSERT INTO `core_mfg_boms` (`id`,`bom_no`,`name`,`product_id`,`qty`,`labour_cos
  (4,'#BOM-03533','Xantha Beard',0,'0',29,0),
  (5,'#BOM-03533','Oliver Pace',0,'0',18,0),
  (6,'#BOM-03533','Jack Howard',0,'0',20,0),
- (7,'#BOM-03533','Rhea Murray',0,'0',99,0);
+ (7,'#BOM-03533','Rhea Murray',0,'0',99,0),
+ (8,'#BOM-03533','Germaine Clark',0,'0',459,0),
+ (9,'#BOM-03533','Quemby Huber',0,'0',746,0),
+ (10,'#BOM-03533','Hermione Levy',0,'0',5000,0);
 /*!40000 ALTER TABLE `core_mfg_boms` ENABLE KEYS */;
 
 
@@ -2582,41 +2576,19 @@ INSERT INTO `core_mfg_boms` (`id`,`bom_no`,`name`,`product_id`,`qty`,`labour_cos
 DROP TABLE IF EXISTS `core_mfg_customers`;
 CREATE TABLE `core_mfg_customers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `mobile` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT current_timestamp(),
-  `address` text DEFAULT NULL,
-  `photo` varchar(45) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `core_mfg_customers`
 --
 
 /*!40000 ALTER TABLE `core_mfg_customers` DISABLE KEYS */;
-INSERT INTO `core_mfg_customers` (`id`,`name`,`mobile`,`email`,`created_at`,`updated_at`,`address`,`photo`) VALUES 
- (1,'Tanmoy','','','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (3,'Niyamot','3434343','niyamot@yahoo.com','2023-12-05 16:27:19','2023-12-05 16:27:19','Mirpur','3.png'),
- (6,'Jahidul Islam','34324324','mehedihasandb0@gmail.com','2023-12-05 16:28:16','2023-12-05 16:28:16','333','beetroot-hummus-23bae4e-jpg.jpg'),
- (7,'Jahidul2','34324324','mehedihasandb0@gmail.com','2023-12-05 16:43:59','2023-12-05 16:43:59','343','7.jpg'),
- (8,'Mehedi3','34324324','mehedihasandb0@gmail.com','2023-12-05 16:31:09','2023-12-05 16:31:09','','34324324.jpg'),
- (9,'Sabbir Ahmed','34343434','sabbir3@gmail.com','2023-12-30 15:30:13','2023-12-30 15:30:13','NA',NULL),
- (10,'Abdur Rahman','35443434','abrahman@gmail.com','2023-12-30 15:32:00','2023-12-30 15:32:00','Rampua',NULL),
- (12,'Mahedi Hassanere','9433442sfds','mah3edi@gmail.com','2023-12-30 15:59:14','2023-12-30 15:59:14','NA',NULL),
- (15,'Siam','44444444','siam@yahoo.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (21,'Laiju','123456778','laiju@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (25,'abc','0000','abc@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (28,'Md Salman Aisur Rahman','019886131','salman@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (29,'Atiquer Rahman','098563146','Atiqur@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (30,'razib','1222222','razijb@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (31,'','','','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (32,'Al AMin','96354965','Alamin@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (33,'Rahul ','8797446','Rahul@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (34,'Laiju','98754324','laiju@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','',''),
- (35,'Engr. Naiiyem Hossain','12555555','naiyem@gmail.com','0000-00-00 00:00:00','0000-00-00 00:00:00','','');
+INSERT INTO `core_mfg_customers` (`id`,`name`) VALUES 
+ (1,'Alpha Widgets Inc.'),
+ (2,'Beta Solutions Ltd.'),
+ (3,'Gamma Innovations Co.');
 /*!40000 ALTER TABLE `core_mfg_customers` ENABLE KEYS */;
 
 
@@ -2779,56 +2751,37 @@ INSERT INTO `core_mfg_invoice_detials` (`id`,`invoice_id`,`service_id`,`unit`,`p
 DROP TABLE IF EXISTS `core_mfg_invoices`;
 CREATE TABLE `core_mfg_invoices` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `customer_id` int(10) unsigned NOT NULL,
-  `created_at` datetime NOT NULL,
-  `remark` varchar(45) DEFAULT NULL,
-  `payment_term` varchar(45) DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `invoice_total` float NOT NULL,
-  `paid_total` float NOT NULL,
-  `previous_due` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `invoice_number` varchar(50) NOT NULL,
+  `order_id` int(10) unsigned DEFAULT NULL,
+  `customer_id` int(10) unsigned DEFAULT NULL,
+  `invoice_date` date NOT NULL,
+  `subtotal` decimal(15,2) DEFAULT 0.00,
+  `tax_amount` decimal(15,2) DEFAULT 0.00,
+  `discount_amount` decimal(15,2) DEFAULT 0.00,
+  `total_amount` decimal(15,2) NOT NULL,
+  `paid_amount` decimal(15,2) DEFAULT 0.00,
+  `payment_status` enum('unpaid','partial','paid','overdue') DEFAULT 'unpaid',
+  `status` enum('draft','issued','cancelled') DEFAULT 'draft',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `invoice_number` (`invoice_number`),
+  KEY `order_id` (`order_id`),
+  KEY `customer_id` (`customer_id`),
+  CONSTRAINT `core_mfg_invoices_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `core_mfg_orders` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `core_mfg_invoices_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `core_mfg_customers` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=1005 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `core_mfg_invoices`
 --
 
 /*!40000 ALTER TABLE `core_mfg_invoices` DISABLE KEYS */;
-INSERT INTO `core_mfg_invoices` (`id`,`customer_id`,`created_at`,`remark`,`payment_term`,`updated_at`,`invoice_total`,`paid_total`,`previous_due`) VALUES 
- (1,1,'2025-04-01 00:00:00','Na','','2025-04-01 00:00:00',199,199,0),
- (2,1,'2025-04-01 00:00:00','Na','','2025-04-01 00:00:00',199,199,0),
- (3,1,'2025-04-01 00:00:00','Na','CASH','2025-04-01 00:00:00',199,199,0),
- (4,1,'2025-04-01 00:00:00','Na','CASH','2025-04-01 00:00:00',199,199,0),
- (5,1,'2025-04-01 00:00:00','Na','CASH','2025-04-01 00:00:00',199,199,0),
- (6,1,'0000-00-00 00:00:00','Na','','0000-00-00 00:00:00',0,0,0),
- (7,9,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',0,0,0),
- (8,1,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',100,100,0),
- (9,1,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',1200,1200,0),
- (10,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (11,9,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',6888,6888,0),
- (12,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (13,8,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',1199,1199,0),
- (15,8,'0000-00-00 00:00:00','Na','CASH','0000-00-00 00:00:00',655,655,0),
- (17,1,'2025-05-06 00:00:00','Na','CASH','2025-05-06 00:00:00',20100,20100,0),
- (18,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (19,8,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',200,200,0),
- (20,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (21,15,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',5800,5800,0),
- (22,1,'2025-04-01 00:00:00','Na','CASH','2025-04-01 00:00:00',199,199,0),
- (23,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (24,15,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',11300,11300,0),
- (25,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (26,0,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',200,200,0),
- (27,1,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',11200,11200,0),
- (28,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (29,1,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',11200,11200,0),
- (30,0,'0000-00-00 00:00:00','','','0000-00-00 00:00:00',0,0,0),
- (31,15,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',400,400,0),
- (32,15,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',400,400,0),
- (33,6,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',500,500,0),
- (34,10,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',100,100,0),
- (35,9,'2025-05-07 00:00:00','Na','CASH','2025-05-07 00:00:00',200,200,0);
+INSERT INTO `core_mfg_invoices` (`id`,`invoice_number`,`order_id`,`customer_id`,`invoice_date`,`subtotal`,`tax_amount`,`discount_amount`,`total_amount`,`paid_amount`,`payment_status`,`status`,`created_at`,`updated_at`) VALUES 
+ (1001,'INV-2025-001',101,1,'2025-07-20','500.00','50.00','0.00','550.00','550.00','paid','issued','2025-07-22 00:40:57','2025-07-22 00:40:57'),
+ (1002,'INV-2025-002',102,2,'2025-07-25','750.00','75.00','25.00','800.00','800.00','paid','issued','2025-07-22 00:40:57','2025-07-22 00:40:57'),
+ (1003,'INV-2025-003',103,1,'2025-07-22','300.00','30.00','0.00','330.00','150.00','partial','issued','2025-07-22 00:40:57','2025-07-22 00:40:57'),
+ (1004,'INV-2025-004',104,3,'2025-07-28','1200.00','120.00','50.00','1270.00','0.00','unpaid','issued','2025-07-22 00:40:57','2025-07-22 00:40:57');
 /*!40000 ALTER TABLE `core_mfg_invoices` ENABLE KEYS */;
 
 
@@ -3147,17 +3100,19 @@ CREATE TABLE `core_mfg_orders` (
   `order_date` datetime NOT NULL,
   `delivery_date` datetime NOT NULL,
   `shipping_address` text DEFAULT NULL,
-  `order_total` double NOT NULL DEFAULT 0,
-  `paid_amount` double NOT NULL DEFAULT 0,
+  `order_total` decimal(15,2) NOT NULL DEFAULT 0.00,
+  `paid_amount` decimal(15,2) NOT NULL DEFAULT 0.00,
   `remark` text DEFAULT NULL,
   `status_id` int(10) unsigned DEFAULT 1,
-  `discount` float DEFAULT 0,
-  `vat` float DEFAULT 0,
+  `discount` decimal(15,2) DEFAULT 0.00,
+  `vat` decimal(15,2) DEFAULT 0.00,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `table_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  PRIMARY KEY (`id`),
+  KEY `customer_id` (`customer_id`),
+  CONSTRAINT `core_mfg_orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `core_mfg_customers` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `core_mfg_orders`
@@ -3165,51 +3120,10 @@ CREATE TABLE `core_mfg_orders` (
 
 /*!40000 ALTER TABLE `core_mfg_orders` DISABLE KEYS */;
 INSERT INTO `core_mfg_orders` (`id`,`customer_id`,`order_date`,`delivery_date`,`shipping_address`,`order_total`,`paid_amount`,`remark`,`status_id`,`discount`,`vat`,`created_at`,`updated_at`,`table_id`) VALUES 
- (2,1,'2021-12-13 00:00:00','2021-12-13 00:00:00','na',0,0,'Na',1,0,0,'2021-12-14 12:40:41','2021-12-14 12:40:41',0),
- (3,1,'2021-12-13 00:00:00','2021-12-13 00:00:00','na',0,0,'Na',1,0,0,'2021-12-14 12:40:41','2021-12-14 12:40:41',0),
- (4,2,'2021-12-13 00:00:00','2021-12-13 00:00:00','na',0,0,'Na',1,0,0,'2021-12-14 12:40:41','2021-12-14 12:40:41',0),
- (5,1,'2021-12-13 00:00:00','2021-12-13 00:00:00','na',0,0,'Na',1,0,0,'2021-12-14 12:40:41','2021-12-14 12:40:41',0),
- (6,1,'2021-12-14 00:00:00','2021-12-14 00:00:00','Mirpur',0,0,'',2,0,0,'2023-12-05 17:54:41','2023-12-05 17:54:41',0),
- (7,3,'2021-12-14 00:00:00','2021-12-14 00:00:00','Mirpur',0,0,NULL,1,NULL,NULL,'2021-12-14 07:02:07','2021-12-14 07:02:07',0),
- (8,2,'2021-12-14 00:00:00','2021-12-14 00:00:00','Mirpur',0,0,NULL,1,0,0,'2021-12-14 07:03:51','2021-12-14 07:03:51',0),
- (9,1,'2021-12-14 00:00:00','2021-12-14 00:00:00','Mirpur',0,0,NULL,1,0,0,'2021-12-14 07:05:32','2021-12-14 07:05:32',0),
- (10,1,'2021-12-14 00:00:00','2021-12-14 00:00:00','Mirpur',0,0,NULL,1,0,0,'2021-12-14 07:06:21','2021-12-14 07:06:21',0),
- (11,3,'2021-12-14 00:00:00','2021-12-14 00:00:00','Mirpur',0,0,NULL,1,0,0,'2021-12-14 07:07:13','2021-12-14 07:07:13',0),
- (12,2,'2021-12-14 00:00:00','2021-12-14 00:00:00','Mirpur',0,0,NULL,1,0,0,'2021-12-14 07:10:25','2021-12-14 07:10:25',0),
- (13,1,'2021-12-14 00:00:00','2021-12-14 00:00:00','Mirpur',0,0,NULL,1,0,0,'2021-12-14 07:13:06','2021-12-14 07:13:06',0),
- (14,1,'2021-12-14 00:00:00','2021-12-14 00:00:00','Mirpur',0,0,NULL,1,0,0,'2021-12-14 07:14:27','2021-12-14 07:14:27',0),
- (15,3,'2021-12-15 00:00:00','2021-12-15 00:00:00','Rampura',0,0,'Testing',1,0,0,'2021-12-15 18:48:59','2021-12-15 18:48:59',0),
- (16,1,'2022-01-06 00:00:00','2022-01-06 00:00:00','Rampura',0,0,'NA',1,0,0,'2022-01-06 12:39:11','2022-01-06 12:39:11',0),
- (17,1,'2022-01-06 00:00:00','2022-01-06 00:00:00','Rampura',0,0,'NA',1,0,0,'2022-01-06 12:43:37','2022-01-06 12:43:37',0),
- (18,1,'2022-01-06 00:00:00','2022-01-06 00:00:00','Rampura',0,0,'NA',1,0,0,'2022-01-06 15:14:42','2022-01-06 15:14:42',0),
- (19,1,'2022-01-08 00:00:00','2022-01-08 00:00:00','Rampura',0,0,'NA',1,0,0,'2022-01-08 09:05:54','2022-01-08 09:05:54',0),
- (20,1,'2022-01-08 00:00:00','2022-01-08 00:00:00','Rampura',0,0,'NA',3,0,0,'2023-12-05 18:07:44','2023-12-05 18:07:44',0),
- (21,1,'2022-01-08 00:00:00','2022-01-08 00:00:00','Rampura',0,0,'NA',4,0,0,'2023-12-05 18:06:48','2023-12-05 18:06:48',0),
- (22,8,'2023-12-24 00:00:00','2023-12-24 00:00:00','Mohammadpur',1636.95,0,'',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (23,1,'2023-12-27 00:00:00','2023-12-27 00:00:00','Rampura, Banasree',1426.95,0,'Na',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (24,4,'2024-01-03 00:00:00','2024-01-03 00:00:00','Dhanmondi, Dhaka',12304.95,0,'Test',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (25,1,'2024-03-13 00:00:00','2024-03-13 00:00:00','na',0,0,NULL,1,0,0,'2024-03-13 08:26:34','2024-03-13 08:26:34',0),
- (26,2,'2024-03-13 00:00:00','2024-03-13 00:00:00','na',0,0,NULL,1,0,0,'2024-03-13 08:40:15','2024-03-13 08:40:15',0),
- (27,23,'2024-03-21 00:00:00','2024-03-24 00:00:00','Rampura',0,0,NULL,1,0,0,'2024-05-12 11:46:43','2024-05-12 11:46:43',0),
- (28,23,'2024-03-21 00:00:00','2024-03-24 00:00:00','Rampura',100,0,NULL,1,0,0,'2024-05-12 11:48:18','2024-05-12 11:48:18',0),
- (29,23,'2024-03-21 00:00:00','2024-03-24 00:00:00','Rampura',100,0,NULL,1,0,0,'2024-05-12 11:48:50','2024-05-12 11:48:50',0),
- (30,23,'2024-03-21 00:00:00','2024-03-24 00:00:00','Rampura',100,0,NULL,1,0,0,'2024-05-12 11:48:54','2024-05-12 11:48:54',0),
- (31,23,'2024-03-21 00:00:00','2024-03-24 00:00:00','Rampura',100,0,NULL,1,0,0,'2024-05-12 11:48:57','2024-05-12 11:48:57',0),
- (32,1,'2024-05-14 00:00:00','2024-05-14 00:00:00','Rampura',100,0,NULL,1,0,0,'2024-05-12 12:40:03','2024-05-12 12:40:03',0),
- (33,2,'2025-03-06 00:00:00','2025-03-06 00:00:00','',2625,0,'NA',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (34,2,'2025-03-10 00:00:00','2025-03-10 00:00:00','',21000,0,'Test3ddd',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (35,6,'2025-03-15 00:00:00','2025-03-15 00:00:00','',13125,0,'Test44444',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (36,3,'2025-03-17 00:00:00','2025-03-17 00:00:00','',2625,0,'Test',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (37,10,'2025-03-19 00:00:00','2025-03-19 00:00:00','',23625,0,'',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (38,0,'1970-01-01 00:00:00','1970-01-01 00:00:00','',0,0,'',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (39,0,'1970-01-01 00:00:00','1970-01-01 00:00:00','',0,0,'',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (40,1,'2025-04-09 00:00:00','2025-04-09 00:00:00','Shipping address',60308.78,0,'ECommerce',1,1865.22,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (41,1,'2025-04-09 00:00:00','2025-04-09 00:00:00','Shipping address',2910,0,'ECommerce',1,90,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (42,1,'2025-04-10 00:00:00','2025-04-10 00:00:00','Shipping address',9991.97,0,'ECommerce',1,309.03,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (43,3,'2025-04-10 00:00:00','2025-04-10 00:00:00','',525,0,'',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (44,0,'2025-04-10 00:00:00','1970-01-01 00:00:00','',1575,0,'Test',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (45,1,'2025-04-12 00:00:00','2025-04-12 00:00:00','',6825,0,'',1,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0),
- (46,1,'2025-04-19 00:00:00','2025-04-19 00:00:00','Shipping address',17460,0,'ECommerce',1,540,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0);
+ (101,1,'2025-07-15 10:00:00','2025-07-20 17:00:00','123 Tech Lane, Anytown','500.00','500.00','Urgent order for new product line.',1,'0.00','50.00','2025-07-22 00:40:40','2025-07-22 00:40:40',1),
+ (102,2,'2025-07-16 11:30:00','2025-07-25 10:00:00','456 Business Road, Otherville','750.00','750.00','Standard delivery.',1,'25.00','75.00','2025-07-22 00:40:40','2025-07-22 00:40:40',2),
+ (103,1,'2025-07-17 14:00:00','2025-07-22 09:00:00','123 Tech Lane, Anytown','300.00','150.00','Partial payment received.',1,'0.00','30.00','2025-07-22 00:40:40','2025-07-22 00:40:40',1),
+ (104,3,'2025-07-18 09:00:00','2025-07-28 16:00:00','789 Innovation Drive, Metropol','1200.00','0.00','Large project order.',1,'50.00','120.00','2025-07-22 00:40:40','2025-07-22 00:40:40',3);
 /*!40000 ALTER TABLE `core_mfg_orders` ENABLE KEYS */;
 
 
@@ -3538,7 +3452,7 @@ CREATE TABLE `core_mfg_purchase_details` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `core_mfg_purchase_details`
@@ -3617,7 +3531,9 @@ INSERT INTO `core_mfg_purchase_details` (`id`,`purchase_id`,`product_id`,`qty`,`
  (69,82,3,242,398,25,89,'2025-07-21 04:47:52','2025-07-21 04:47:52'),
  (70,82,9,242,398,25,89,'2025-07-21 04:47:52','2025-07-21 04:47:52'),
  (71,82,5,242,398,25,89,'2025-07-21 04:47:52','2025-07-21 04:47:52'),
- (72,82,2,756,82,82,40,'2025-07-21 04:47:52','2025-07-21 04:47:52');
+ (72,82,2,756,82,82,40,'2025-07-21 04:47:52','2025-07-21 04:47:52'),
+ (73,83,4,230,449,38,76,'2025-07-21 18:54:36','2025-07-21 18:54:36'),
+ (74,83,3,42,235,28,37,'2025-07-21 18:54:36','2025-07-21 18:54:36');
 /*!40000 ALTER TABLE `core_mfg_purchase_details` ENABLE KEYS */;
 
 
@@ -3666,7 +3582,7 @@ CREATE TABLE `core_mfg_purchases` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `core_mfg_purchases`
@@ -3696,7 +3612,8 @@ INSERT INTO `core_mfg_purchases` (`id`,`supplier_id`,`purchase_date`,`delivery_d
  (79,10,'2025-07-21 00:00:00','2014-11-25 00:00:00','Adipisicing veritati',306300,306300,'Nulla nisi facere ni',1,86,0,'2025-07-21 03:39:25','2025-07-21 03:39:25'),
  (80,15,'2025-07-21 00:00:00','1990-01-20 00:00:00','Exercitationem quae',167582,167582,'Amet et ex eligendi',1,50,0,'2025-07-21 03:45:41','2025-07-21 03:45:41'),
  (81,15,'2025-07-21 00:00:00','2017-08-27 00:00:00','Qui lorem officiis s',647387,647387,'Id perspiciatis et',1,72,0,'2025-07-21 04:41:55','2025-07-21 04:41:55'),
- (82,1,'2025-07-21 00:00:00','1989-05-06 00:00:00','In inventore autem e',350770,350770,'Quia ut minus at des',1,20,0,'2025-07-21 04:47:52','2025-07-21 04:47:52');
+ (82,1,'2025-07-21 00:00:00','1989-05-06 00:00:00','In inventore autem e',350770,350770,'Quia ut minus at des',1,20,0,'2025-07-21 04:47:52','2025-07-21 04:47:52'),
+ (83,11,'2025-07-21 00:00:00','2022-11-23 00:00:00','Iusto commodi placea',113041,113041,'Illum et fugiat do',1,52,0,'2025-07-21 18:54:36','2025-07-21 18:54:36');
 /*!40000 ALTER TABLE `core_mfg_purchases` ENABLE KEYS */;
 
 
@@ -3949,7 +3866,7 @@ CREATE TABLE `core_mfg_stocks` (
   `product_type` varchar(45) NOT NULL DEFAULT '',
   `product_name` varchar(45) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `core_mfg_stocks`
@@ -3969,7 +3886,9 @@ INSERT INTO `core_mfg_stocks` (`id`,`product_id`,`qty`,`transaction_type_id`,`re
  (63,3,242,1,'Quia ut minus at des','2025-07-21 04:47:52',1,'Raw Materials','Milk Powder'),
  (64,9,242,1,'Quia ut minus at des','2025-07-21 04:47:52',1,'Raw Materials','Vegetable Oil'),
  (65,5,242,1,'Quia ut minus at des','2025-07-21 04:47:52',1,'Raw Materials','Vanilla Essence'),
- (66,2,756,1,'Quia ut minus at des','2025-07-21 04:47:52',1,'Raw Materials','Wheat Flour');
+ (66,2,756,1,'Quia ut minus at des','2025-07-21 04:47:52',1,'Raw Materials','Wheat Flour'),
+ (67,4,230,1,'Illum et fugiat do','2025-07-21 18:54:36',1,'Raw Materials','Citric Acid'),
+ (68,3,42,1,'Illum et fugiat do','2025-07-21 18:54:36',1,'Raw Materials','Milk Powder');
 /*!40000 ALTER TABLE `core_mfg_stocks` ENABLE KEYS */;
 
 
@@ -3985,7 +3904,7 @@ CREATE TABLE `core_mfg_suppliers` (
   `email` varchar(45) NOT NULL DEFAULT '',
   `address` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `core_mfg_suppliers`
@@ -3993,17 +3912,18 @@ CREATE TABLE `core_mfg_suppliers` (
 
 /*!40000 ALTER TABLE `core_mfg_suppliers` DISABLE KEYS */;
 INSERT INTO `core_mfg_suppliers` (`id`,`name`,`mobile`,`email`,`address`) VALUES 
- (1,'Md. Shahin','56879898','shahin@yahoo.com',NULL),
- (2,'kulsum','07154545','kulsum@gmail.com',NULL),
- (4,'Jahid','3654533','jahid@gmail.com',NULL),
- (9,'rahim','1123334','aa@gmail.com',NULL),
- (10,'kuddush','678798','kuddush@gmail.com',NULL),
- (15,'ismail riyad4','04555545','karim@.com',NULL),
- (21,'Abdul','3534354','kader@gmail.com',NULL),
- (22,'Jahidul Islam','3423423','kader@gmail.com',NULL),
- (24,'Kader','34343','kader@gmail.com',NULL),
- (36,'Jahidul Islam','343433333333333','kader@gmail.com',NULL),
- (37,'Naiyem Limited','343243243444','naiyem',NULL);
+ (1,'Global Parts Co.','123-456-7890','contact@globalparts.com','100 Industrial Way, Suite A, Cityland'),
+ (2,'Tech Supply Solutions','987-654-3210','info@techsupply.net','200 Innovation Blvd, Building B, Techville'),
+ (3,'Reliable Raw Materials','555-123-4567','sales@rawmaterials.org','300 Production Lane, Unit C, Industville'),
+ (4,'Precision Components Ltd.','111-222-3333','support@precisioncomp.com','400 Assembly Road, Warehouse D, Fabrica City'),
+ (5,'Quality Fabricators','444-555-6666','orders@qualityfab.co','500 Fabrication Drive, Bay E, Manufactura'),
+ (6,'Advanced Materials Supply','777-888-9999','sales@advmaterials.com','600 Material Park, Sector F, Innovation Valley'),
+ (7,'Component Distribution Inc.','222-333-4444','contact@componentdist.net','700 Distribution Center, Unit G, Supply Junction'),
+ (8,'Industrial Tools & Equipment','666-777-8888','info@industrialtools.biz','800 Tooling Avenue, Floor H, Machineworks'),
+ (9,'Electro Circuits Co.','999-000-1111','support@electrocircuits.com','900 Circuitry Lane, Lab I, Electron City'),
+ (10,'Plastic & Polymer Solutions','333-444-5555','orders@plasticsol.org','1000 Polymer Way, Plant J, Molding Town'),
+ (11,'Metal Fabricators Guild','888-999-0000','guild@metalfab.net','1100 Forging Road, Foundry K, Smithy Heights'),
+ (12,'Logistics & Deliveries Corp.','123-987-6543','dispatch@logisticsdl.com','1200 Transit Blvd, Dock L, Gateway Port');
 /*!40000 ALTER TABLE `core_mfg_suppliers` ENABLE KEYS */;
 
 
@@ -4469,32 +4389,6 @@ CREATE TABLE `core_password_reset_tokens` (
 
 /*!40000 ALTER TABLE `core_password_reset_tokens` DISABLE KEYS */;
 /*!40000 ALTER TABLE `core_password_reset_tokens` ENABLE KEYS */;
-
-
---
--- Definition of table `core_payments`
---
-
-DROP TABLE IF EXISTS `core_payments`;
-CREATE TABLE `core_payments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `booking_id` int(11) DEFAULT NULL,
-  `amount` decimal(10,0) DEFAULT NULL,
-  `payment_method` enum('Cash','bKash','Card') DEFAULT NULL,
-  `status` enum('paid','refunded','failed') DEFAULT NULL,
-  `transaction_id` varchar(100) DEFAULT NULL,
-  `paid_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  KEY `booking_id` (`booking_id`),
-  CONSTRAINT `core_payments_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `core_bookings` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `core_payments`
---
-
-/*!40000 ALTER TABLE `core_payments` DISABLE KEYS */;
-/*!40000 ALTER TABLE `core_payments` ENABLE KEYS */;
 
 
 --

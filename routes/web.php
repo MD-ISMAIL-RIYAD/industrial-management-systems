@@ -59,3 +59,6 @@ Route::resource('units', App\Http\Controllers\UnitController::class);
 Route::resource('departments', App\Http\Controllers\DepartmentController::class);
 Route::resource('productions', App\Http\Controllers\ProductionController::class);
 Route::resource('productions', App\Http\Controllers\ProductionController::class);
+Route::resource('invoice_detials', App\Http\Controllers\InvoiceDetialController::class);
+Route::resource('invoices', App\Http\Controllers\InvoiceController::class);
+Route::resource('invoice_detials', App\Http\Controllers\InvoiceDetialController::class);

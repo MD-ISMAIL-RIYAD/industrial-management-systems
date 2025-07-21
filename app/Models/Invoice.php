@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
 {
-    protected $fillable = ['customer_id', 'created_at', 'remark', 'payment_term', 'updated_at', 'invoice_total', 'paid_total', 'previous_due'];
+    protected $fillable = ['invoice_number', 'order_id', 'customer_id', 'invoice_date', 'subtotal', 'tax_amount', 'discount_amount', 'total_amount', 'paid_amount', 'payment_status', 'status', 'created_at', 'updated_at'];
 }

@@ -60,39 +60,19 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Id</th>
-                        <th>Invoice id</th>
-                        <th>Service id</th>
-                        <th>Unit</th>
-                        <th>Price</th>
-                        <th>Discount</th>
-                        <th>Vat</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
+                <thead class="thead-dark"><tr><th>Id</th><th>Invoice id</th><th>Service id</th><th>Unit</th><th>Price</th><th>Discount</th><th>Vat</th><th>Actions</th></tr></thead>
                 <tbody>
-                    @foreach ($invoice_detials as $item)
-                    <tr>
-                        <td>{{ $item->id }}</td>
-                        <td>{{ optional($item->invoice)->name ?? $item->invoice_id }}</td>
-                        <td>{{ optional($item->service)->name ?? $item->service_id }}</td>
-                        <td>{{ $item->unit }}</td>
-                        <td>{{ $item->price }}</td>
-                        <td>{{ $item->discount }}</td>
-                        <td>{{ $item->vat }}</td>
-                        <td style="min-width: 225px;">
-                            <a href="{{ route('invoice_detials.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-                            <a href="{{ route('invoice_detials.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                            <form action="{{ route('invoice_detials.destroy', $item->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
+                @foreach ($invoice_detials as $item)
+                    <tr><td>{{ $item->id }}</td><td>{{ optional($item->invoice)->name ?? $item->invoice_id }}</td><td>{{ optional($item->service)->name ?? $item->service_id }}</td><td>{{ $item->unit }}</td><td>{{ $item->price }}</td><td>{{ $item->discount }}</td><td>{{ $item->vat }}</td><td>
+    <a href="{{ route('invoice_detials.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+    <a href="{{ route('invoice_detials.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+    <form action="{{ route('invoice_detials.destroy', $item->id) }}" method="POST" style="display:inline;">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+    </form>
+</td></tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
