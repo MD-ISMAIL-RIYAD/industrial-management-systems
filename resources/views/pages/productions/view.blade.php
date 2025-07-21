@@ -21,13 +21,10 @@
     <strong>Bom id:</strong> {{ $production->bom->name ?? $production->bom_id }}
 </div>
 <div class="mb-2">
-    <strong>Labor cost:</strong> {{ $production->labor_cost }}
+    <strong>Warehouse id:</strong> {{ $production->warehouse->name ?? $production->warehouse_id }}
 </div>
 <div class="mb-2">
-    <strong>Manager id:</strong> {{ $production->manager->name ?? $production->manager_id }}
-</div>
-<div class="mb-2">
-    <strong>Total cost:</strong> {{ $production->total_cost }}
+    <strong>Section id:</strong> {{ $production->section->name ?? $production->section_id }}
 </div>
 
 @endsection

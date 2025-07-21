@@ -5,9 +5,9 @@
     <div class="card bg-primary mb-3 p-4">
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-item-center ">
-                <h3 class=" card-title text-white d-flex align-items-center  m-0">Production List</h3>
-                <a href="{{ route('productions.create') }}" class="btn btn-light btn-sm" title="Create New Product">
-                    <i class="fa fa-plus mr-1"></i> Create New Production
+                <h3 class=" card-title text-white d-flex align-items-center  m-0">Department List</h3>
+                <a href="{{ route('departments.create') }}" class="btn btn-light btn-sm" title="Create New Product">
+                    <i class="fa fa-plus mr-1"></i> Create New Department
                 </a>
             </div>
         </div>
@@ -63,25 +63,21 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>Id</th>
-                        <th>Production datetime</th>
-                        <th>Bom id</th>
-                        <th>Warehouse id</th>
-                        <th>Section id</th>
+                        <th>Code</th>
+                        <th>Name</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($productions as $item)
+                    @foreach ($departments as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->production_datetime }}</td>
-                        <td>{{ optional($item->bom)->name ?? $item->bom_id }}</td>
-                        <td>{{ optional($item->warehouse)->name ?? $item->warehouse_id }}</td>
-                        <td>{{ optional($item->section)->name ?? $item->section_id }}</td>
+                        <td>{{ $item->code }}</td>
+                        <td>{{ $item->name }}</td>
                         <td style="min-width: 225px;">
-                            <a href="{{ route('productions.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-                            <a href="{{ route('productions.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                            <form action="{{ route('productions.destroy', $item->id) }}" method="POST" style="display:inline;">
+                            <a href="{{ route('departments.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+                            <a href="{{ route('departments.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('departments.destroy', $item->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>

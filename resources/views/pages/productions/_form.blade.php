@@ -17,20 +17,21 @@
     </select>
 </div>
 <div class="mb-2">
-    <label>Labor cost</label>
-    <input type="text" name="labor_cost" value="{{ old('labor_cost', $production->labor_cost ?? '') }}" class="form-control">
-</div>
-<div class="mb-2">
-    <label>Manager id</label>
-    <select name="manager_id" class="form-select">
-        <option value="">Select Manager id</option>
-        @foreach ($managers as $option)
-            <option value="{{ $option->id }}" {{ old('manager_id', $production->manager_id ?? '') == $option->id ? 'selected' : '' }}>{{ $option->name ?? $option->id }}</option>
+    <label>Warehouse id</label>
+    <select name="warehouse_id" class="form-select">
+        <option value="">Select Warehouse id</option>
+        @foreach ($warehouses as $option)
+            <option value="{{ $option->id }}" {{ old('warehouse_id', $production->warehouse_id ?? '') == $option->id ? 'selected' : '' }}>{{ $option->name ?? $option->id }}</option>
         @endforeach
     </select>
 </div>
 <div class="mb-2">
-    <label>Total cost</label>
-    <input type="text" name="total_cost" value="{{ old('total_cost', $production->total_cost ?? '') }}" class="form-control">
+    <label>Section id</label>
+    <select name="section_id" class="form-select">
+        <option value="">Select Section id</option>
+        @foreach ($sections as $option)
+            <option value="{{ $option->id }}" {{ old('section_id', $production->section_id ?? '') == $option->id ? 'selected' : '' }}>{{ $option->name ?? $option->id }}</option>
+        @endforeach
+    </select>
 </div>
 <button class="btn btn-success">{{ $mode === 'edit' ? 'Update' : 'Create' }}</button>

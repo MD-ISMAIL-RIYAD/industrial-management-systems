@@ -56,3 +56,6 @@ Route::resource('raw_materials', App\Http\Controllers\RawMaterialController::cla
 Route::resource('stocks', App\Http\Controllers\StockController::class);
 Route::resource('stocks', App\Http\Controllers\StockController::class);
 Route::resource('units', App\Http\Controllers\UnitController::class);
+Route::resource('departments', App\Http\Controllers\DepartmentController::class);
+Route::resource('productions', App\Http\Controllers\ProductionController::class);
+Route::resource('productions', App\Http\Controllers\ProductionController::class);

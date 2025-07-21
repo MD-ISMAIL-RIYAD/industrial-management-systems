@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Production;
 use Illuminate\Http\Request;
 use App\Models\Bom;
-use App\Models\Manager;
+use App\Models\Warehouse;
+use App\Models\Section;
 
 
 class ProductionController extends Controller
@@ -19,13 +20,15 @@ class ProductionController extends Controller
     public function create()
     {
         $boms = \App\Models\Bom::all();
-        $managers = \App\Models\Manager::all();
+        $warehouses = \App\Models\Warehouse::all();
+        $sections = \App\Models\Section::all();
 
         return view('pages.productions.create', [
             'mode' => 'create',
             'production' => new Production(),
             'boms' => $boms,
-            'managers' => $managers,
+            'warehouses' => $warehouses,
+            'sections' => $sections,
 
         ]);
     }
@@ -48,13 +51,15 @@ class ProductionController extends Controller
     public function edit(Production $production)
     {
         $boms = \App\Models\Bom::all();
-        $managers = \App\Models\Manager::all();
+        $warehouses = \App\Models\Warehouse::all();
+        $sections = \App\Models\Section::all();
 
         return view('pages.productions.edit', [
             'mode' => 'edit',
             'production' => $production,
             'boms' => $boms,
-            'managers' => $managers,
+            'warehouses' => $warehouses,
+            'sections' => $sections,
 
         ]);
     }
