@@ -210,7 +210,7 @@
     </style>
 </head>
 
-<body>
+<body >
     <div class="invoice-container">
         <div class="header-bg"></div>
 
@@ -295,6 +295,10 @@
 
             <div class="row mt-4">
                 <div class="col-md-6">
+                    <div>
+                        <label for="bom_name">Bom Name</label> <br>
+                        <input type="text" name="bom_name" id="bom_name" class="form-control w-50" placeholder="Bom Name">
+                    </div>
                     <div class="contact-info">
                         <h5 class="text-primary">CONTACT US</h5>
                         <p><i class="bi bi-phone"></i> 01879865517</p>
@@ -346,11 +350,13 @@
 
 </section>
 <script>
+    // const BASE_URL=document.dataset.base-url;
     let items = [];
     document.getElementById('add-item').addEventListener('click', () => {
         const itemEl = document.getElementById('item-id');
         const item_id = itemEl.value;
         const item_name = itemEl.options[itemEl.selectedIndex].text;
+        const unit_id=document.getElementById('unit_id').value;
         const qty = document.getElementById('qty').value;
         const price = document.getElementById('price').value;
         // const vat = document.getElementById('vat').value;
@@ -358,6 +364,7 @@
         const item = {
             item_id,
             item_name,
+            unit_id,
             qty: parseFloat(qty),
             price: parseFloat(price),
         }
@@ -368,10 +375,12 @@
 
     //show items
     function showItems() {
+        const labourCost = document.getElementById('labour-cost').value;
         const tbody = document.getElementById('order-items-body');
         tbody.innerHTML = '';
         let lineTotal = 0;
         let subtotal = 0;
+        let total=0;
         items.forEach((item, index) => {
             const tr = document.createElement('tr');
             lineTotal = (item.qty * item.price);
@@ -391,18 +400,20 @@
                 `;
             tbody.appendChild(tr);
         });
+        total=subtotal+parseFloat(labourCost);
+        document.getElementById('total-amount').textContent=total;
     }
 
     //handel special discount
-    const specialDiscountDiv = document.getElementById('labour-cost');
-    specialDiscountDiv.addEventListener('input', () => {
+    const labourCost = document.getElementById('labour-cost');
+    labourCost.addEventListener('input', () => {
         const fullSubtotal = document.getElementById('subtotal-amount').textContent;
         const subtotalArr = fullSubtotal.split('$');
         const subtotal = subtotalArr[1];
         const subtotalNum = parseFloat(subtotal);
-        const specialDiscountNum = parseFloat(specialDiscountDiv.value);
-        const total = subtotalNum - specialDiscountNum;
-        document.getElementById('labour-cost').textContent = total;
+        const labourConstNum = parseFloat(labourCost.value);
+        let total = subtotalNum + labourConstNum;
+        document.getElementById('total-amount').textContent = total;
     })
 
 
@@ -415,19 +426,20 @@
     //save purchase
     document.getElementById('save-btn').addEventListener('click', async () => {
 
-        const bom_id = document.getElementById('bom-id').value;
+        const bom_no = document.getElementById('bom-id').textContent;
         const labour_cost=document.getElementById('labour-cost').value;
         const bom_total = document.getElementById('total-amount').textContent;
+        const bom_name=document.getElementById('bom_name').value;
 
         const payload = {
-            bom_id,
+            bom_no,
+            bom_name,
             labour_cost,
             bom_total,
             items
         }
-
         try {
-            const response = await fetch(`${BASE_URL}/api/purchases`, {
+            const response = await fetch(`http://127.0.0.1:8000/api/boms`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -442,14 +454,14 @@
 
             const result = await response.json();
             console.log('Purchase created:', result);
-            alert('Purchase created successfully!');
+            alert('Bom created successfully!');
 
             //redirect to the index page
-            window.location.assign("{{ route('purchases.index') }}");
+            window.location.assign("{{ route('boms.index') }}");
 
         } catch (error) {
-            console.error('Failed to create Purchase:', error);
-            alert('Error creating Purchase.');
+            console.error('Failed to create Bom:', error);
+            alert('Error creating Bom.');
         }
         console.log(payload);
 
