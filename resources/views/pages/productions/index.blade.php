@@ -60,35 +60,19 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Id</th>
-                        <th>Production datetime</th>
-                        <th>Bom id</th>
-                        <th>Warehouse id</th>
-                        <th>Section id</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
+                <thead class="thead-dark"><tr><th>Id</th><th>Bom id</th><th>Warehouse id</th><th>Uom id</th><th>Created at</th><th>Updated at</th><th>Price</th><th>Product name</th><th>Manufacturer id</th><th>Product category id</th><th>Actions</th></tr></thead>
                 <tbody>
-                    @foreach ($productions as $item)
-                    <tr>
-                        <td>{{ $item->id }}</td>
-                        <td>{{ $item->production_datetime }}</td>
-                        <td>{{ optional($item->bom)->name ?? $item->bom_id }}</td>
-                        <td>{{ optional($item->warehouse)->name ?? $item->warehouse_id }}</td>
-                        <td>{{ optional($item->section)->name ?? $item->section_id }}</td>
-                        <td style="min-width: 225px;">
-                            <a href="{{ route('productions.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-                            <a href="{{ route('productions.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                            <form action="{{ route('productions.destroy', $item->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
+                @foreach ($productions as $item)
+                    <tr><td>{{ $item->id }}</td><td>{{ optional($item->bom)->name ?? $item->bom_id }}</td><td>{{ optional($item->warehouse)->name ?? $item->warehouse_id }}</td><td>{{ optional($item->uom)->name ?? $item->uom_id }}</td><td>{{ $item->created_at }}</td><td>{{ $item->updated_at }}</td><td>{{ $item->price }}</td><td>{{ $item->product_name }}</td><td>{{ optional($item->manufacturer)->name ?? $item->manufacturer_id }}</td><td>{{ optional($item->productCategory)->name ?? $item->product_category_id }}</td><td>
+    <a href="{{ route('productions.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+    <a href="{{ route('productions.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+    <form action="{{ route('productions.destroy', $item->id) }}" method="POST" style="display:inline;">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+    </form>
+</td></tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

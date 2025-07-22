@@ -6,8 +6,11 @@ use App\Models\Production;
 use Illuminate\Http\Request;
 use App\Models\Bom;
 use App\Models\Warehouse;
-use App\Models\Section;
-
+use App\Models\Uom;
+use App\Models\Manufacturer;
+use App\Models\Product;
+use App\Models\ProductCategory;
+use App\Models\Stock;
 
 class ProductionController extends Controller
 {
@@ -21,14 +24,18 @@ class ProductionController extends Controller
     {
         $boms = \App\Models\Bom::all();
         $warehouses = \App\Models\Warehouse::all();
-        $sections = \App\Models\Section::all();
+        $uoms = \App\Models\Uom::all();
+        $manufacturers = \App\Models\Manufacturer::all();
+        $productCategories = \App\Models\ProductCategory::all();
 
         return view('pages.productions.create', [
             'mode' => 'create',
             'production' => new Production(),
             'boms' => $boms,
             'warehouses' => $warehouses,
-            'sections' => $sections,
+            'uoms' => $uoms,
+            'manufacturers' => $manufacturers,
+            'productCategories' => $productCategories,
 
         ]);
     }
@@ -38,8 +45,31 @@ class ProductionController extends Controller
         $data = $request->all();
         if ($request->hasFile('photo')) {
             $data['photo'] = $request->file('photo')->store('uploads', 'public');
-        }
+        }      
+
         Production::create($data);
+
+        //saving to product table
+        $product= new Product();
+        $product->name=$request->product_name;
+        $product->price=$request->price;
+        $product->manufacturer_id=$request->manufacturer_id;
+        $product->bom_id=$request->bom_id;
+        $product->product_category_id=$request->product_category_id;
+        $product->uom_id=$request->uom_id;
+        $product->save();
+
+        //saving to stock table
+        $stock=new Stock();
+        $stock->product_id=$product->id;
+        $stock->qty=$request->qty;
+        $stock->transaction_type_id=3;
+        $stock->remark="Production";
+        $stock->warehouse_id=$request->warehouse_id;
+        $stock->product_type='Finished Good';
+        $stock->product_name=$request->product_name;
+        $stock->save();
+
         return redirect()->route('productions.index')->with('success', 'Successfully created!');
     }
 
@@ -52,14 +82,18 @@ class ProductionController extends Controller
     {
         $boms = \App\Models\Bom::all();
         $warehouses = \App\Models\Warehouse::all();
-        $sections = \App\Models\Section::all();
+        $uoms = \App\Models\Uom::all();
+        $manufacturers = \App\Models\Manufacturer::all();
+        $productCategories = \App\Models\ProductCategory::all();
 
         return view('pages.productions.edit', [
             'mode' => 'edit',
             'production' => $production,
             'boms' => $boms,
             'warehouses' => $warehouses,
-            'sections' => $sections,
+            'uoms' => $uoms,
+            'manufacturers' => $manufacturers,
+            'productCategories' => $productCategories,
 
         ]);
     }

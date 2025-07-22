@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Manufacturer;
+use App\Models\Bom;
 use App\Models\ProductCategory;
-use App\Models\ProductSection;
 use App\Models\Uom;
-use App\Models\ProductType;
-use App\Models\ProductUnit;
 
 
 class ProductController extends Controller
@@ -23,21 +21,17 @@ class ProductController extends Controller
     public function create()
     {
         $manufacturers = \App\Models\Manufacturer::all();
+        $boms = \App\Models\Bom::all();
         $productCategories = \App\Models\ProductCategory::all();
-        $productSections = \App\Models\ProductSection::all();
         $uoms = \App\Models\Uom::all();
-        $productTypes = \App\Models\ProductType::all();
-        $productUnits = \App\Models\ProductUnit::all();
 
         return view('pages.products.create', [
             'mode' => 'create',
             'product' => new Product(),
             'manufacturers' => $manufacturers,
+            'boms' => $boms,
             'productCategories' => $productCategories,
-            'productSections' => $productSections,
             'uoms' => $uoms,
-            'productTypes' => $productTypes,
-            'productUnits' => $productUnits,
 
         ]);
     }
@@ -60,21 +54,17 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $manufacturers = \App\Models\Manufacturer::all();
+        $boms = \App\Models\Bom::all();
         $productCategories = \App\Models\ProductCategory::all();
-        $productSections = \App\Models\ProductSection::all();
         $uoms = \App\Models\Uom::all();
-        $productTypes = \App\Models\ProductType::all();
-        $productUnits = \App\Models\ProductUnit::all();
 
         return view('pages.products.edit', [
             'mode' => 'edit',
             'product' => $product,
             'manufacturers' => $manufacturers,
+            'boms' => $boms,
             'productCategories' => $productCategories,
-            'productSections' => $productSections,
             'uoms' => $uoms,
-            'productTypes' => $productTypes,
-            'productUnits' => $productUnits,
 
         ]);
     }

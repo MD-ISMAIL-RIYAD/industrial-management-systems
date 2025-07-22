@@ -15,16 +15,31 @@
     <strong>Id:</strong> {{ $production->id }}
 </div>
 <div class="mb-2">
-    <strong>Production datetime:</strong> {{ $production->production_datetime }}
-</div>
-<div class="mb-2">
     <strong>Bom id:</strong> {{ $production->bom->name ?? $production->bom_id }}
 </div>
 <div class="mb-2">
     <strong>Warehouse id:</strong> {{ $production->warehouse->name ?? $production->warehouse_id }}
 </div>
 <div class="mb-2">
-    <strong>Section id:</strong> {{ $production->section->name ?? $production->section_id }}
+    <strong>Uom id:</strong> {{ $production->uom->name ?? $production->uom_id }}
+</div>
+<div class="mb-2">
+    <strong>Created at:</strong> {{ $production->created_at }}
+</div>
+<div class="mb-2">
+    <strong>Updated at:</strong> {{ $production->updated_at }}
+</div>
+<div class="mb-2">
+    <strong>Price:</strong> {{ $production->price }}
+</div>
+<div class="mb-2">
+    <strong>Product name:</strong> {{ $production->product_name }}
+</div>
+<div class="mb-2">
+    <strong>Manufacturer id:</strong> {{ $production->manufacturer->name ?? $production->manufacturer_id }}
+</div>
+<div class="mb-2">
+    <strong>Product category id:</strong> {{ $production->productCategory->name ?? $production->product_category_id }}
 </div>
 
 @endsection

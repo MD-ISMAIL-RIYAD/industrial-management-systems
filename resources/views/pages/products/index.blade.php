@@ -60,59 +60,19 @@
         <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Offer price</th>
-                        <th>Manufacturer id</th>
-                        <th>Regular price</th>
-                        <th>Photo</th>
-                        <th>Product category id</th>
-                        <th>Product section id</th>
-                        <th>Is featured</th>
-                        <th>Is brand</th>
-                        <th>Uom id</th>
-                        <th>Weight</th>
-                        <th>Barcode</th>
-                        <th>Created at</th>
-                        <th>Updated at</th>
-                        <th>Product type id</th>
-                        <th>Product unit id</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
+                <thead class="thead-dark"><tr><th>Id</th><th>Name</th><th>Price</th><th>Manufacturer id</th><th>Bom id</th><th>Product category id</th><th>Uom id</th><th>Created at</th><th>Updated at</th><th>Actions</th></tr></thead>
                 <tbody>
-                    @foreach ($products as $item)
-                    <tr>
-                        <td>{{ $item->id }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->offer_price }}</td>
-                        <td>{{ optional($item->manufacturer)->name ?? $item->manufacturer_id }}</td>
-                        <td>{{ $item->regular_price }}</td>
-                        <td>@if($item->photo)<img src="{{ asset('storage/' . $item->photo) }}" width="50">@endif</td>
-                        <td>{{ optional($item->productCategory)->name ?? $item->product_category_id }}</td>
-                        <td>{{ optional($item->productSection)->name ?? $item->product_section_id }}</td>
-                        <td>{{ $item->is_featured }}</td>
-                        <td>{{ $item->is_brand }}</td>
-                        <td>{{ optional($item->uom)->name ?? $item->uom_id }}</td>
-                        <td>{{ $item->weight }}</td>
-                        <td>{{ $item->barcode }}</td>
-                        <td>{{ $item->created_at }}</td>
-                        <td>{{ $item->updated_at }}</td>
-                        <td>{{ optional($item->productType)->name ?? $item->product_type_id }}</td>
-                        <td>{{ optional($item->productUnit)->name ?? $item->product_unit_id }}</td>
-                        <td style="min-width: 225px;">
-                            <a href="{{ route('products.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
-                            <a href="{{ route('products.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                            <form action="{{ route('products.destroy', $item->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
+                @foreach ($products as $item)
+                    <tr><td>{{ $item->id }}</td><td>{{ $item->name }}</td><td>{{ $item->price }}</td><td>{{ optional($item->manufacturer)->name ?? $item->manufacturer_id }}</td><td>{{ optional($item->bom)->name ?? $item->bom_id }}</td><td>{{ optional($item->productCategory)->name ?? $item->product_category_id }}</td><td>{{ optional($item->uom)->name ?? $item->uom_id }}</td><td>{{ $item->created_at }}</td><td>{{ $item->updated_at }}</td><td>
+    <a href="{{ route('products.show', $item->id) }}" class="btn btn-sm btn-info">View</a>
+    <a href="{{ route('products.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+    <form action="{{ route('products.destroy', $item->id) }}" method="POST" style="display:inline;">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+    </form>
+</td></tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

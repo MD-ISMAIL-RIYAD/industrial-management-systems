@@ -3988,26 +3988,6 @@ CREATE TABLE `core_mfg_suppliers` (
 ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `core_mfg_suppliers`
---
-
-/*!40000 ALTER TABLE `core_mfg_suppliers` DISABLE KEYS */;
-INSERT INTO `core_mfg_suppliers` (`id`,`name`,`mobile`,`email`,`address`) VALUES 
- (1,'Md. Shahin','56879898','shahin@yahoo.com',NULL),
- (2,'kulsum','07154545','kulsum@gmail.com',NULL),
- (4,'Jahid','3654533','jahid@gmail.com',NULL),
- (9,'rahim','1123334','aa@gmail.com',NULL),
- (10,'kuddush','678798','kuddush@gmail.com',NULL),
- (15,'ismail riyad4','04555545','karim@.com',NULL),
- (21,'Abdul','3534354','kader@gmail.com',NULL),
- (22,'Jahidul Islam','3423423','kader@gmail.com',NULL),
- (24,'Kader','34343','kader@gmail.com',NULL),
- (36,'Jahidul Islam','343433333333333','kader@gmail.com',NULL),
- (37,'Naiyem Limited','343243243444','naiyem',NULL);
-/*!40000 ALTER TABLE `core_mfg_suppliers` ENABLE KEYS */;
-
-
---
 -- Definition of table `core_mfg_units`
 --
 
