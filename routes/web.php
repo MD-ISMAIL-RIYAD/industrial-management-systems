@@ -70,3 +70,5 @@ Route::resource('invoice_detials', App\Http\Controllers\InvoiceDetialController:
 Route::resource('productions', App\Http\Controllers\ProductionController::class);
 Route::resource('products', App\Http\Controllers\ProductController::class);
 Route::resource('productions', App\Http\Controllers\ProductionController::class);
+
+Route::resource('purchase_returns', App\Http\Controllers\PurchaseReturnController::class);

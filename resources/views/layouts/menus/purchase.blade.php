@@ -57,32 +57,31 @@
 
       </ul>
     </li>
-
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a class="nav-link dropdown-indicator" href="#invoice" data-bs-toggle="collapse"
         aria-expanded="false" aria-controls="purchase">
         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Invoices</span>
         </div>
       </a>
 
-      <!-- more inner pages-->
+     
       <ul class="nav collapse" id="invoice">
         <li class="nav-item"><a class="nav-link" href="{{url('invoices/create')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">New Invoices</span>
             </div>
           </a>
-          <!-- more inner pages-->
+    
         </li>
 
         <li class="nav-item"><a class="nav-link" href="{{url('invoices')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Invoices </span>
             </div>
           </a>
-          <!-- more inner pages-->
+ 
         </li>
 
       </ul>
-    </li>
+    </li> -->
 
     <li class="nav-item">
       <a class="nav-link dropdown-indicator" href="#purchase_returns" data-bs-toggle="collapse"
@@ -97,7 +96,7 @@
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Return Product</span>
             </div>
           </a>
-          >
+
         </li>
 
         <li class="nav-item"><a class="nav-link" href="{{url('purchase_returns')}}">
