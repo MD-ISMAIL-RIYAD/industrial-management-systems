@@ -45,7 +45,7 @@
             left: 0;
             width: 70%;
             height: 250px;
-            background-color: #0d47a1;
+            background-color: #760016;
             transform: skewY(-8deg);
             transform-origin: top left;
             z-index: 2;
@@ -62,7 +62,7 @@
             /* Covers the right side */
             height: 200px;
             /* Extends beyond the height */
-            background-color: #ff8c00;
+            background-color: #a8ab01;
             /* Orange */
             transform: skewY(12deg);
             /* Angle for the orange section */
@@ -109,7 +109,7 @@
 
         .invoice-to {
             text-align: right;
-            color: #333;
+            color: #f5f5f5;
             margin-top: 20px;
             padding-right: 20px;
         }
