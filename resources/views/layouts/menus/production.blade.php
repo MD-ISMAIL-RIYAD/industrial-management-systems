@@ -78,30 +78,31 @@
 
       </ul>
     </li>
-    <li class="nav-item">
+
+
+    <!-- <li class="nav-item">
       <a class="nav-link dropdown-indicator" href="#section" data-bs-toggle="collapse"
         aria-expanded="false" aria-controls="production">
         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Sections</span>
         </div>
       </a>
-      <!-- more inner pages-->
+
       <ul class="nav collapse" id="section">
         <li class="nav-item"><a class="nav-link" href="{{url('sections/create')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create New</span>
             </div>
           </a>
-          <!-- more inner pages-->
+
         </li>
         <li class="nav-item"><a class="nav-link" href="{{url('sections')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Sections </span>
             </div>
           </a>
-          <!-- more inner pages-->
         </li>
 
 
       </ul>
-    </li>
+    </li> -->
 
 
 
@@ -129,30 +130,33 @@
 
 
       </ul>
+
     </li>
-    <li class="nav-item">
+
+
+    <!-- <li class="nav-item">
       <a class="nav-link dropdown-indicator" href="#table" data-bs-toggle="collapse"
         aria-expanded="false" aria-controls="production">
         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Tables</span>
         </div>
       </a>
-      <!-- more inner pages-->
+
       <ul class="nav collapse" id="table">
         <li class="nav-item"><a class="nav-link" href="{{url('tables/create')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create Order</span>
             </div>
           </a>
-          <!-- more inner pages-->
+
         </li>
         <li class="nav-item"><a class="nav-link" href="{{url('tables')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Order</span>
             </div>
           </a>
-          <!-- more inner pages-->
+
         </li>
 
 
       </ul>
-    </li>
+    </li> -->
 
   </ul>

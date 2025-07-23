@@ -1,10 +1,17 @@
 <?php
 
+use App\Http\Controllers\StockController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.dashboard.home');
 });
+
+
+// Route::get('stocks.balance', [StockController::class, 'stocks.balance'])->name('stocks.balance');
+// web.php
+Route::get('/stocks/balance', [StockController::class, 'stock_balance'])->name('stocks.balance');
+
 
 Route::resource('bom_finished_goods', App\Http\Controllers\BomFinishedGoodController::class);
 Route::resource('boms', App\Http\Controllers\BomController::class);

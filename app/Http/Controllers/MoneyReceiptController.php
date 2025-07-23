@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\MoneyReceipt;
 use Illuminate\Http\Request;
 use App\Models\Customer;
-
+use App\Models\Invoice;
+use App\Models\RawMaterial;
+use App\Models\Status;
+use App\Models\Supplier;
 
 class MoneyReceiptController extends Controller
 {
@@ -15,14 +18,25 @@ class MoneyReceiptController extends Controller
         return view('pages.money_receipts.index', compact('money_receipts'));
     }
 
-    public function create()
+     public function create()
     {
-        $customers = \App\Models\Customer::all();
+        $suppliers = Supplier::all();
+        $statuses = Status::all();
+        $raw_materials=RawMaterial::all();
+        $purchase=Invoice::all();
+        $customers=Customer::all();
+        $purchaseId=$purchase->max('id');
+        $newPurchaseId='#INV-'. str_pad($purchaseId+1,5,'0', STR_PAD_LEFT);
+
 
         return view('pages.money_receipts.create', [
             'mode' => 'create',
-            'moneyReceipt' => new MoneyReceipt(),
-            'customers' => $customers,
+            'purchase' => new Invoice(),
+            'suppliers' => $suppliers,
+            'statuses' => $statuses,
+            'raw_materials' => $raw_materials,
+            'newPurchaseId'=>$newPurchaseId,
+            'customers'=>$customers,
 
         ]);
     }

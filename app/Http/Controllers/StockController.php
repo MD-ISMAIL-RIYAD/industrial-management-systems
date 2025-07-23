@@ -11,9 +11,32 @@ use App\Models\Warehouse;
 
 class StockController extends Controller
 {
+
+    //stock balance
+    public function stock_balance()
+    {
+        // Get all MoneyStock records with their related product
+        $stocks = Stock::with('product')->get();
+
+        // Group by product_id and sum qty
+        $groupedStocks = $stocks->groupBy('product_id')->map(function ($group) {
+            return [
+                'product_id' => $group->first()->product_id,
+                'product_name' => $group->first()->product_name, // from DB column
+                'product_type' => $group->first()->product_type, 
+                'qty' => $group->sum('qty'),
+            ];
+        });
+
+
+        return view('pages.stocks.balance', ['groupedStocks' => $groupedStocks]);
+    }
+
+
     public function index()
     {
-        $stocks = Stock::orderBy('id','desc')->paginate(10);
+
+        $stocks = Stock::orderBy('id', 'desc')->paginate(10);
         return view('pages.stocks.index', compact('stocks'));
     }
 

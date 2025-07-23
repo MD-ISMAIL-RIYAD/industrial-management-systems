@@ -41,13 +41,13 @@
           </a>
           <!-- more inner pages-->
           <ul class="nav collapse" id="invoice">
-              <li class="nav-item"><a class="nav-link" href="app/e-learning/invoice/invoice-list.html">
+              <li class="nav-item"><a class="nav-link" href="{{url('purchases/create')}}">
                       <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create Invoice</span>
                       </div>
                   </a>
                   <!-- more inner pages-->
               </li>
-              <li class="nav-item"><a class="nav-link" href="app/e-learning/invoice/invoice-grid.html">
+              <li class="nav-item"><a class="nav-link" href="{{url('purchases')}}">
                       <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Invoice</span>
                       </div>
                   </a>
@@ -65,14 +65,14 @@
           </a>
           <!-- more inner pages-->
           <ul class="nav collapse" id="money_receipt">
-              <li class="nav-item"><a class="nav-link" href="app/e-learning/money_receipt/money_receipt-list.html">
-                      <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create Money Receipts</span>
+              <li class="nav-item"><a class="nav-link" href="{{url('money_receipts/create')}}">
+                      <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create MR</span>
                       </div>
                   </a>
                   <!-- more inner pages-->
               </li>
-              <li class="nav-item"><a class="nav-link" href="app/e-learning/money_receipt/money_receipt-grid.html">
-                      <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Money Receipts</span>
+              <li class="nav-item"><a class="nav-link" href="{{url('money_receipts')}}">
+                      <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage MR</span>
                       </div>
                   </a>
                   <!-- more inner pages-->

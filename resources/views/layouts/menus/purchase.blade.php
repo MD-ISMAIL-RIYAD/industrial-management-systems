@@ -29,6 +29,8 @@
 
       </ul>
     </li>
+
+
     <li class="nav-item">
       <a class="nav-link dropdown-indicator" href="#suppliers" data-bs-toggle="collapse"
         aria-expanded="false" aria-controls="purchase">
@@ -36,20 +38,21 @@
         </div>
       </a>
 
-      <!-- more inner pages-->
+
       <ul class="nav collapse" id="suppliers">
         <li class="nav-item"><a class="nav-link" href="{{url('suppliers/create')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Create Suppliers</span>
             </div>
           </a>
-          <!-- more inner pages-->
+
         </li>
+
 
         <li class="nav-item"><a class="nav-link" href="{{url('suppliers')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Manage Suppliers</span>
             </div>
           </a>
-          <!-- more inner pages-->
+
         </li>
 
       </ul>
@@ -88,20 +91,20 @@
         </div>
       </a>
 
-      <!-- more inner pages-->
+
       <ul class="nav collapse" id="purchase_returns">
         <li class="nav-item"><a class="nav-link" href="{{url('purchase_returns/create')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Return Product</span>
             </div>
           </a>
-          <!-- more inner pages-->
+          >
         </li>
 
         <li class="nav-item"><a class="nav-link" href="{{url('purchase_returns')}}">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Adjusment Product </span>
             </div>
           </a>
-          <!-- more inner pages-->
+
         </li>
 
       </ul>
