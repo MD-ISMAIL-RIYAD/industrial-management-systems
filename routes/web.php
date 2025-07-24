@@ -72,3 +72,5 @@ Route::resource('products', App\Http\Controllers\ProductController::class);
 Route::resource('productions', App\Http\Controllers\ProductionController::class);
 
 Route::resource('purchase_returns', App\Http\Controllers\PurchaseReturnController::class);
+Route::resource('tables', App\Http\Controllers\TableController::class);
+Route::resource('production_orders', App\Http\Controllers\ProductionOrderController::class);
